@@ -15,6 +15,6 @@
     </head>
     <body>
         <div></div>
-      
+        <a href="APP/view/layout/posts.php">Ver Posts</a>
     </body>
 </html>

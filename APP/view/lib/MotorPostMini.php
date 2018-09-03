@@ -20,7 +20,7 @@
                                 $numPost             = 70,
                                 $numPostForBloc      = 10,
                                 $numQntExibirButtons = 6,
-                                $pagUrl              = "./index.php")
+                                $pagUrl              = "./posts.php")
     {
       $this->numPost             = $numPost;
       $this->numPostForBloc      = $numPostForBloc;
@@ -272,7 +272,7 @@
       {
         $aux = intval($aux) + 1; // se for numero real, pegar o seu valor inteiro e somar +1 ;
       }
-      if($aux < 0);
+      if($aux < 0)
         $this->numForPost = 0;
 
         $this->numForPost = $aux;
