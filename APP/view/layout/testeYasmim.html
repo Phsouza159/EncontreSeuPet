@@ -1,16 +1,73 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
-        <title>TODO supply a title</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
     </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+     <style>
+        
+        
+body {
+    background-color:linen;
+}
+h1 {
+    text-align: center;
+    color:black ;
+    
+} 
+
+input[type=text], select {
+    
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 0px;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 20%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+div {
+    border-radius: 50px;
+    padding: 20px;
+    width: 50%;
+    height: 500px;
+    background-color:white;
+    
+}
+</style>
+<body>
+
+<H1>Encontre Seu Pet</H1>
+
+<center>
+    <div>
+    <form action="/action_page.php">
+ Nome:<input  type="text" name="Nome" value=""/> <br>
+ Sobrenome:<input  type="text" name="Sobrenome" value=""/><br>
+ Telefone:<input  type="text" name="Telefone" value=""/><br>
+ Endereço:<input  type="text" name="Endereço" value=""/> <br>
+ E-mail:<input  type="text" name="E-mail" value=""/><br>
+ Data de Nascimento:<input  type="text" name="Data de Nascimento" value=""/><br>
+ Login password: <input  type="text" name="Login password" value=""/><br>
+ Sexo: <input  type="radio" name=" Sexo" value="Masculino"/>Masculino
+       <input  type="radio" name=" Sexo" value="Feminino"/>Feminino<br>
+  
+    <input type="submit" value="cadastrar">
+ 
+        
+  </form>
+</div></center>
+</style>
+</head>
 </html>
