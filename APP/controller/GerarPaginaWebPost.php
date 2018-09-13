@@ -53,6 +53,8 @@
          
          $body   = "<body>"
                  . $codigo_fonte
+                 . "<button onclick=\"window.location.href='../layout/CriarPost.php'\" >Criar novo Posts</button>"
+                 . "<button onclick=\"window.location.href='../layout/posts.php'\" >Voltar Galeria</button>"
                  . "</boyd>";
          
          $pag = "<html>" . $head . $body . "</html>" ; 

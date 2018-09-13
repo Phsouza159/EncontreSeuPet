@@ -4,7 +4,7 @@
    */
   Class MotorPostMini // extends Post --- herdar atributos e metados da class POST (Criar class )
   {
-    private $numPost;                     // quantidade de posters
+    private $numPost;                     // quantidade de posters      
     private $numPostForBloc;              // quantidade de posts por bloco de exibicao
     private $numForPost;                  // numero de butoes necessarios para navegar entre os blocos que contem o postesMini
     private $atualNumMiniPost;            // bloco atual do posters -- um blco igual a @var numPostForBloc
@@ -14,20 +14,68 @@
 
     private $pagUrl;                      // aux para a pagina que vai a fucao
 
-    ##################################### --- CONSTRUTOR
+    
+    
+    
+    private $postsNames = array();
+    
+
+        ##################################### --- CONSTRUTOR
 
     public function __construct( // valore padroes
                                 $numPost             = 70,
-                                $numPostForBloc      = 10,
+                                $numPostForBloc      = 2,
                                 $numQntExibirButtons = 6,
                                 $pagUrl              = "./posts.php")
     {
+      
       $this->numPost             = $numPost;
       $this->numPostForBloc      = $numPostForBloc;
       $this->numQntExibirButtons = $numQntExibirButtons;
       $this->pagUrl              = $pagUrl;
+      $this->CarregarPostTEMPORARIO();
+    }
+    
+    //************************
+    public function CarregarPostTEMPORARIO()
+    {
+        $caminho = "../GaleriaPosts/";
+        $caminho = dir($caminho);
+        $arrayPosts = array();
+        
+        while(false !== ($entry = $caminho->read())) 
+        {
+            if($entry != "." && $entry != "..")
+            {
+                $name = explode("." , $entry);
+                $arrayPosts[$name[0]] = $entry;
+            }
+        }
+        echo "<pre>";
+          print_r($arrayPosts);
+        echo "</pre>";
+        $this->setNumPost(count($arrayPosts));
+        $this->setPostsNames($arrayPosts);
+    }
+    
+    private function getPostsNames() 
+    {
+        return $this->postsNames;
     }
 
+    private function setPostsNames($postsNames) 
+    {
+        $this->postsNames = $postsNames;
+    }
+    private function getNumPost() 
+    {
+        return $this->numPost;
+    }
+
+    private function setNumPost($numPost) 
+    {
+        $this->numPost = $numPost;
+    }
     #-------------------------------------------------- FUNCOES DE SAIDA DE DADOS
     /**
       * Funcao Gerar View do motor dos Posts MINI
@@ -37,7 +85,9 @@
       #------ Carregar informacoes necessarias
       $this->GetNumMiniPostNav();
       $this->GetAtualNavPost();
-
+      $files  = $this->getPostsNames();
+      $chaves = array_keys($files);
+     
       echo "<fieldset>
               <legend>Posts</legend>";
               /**
@@ -48,7 +98,11 @@
               for($x = $this->atualNumMiniPost ; $x < $this->atualNumMiniPost + $this->numPostForBloc ; $x++)
               {
                 # ------ Buscar Poster MINI
-                $this->GetMiniPost($x);
+                
+                  
+                    $this->GetMiniPost($chaves[$x-1] , "../GaleriaPosts/".$files[$chaves[$x-1]]);
+                 
+                
                 if($x == $this->numPost ) // Controlador -- bloquear de exibir mais posters do que existe
                   break;
               }
@@ -195,12 +249,14 @@
       *            }
       * retorno null
       */
-    private function GetMiniPost($x)
+    private function GetMiniPost($titulo , $caminho)
     {
       echo "<fieldset class='boyd-post-mini'>
-               <legend>Post: ".$x."</legend>
+               <legend>Post: ".$titulo."</legend>
                 <div class='body-post-mini-img'><img src='#'></div>
-                <!--<div class='body-post-mini-textoInfo'>algum texto resumido sobre o poster</div>-->
+                <div class='body-post-mini-textoInfo'>algum texto resumido sobre o poster
+                <a href='".$caminho."'>Visualizar post<a/>
+                </div>
              </fieldset>";
     }
 

@@ -24,7 +24,7 @@
 
 .body-post-mini-textoInfo
 {
-  width: 10vh;
+  width: 50vh;
   height: 80%;
   border: 1px solid #000;
   float: right;
@@ -34,12 +34,12 @@
 {
   margin-top: 15px;
   margin-bottom: 15px;
-  width: 10%;
+  width: 100vh;
   height: 250px;
 }
 .boyd-post-mini
 {
-  float: left;
+ /* float: left; */
 }
 
 .body-info-navButtons{

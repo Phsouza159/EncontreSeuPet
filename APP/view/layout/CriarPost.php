@@ -57,7 +57,9 @@
                 <textarea class="summernote" name="cody-font-pag"><p>Ola crie seu post aqui!</p></textarea>
                 
                 <button class="btn btn-primary"  type="submit">Criar</button>
+                
             </form>
+                <button class="btn btn-primary" onclick="window.location.href='posts.php'" >Voltar Galeria</button>
 
 
         </div>

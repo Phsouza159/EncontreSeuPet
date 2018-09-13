@@ -1,6 +1,7 @@
 <?php
     include_once "../lib/MotorPostMini.php";
     
+    
     $post = new MotorPostMini();
 ?>
 <!DOCTYPE html>
@@ -10,7 +11,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
        
-        <link href="../../assets/css/MotorPostMini.css?v=2" rel="stylesheet" />
+        <link href="../../assets/css/MotorPostMini.css?v=3" rel="stylesheet" />
         
         <style type="text/css">
             body{
@@ -21,7 +22,7 @@
     </head>
     <body>
         <div>
-     
+            <button onclick="window.location.href='CriarPost.php'" class="">Criar Posts</button>
           <?php 
             
             $post->ViewMiniPost();
