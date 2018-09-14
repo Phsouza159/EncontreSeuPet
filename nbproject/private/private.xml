@@ -4,7 +4,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/K:/EasyPHP-Devserver-17/eds-www/EncontreSeuPet/APP/view/dashboard/index.php</file>
+            <file>file:/J:/EasyPHP-Devserver-17/eds-www/EncontreSeuPet/APP/controller/GerarPaginaWebPost.php</file>
+            <file>file:/J:/EasyPHP-Devserver-17/eds-www/EncontreSeuPet/APP/view/layout/posts.php</file>
+            <file>file:/J:/EasyPHP-Devserver-17/eds-www/EncontreSeuPet/APP/view/layout/CriarPost.php</file>
+            <file>file:/J:/EasyPHP-Devserver-17/eds-www/EncontreSeuPet/APP/view/lib/MotorPostMini.php</file>
         </group>
     </open-files>
 </project-private>

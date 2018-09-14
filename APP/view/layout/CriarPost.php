@@ -47,13 +47,17 @@
 
         <div class="container-body">
             
-            <h4> <i class="note-icon-summernote"></i> Summernote
-                <span class="label label-info">Bootstrap v3.3.7</span>
-                <span class="label label-success">with Summernote Icons</span>
-            </h4>
+
             
             <form method="post" action="CriarPost.php">
                  <!-- <div class="summernote"><p>Hello World</p></div> -->
+                <span>Titulo:</span>
+                <input width="250px" required="true" name="titulo-post" type="text" class="form-control"/>
+                
+                 <h4> <i class="note-icon-summernote"></i> Summernote
+                    <span class="label label-info">Bootstrap v3.3.7</span>
+                    <span class="label label-success">with Summernote Icons</span>
+                 </h4>
                 <textarea class="summernote" name="cody-font-pag"><p>Ola crie seu post aqui!</p></textarea>
                 
                 <button class="btn btn-primary"  type="submit">Criar</button>
