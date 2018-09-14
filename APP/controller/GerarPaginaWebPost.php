@@ -6,7 +6,7 @@
      
      private static $codigoFonte = FALSE;  // codigo fonte do post 
      private static $paginaWeb   = "";     // pagina a ser criada
-     private static $postTitulo  = "";
+     
      
      public static function main( $cody = null)
      {
@@ -37,16 +37,12 @@
                   ? $_REQUEST['cody-font-pag']
                       : NULL;
          }
-         
-         self::$postTitulo = isset($_REQUEST['titulo-post']) 
-                        ? $_REQUEST['titulo-post']
-                            : NULL ;
-         
          self::$codigoFonte = $codigoFonte;
      }
 
      private static function GerarPagina( $codigo_fonte = null)
      {
+       // depois de criar o arquivo 
         if(is_null($codigo_fonte))
             return null;
         
@@ -57,7 +53,6 @@
                  . "</head>";
          
          $body   = "<body>"
-                 . "<h1>".self::$postTitulo."</h1>"
                  . $codigo_fonte
                  . "<button onclick=\"window.location.href='../layout/CriarPost.php'\" >Criar novo Posts</button>"
                  . "<button onclick=\"window.location.href='../layout/posts.php'\" >Voltar Galeria</button>"

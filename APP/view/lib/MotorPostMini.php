@@ -16,7 +16,6 @@
 
     
     
-    
     private $postsNames = array();
     
 
@@ -24,7 +23,7 @@
 
     public function __construct( // valore padroes
                                 $numPost             = 70,
-                                $numPostForBloc      = 2,
+                                $numPostForBloc      = 5,
                                 $numQntExibirButtons = 6,
                                 $pagUrl              = "./posts.php")
     {
@@ -42,7 +41,7 @@
         $caminho = "../GaleriaPosts/";
         $caminho = dir($caminho);
         $arrayPosts = array();
-        
+
         while(false !== ($entry = $caminho->read())) 
         {
             if($entry != "." && $entry != "..")
@@ -87,7 +86,7 @@
       $this->GetAtualNavPost();
       $files  = $this->getPostsNames();
       $chaves = array_keys($files);
-     
+     // depois de ler - ele vem aqui - eu pego cada arquivo(post) e manda ali para baixo
       echo "<fieldset>
               <legend>Posts</legend>";
               /**
@@ -99,7 +98,7 @@
               {
                 # ------ Buscar Poster MINI
                 
-                  
+                  // o primeiro parametro e o nome do arquivo : o segundo e o caminho dele : ai jogo para a funcao que cria o view do mini posts
                     $this->GetMiniPost($chaves[$x-1] , "../GaleriaPosts/".$files[$chaves[$x-1]]);
                  
                 
@@ -255,7 +254,7 @@
                <legend>Post: ".$titulo."</legend>
                 <div class='body-post-mini-img'><img src='#'></div>
                 <div class='body-post-mini-textoInfo'>algum texto resumido sobre o poster
-                <a href='".$caminho."'>Visualizar post<a/>
+                <a href='".$caminho."'>Visualizar post<a/> 
                 </div>
              </fieldset>";
     }
