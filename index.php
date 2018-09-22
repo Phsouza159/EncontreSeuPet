@@ -5,6 +5,11 @@
  * Encotre seu pet :: Versão 0.0.1 
  * Estrutura do pojeto 
  */
+
+
+    //includes 
+    include_once "APP/view/MenuInclude.php"; // incluindo os menus 
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,10 +56,6 @@
                 widht: 100%;
                 height: 100vh;
                 background-image: url("APP/assets/img/div_5.jpg");
-                /*   background-repeat: no-repeat;
-                   background-attachment: fixed ; 
-                   background-size: 1300px 730px; */
-                /*essa e a div 4, ultima ft SIm achei que era a do cachorro kk*/
             }
 
             /* config img fundo -> pegar tds as divs */
@@ -64,7 +65,7 @@
                 background-attachment: fixed ;
             } 
             .cabecalho-header{
-                padding-left: 40%;
+               
                 position: absolute;
                 margin-top: 0px;
                 z-index: 100;
@@ -86,28 +87,74 @@
 
             /* mascara de cor -- background */
             .mask{
+                /*
                 background-color: rgba( 0 , 0 , 0 , 0.6);
                 margin-top: 0px;
                 position: fixed;
                 height: 100vh;
                 width: 100%;
+                */
+            }
+            /**/
+            .conteiner-corpo
+            {
                 z-index: 100 ;
             }
-            
+
+
             /* Corpo -- dentro do Slide */
             .conteiner-corpo
             {
                 /* config as margem do conteudo para ficar legalzinho*/
-               padding: 10% 15%;
+                background-color: rgba( 0 , 0 , 0 , 0.6);
+                padding: 10% 15%;
+                width: 100%;
+                height: 100%;
+                z-index: 100;
+            }
+
+            .text {
+                text-align: justify;
+                text-indent: 5%;
+            }
+
+            .menu-pags 
+            { 
+                list-style-type: none; 
+                padding-top: 50px;
+                position: fixed;
+            }
+            .menu-pags ul { border-radius: 10px 0 0 0;}
+            .menu-pags li {
+                display: inline;
+                padding: 15px ;
+                margin: -2px ;
+                background-color: red;
 
             }
-            
+
+            .menu-pags li:hover
+            {
+                background: #fff;
+                color: black;
+            }
+            .menu-pags a {text-decoration: none;}
+            .menu-pags a:link ,
+            a:visited ,
+            a:active { color: #fff ;}
         </style>
     </head>
     <body>
 
+
+        
+        
+        
         <header class='cabecalho-header'>
+            
+        <?php  Menus::ViewMenuIndex(); //MENUS ?>  
             <h1>Encontre seu pet</h1>
+                
         </header>
 
         <div> 
@@ -123,41 +170,51 @@
 
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
-                   
+
                     <div class="item active">
                         <div class='div-01'>
-                           <div class='conteiner-corpo'>
-                           <center>
-                               <h1>Ola visitante! :)</h1>
-                               <h3>bola um texto ai era uma vez um grupo tentando fazer tcc, mas infelizmente a chapeuzinho vermelho invaiu e rackeou a aplicação. É isso, obreigada chapeuzinho</h3>
-                               
-                               <button tupe='button' class="btn btn-outline-primary" onclick="window.location.href='./APP/view/layout/COLOCAR AQUI O ARQUIVO QND CRIAR'">Visitantes</button>
-                           </center>
+
+                            <div class='conteiner-corpo'>
+                                <center>
+                                    <h1>Ola visitante! :)</h1>
+                                    <h3>bola um texto ai era uma vez um grupo tentando fazer tcc, mas infelizmente a chapeuzinho vermelho invaiu e rackeou a aplicação. É isso, obreigada chapeuzinho</h3>
+
+                                    <button tupe='button' class="btn btn-outline-primary" onclick="window.location.href = './APP/view/layout/COLOCAR AQUI O ARQUIVO QND CRIAR'">Visitantes</button>
+                                </center>
                             </div>
-                           </div>
-                     </div>   
+
+                        </div>
+                    </div>   
                     <div class="item">
+
                         <div class='div-02'>
-                            <center> 
-                                <button style="margin: 250px 0 0 250px" class="btn btn-primary" onclick="window.location.href='./APP/view/layout/Cadastro.php'">Perdidos</button>
-                            </center>
+                            <div class='conteiner-corpo'>
+                                <center> 
+                                    <button style="margin: 250px 0 0 250px" class="btn btn-primary" onclick="window.location.href = './APP/view/layout/Cadastro.php'">Perdidos</button>
+                                </center>
+                            </div>
                         </div>
                     </div>
 
                     <div class="item">
+
                         <div class='div-03'>
-                            <center> 
-                            <button style="margin: 250px 0 0 250px" class="btn btn-primary" onclick="window.location.href='./APP/view/layout/COLOCAR AQUI O ARQUIVO QND CRIAR'">Adoção</button>
-                            </center>
+                            <div class='conteiner-corpo'>
+                                <center> 
+                                    <button style="margin: 250px 0 0 250px" class="btn btn-primary" onclick="window.location.href = './APP/view/layout/COLOCAR AQUI O ARQUIVO QND CRIAR'">Adoção</button>
+                                </center>
+                            </div>
                         </div>
                     </div>
 
                     <div class="item">
-                        <div class='div-04'>
-                            <center> 
-                            <button style="margin: 250px 0 0 250px" class="btn btn-primary" onclick="window.location.href='./APP/view/layout/COLOCAR AQUI O ARQUIVO QND CRIAR'">Patrocinadores</button>
-                            </center>
 
+                        <div class='div-04'>
+                            <div class='conteiner-corpo'>
+                                <center> 
+                                    <button style="margin: 250px 0 0 250px" class="btn btn-primary" onclick="window.location.href = './APP/view/layout/COLOCAR AQUI O ARQUIVO QND CRIAR'">Patrocinadores</button>
+                                </center>
+                            </div>
                         </div>
                     </div>
                 </div>
