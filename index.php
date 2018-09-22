@@ -168,7 +168,7 @@
                     <li data-target="#myCarousel" data-slide-to="3"></li>
                 </ol>
 
-                <!-- Wrapper for slides -->
+                <!-- Wrapper for slides --> 
                 <div class="carousel-inner">
 
                     <div class="item active">

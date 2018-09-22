@@ -5,42 +5,60 @@
         <title></title>
 
         <style>
+            /* Corpo da pagina*/
+            body{ 
+               background-image: url("../../assets/img/div_4.jpg");  
+               margin: 0px;
+            }
+            
             /* div que fica entre os formularios*/
             .div-group-principal-cadastro
             {
-
-            }
-            /* form em que esta c formulario*/
+                
+                width: 100%;
+                height: 100vh;
+                background-color: rgba(0,206,209 , 0.4);
+                
+            }           
+                /* form em que esta c formulario*/
             .form-group-principal-cadastro
             {
-
+                padding-top: 7%;
+                padding-left: 10%;
             }
             /* tabela em que fica organizados o formulario */
             .table-group-principal-cadastro 
             {
+               padding: 100px;
                 border: 1px solid grey;
             }
-            /* inputs dentro do formularios */
+            .table-group-principal-cadastro td
+            {
+                padding-top: 15px;
+            }
+            /* inputs dentro do formularios */ vamos pedir pra ele criar uma senha ? login 
             .input-principal-cadastro
             {
 
-            }
+            }m 
             /* descricao do texto do input */
-            .text-descricao-group-principal-cadastro
+            .text-descricao-group-principal-cadastro , h1
             {
-                text-align: left;
+                text-align: center;
+                color:white ;
+                 text-align: left;
             }
             /* condifuracao para o calendario da data de nascimento*/
             .dtNasc-calendario-group-principal-cadastro
             {
-                
             }
-            
-        </style>
+    vc acha
+    </style>
     </head>
     <body>
-        <?php
-        
+   
+        <?php 
+        //so fazer um controle aqui para exibir cada formulario kook
         echo View::getTelaCadastro();
         
         ?>
@@ -93,7 +111,7 @@ class CadastroTealas extends View {
 
         switch (CadastroTealas::verificarQualTela()) {
             case 1:
-                return CadastroTealas::getTela01();
+                return CadastroTealas::getTela01(); // aqui creie 3 telas / uma para pessoa , a outro para o animal . e a do login por ultimo a ta entendi
 
             case 2:
                 return CadastroTealas::getTela02();
@@ -148,7 +166,10 @@ class CadastroTealas extends View {
         
         return " 
              <div class='div-group-principal-cadastro'> 
+                       
+
                 <form action='" . CadastroTealas::getPagina() . "' method='post' class='form-group-principal-cadastro'>
+                     <h1>Encontre seu pet</h1>
                     <table class='table-group-principal-cadastro'>
                        
                         <input type='hidden' name='PagAtual' value='".(CadastroTealas::verificarQualTela() + 1)."'/>
@@ -296,6 +317,10 @@ class CadastroTealas extends View {
                        
                         <input type='hidden' name='PagAtual' value='".(CadastroTealas::verificarQualTela() + 1)."'/>
                         
+
+                        <tr>
+                            <td>tela para o animal</td>
+                        </tr>
                         <tr>
                             <td>
                               <button texte='enviar' type='submit'>Enviar</button>
@@ -317,6 +342,9 @@ class CadastroTealas extends View {
                        
                         <input type='hidden' name='PagAtual' value='".(CadastroTealas::verificarQualTela() + 1)."'/>
                         
+                        <tr>
+                            <td>tela para o login</td> 
+                            </tr>
                         <tr>
                             <td>
                               <button texte='enviar' type='submit'>Enviar</button>
