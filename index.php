@@ -46,7 +46,7 @@
             .div-03{
                 widht: 100%;
                 height: 100vh;
-                background-image: url("APP/assets/img/div_6.jpg");
+                background-image: url("APP/assets/img/div_5.jpg");
 
             }
 
@@ -55,7 +55,7 @@
                 height: 100vh;
                 widht: 100%;
                 height: 100vh;
-                background-image: url("APP/assets/img/div_5.jpg");
+                background-image: url("APP/assets/img/div_6.jpg");
             }
 
             /* config img fundo -> pegar tds as divs */
@@ -201,7 +201,7 @@
                         <div class='div-03'>
                             <div class='conteiner-corpo'>
                                 <center> 
-                                    <button style="margin: 250px 0 0 250px" class="btn btn-primary" onclick="window.location.href = './APP/view/layout/COLOCAR AQUI O ARQUIVO QND CRIAR'">Adoção</button>
+                                    <button style="margin: 250px 0 0 250px" class="btn btn-primary" onclick="window.location.href = './APP/view/layout/CadastroAdocao.php'">Adoção</button>
                                 </center>
                             </div>
                         </div>

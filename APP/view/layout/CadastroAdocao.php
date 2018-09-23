@@ -2,7 +2,6 @@
     include_once "../lib/View.php";
 ?>
 
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,7 +11,7 @@
         <style>
             /* Corpo da pagina*/
             body{ 
-               background-image: url("../../assets/img/div_4.jpg");  
+               background-image: url("../../assets/img/div_5.jpg");  
                margin: 0px;
             }
             
@@ -42,7 +41,7 @@
             {
                 padding-top: 15px;
             }
-            /* inputs dentro do formularios */ 
+            /* inputs dentro do formularios */
             .input-principal-cadastro
             {
 
@@ -58,17 +57,16 @@
             .dtNasc-calendario-group-principal-cadastro
             {
             }
- 
+    
     </style>
     </head>
     <body>
    
         <?php 
-        // funcao que chama a tela 
-        echo View::getTelaCadastro();
+        // funcao para tela de doacao
+        echo View::getTelaDoacao();
         
         ?>
     </body>
 </html>
-
 

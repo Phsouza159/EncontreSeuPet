@@ -1,6 +1,16 @@
 <?php 
     include_once '../../controller/GerarPaginaWebPost.php';
-
+    $dadosPostDoacao = isset($_REQUEST['Reload-Post']) ? $_REQUEST['Reload-Post'] : NULL;
+    
+    if(!is_null($dadosPostDoacao))
+    {
+        $dadosPostDoacao = $_REQUEST['DESCRICAO-POST-DOACAO'];
+        $DadosCriarPosts = $dadosPostDoacao;
+    }    
+    else
+    {
+        $DadosCriarPosts = "Crie seu post aqui!";
+    }
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +64,7 @@
             
             <form method="post" action="CriarPost.php">
                  <!-- <div class="summernote"><p>Hello World</p></div> -->
-                <textarea class="summernote" name="cody-font-pag"><p>Ola crie seu post aqui!</p></textarea>
+                <textarea class="summernote" name="cody-font-pag"><p><?php echo $DadosCriarPosts  ?></p></textarea>
                 
                 <button class="btn btn-primary"  type="submit">Criar</button>
                 
