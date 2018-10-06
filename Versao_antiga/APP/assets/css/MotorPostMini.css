@@ -1,0 +1,47 @@
+
+.btn-atual-nav-motorpost
+{
+  background-color: red;
+}
+.body-post-mini-numInfo
+{
+  color: white;
+}
+
+
+
+.body-post-mini-img{
+    display: inline;
+
+}
+
+.body-post-mini-img img {
+  background-color: grey;
+  border: 1px solid #000;
+  width: 150px;
+  height: 80%;
+}
+
+.body-post-mini-textoInfo
+{
+  width: 50vh;
+  height: 80%;
+  border: 1px solid #000;
+  float: right;
+}
+
+.boyd-post-mini
+{
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 100vh;
+  height: 250px;
+}
+.boyd-post-mini
+{
+ /* float: left; */
+}
+
+.body-info-navButtons{
+  /*clear;*/
+}

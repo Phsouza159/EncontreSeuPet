@@ -1,0 +1,182 @@
+
+/* 
+    Created on : 02/10/2018, 19:59:24
+    Author     : paulo
+*/
+
+
+
+@img-back: "../img/dog-bk.png";
+
+body{
+    margin: 0px;               
+    background-image: url(@img-back);
+    background-attachment: fixed;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.fSombra-box()
+{
+    box-shadow: 17px 17px 17px  #262626;
+}
+.fSombra-box-all()
+{
+    box-shadow: 60px 60px 60px rgba( 0, 0, 0, 0.3);
+}
+
+.fAlturxLargura(@height : 0 , @widht : 0)
+{
+    height: @height;
+    width: @widht;
+}
+
+
+.fTransition(@tempo-transition: 0.8s)
+{
+  -webkit-transition: all @tempo-transition ease-in-out;
+  -moz-transition: all @tempo-transition ease-in-out;
+  -o-transition: all @tempo-transition ease-in-out;
+  transition: all @tempo-transition ease-in-out;
+}
+
+@altura-box-login: 350px;
+@largura-box-login: 350px;
+@color-box-login: #fff;
+
+
+.mask
+{
+    top:0;
+    right: 0;
+    left: 0;
+    bottom:0;
+    position: fixed;
+    z-index: -1000;
+    background-color: rgba(0,0,0,0);
+           .fAlturxLargura(100%, 100%);
+    .fTransition(0.8s);
+}
+
+.box-login
+{
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 120px;
+    padding: 10px;
+    padding-top: 0px;
+    background-color: @color-box-login;
+    border: 3px solid ;
+    
+    height: @altura-box-login;
+    width: @largura-box-login;
+    .fTransition();
+    .fSombra-box();
+    
+    &:hover {
+        visibility:visible;  
+        height: @altura-box-login * 1.40;
+        width: @largura-box-login * 1.40;
+        border: 1px solid black;
+        border-radius: 10px;
+        border-bottom: 125px solid black;
+        //background-color: rgba(0,0,0, 0.5);
+        .fSombra-box-all();
+        .fTransition();
+        
+  
+    }
+    &:hover , .marginInput-box-login{
+        //padding: 80px;
+    }
+    &:hover .text-box-login
+    {
+        color: #098ddf;
+        padding-top: 100px;
+        visibility: visible;
+        .fTransition(0.8s);
+    }
+    
+    &:hover .btn-custom 
+    {
+        color: white;
+        visibility: visible;
+        border: 1px solid #ffffff ;
+        border-radius: 3px;
+       // background-color: rgba(100 , 100 ,100 , 0.8);
+        .fTransition(0.8s);
+    }
+    
+    &:hover .logo-box-login
+    {
+         margin-left: 50px;
+        .fTransition(0.4s);
+        .fAlturxLargura(120px , 300px);
+    }
+    
+    &:hover .mask
+    {
+       background-color: rgba(0,0,0,0.3);
+
+       .fTransition(0.8s);
+    }
+    
+}
+
+
+
+.logo-box-login
+{
+    float: left;
+    margin-left: 100px;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    background-color: red;
+   .fAlturxLargura(120px , 120px);
+   .fTransition(0.8s);
+   
+  
+}
+
+.text-box-login
+{
+
+    color: rgba(0,0,0,0);
+    visibility: hidden;
+    padding-top: 200px;
+    .fTransition(0.8s);
+}
+
+.btn-custom{
+    background-color: blue;
+    color: rgba(0 , 0 ,0 , 0);
+    width: 75px;
+    height: 50px;
+    visibility: hidden;
+    border: 0px;
+    background-color: rgba(0 , 0 ,0 , 0);
+    .fTransition(0.8s);
+    
+    &:hover
+    {
+        background-color: red;
+    }
+}
+
+.btn-custom-senha
+{
+    width: 150px;
+}
+
+.btn-xx
+{
+    
+    .fTransition();
+    &:hover
+    {
+        .fTransition();
+        background-color: red;
+    }
+}
+
