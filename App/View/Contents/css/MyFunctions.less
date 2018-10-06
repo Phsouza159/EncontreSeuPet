@@ -1,0 +1,44 @@
+
+/* 
+    Created on : 06/10/2018, 00:26:30
+    Author     : FAMILY
+*/
+
+.fAlturaVSlargura(@altura: 0px , @largura: 0px , @color : rgba(0,0,0,0))
+{
+    height: @altura;
+    width: @largura;
+    background-color: @color;
+}
+
+.fImagemFundo-total(@url: 'default')
+{
+    background-image: url(@url);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-attachment: fixed;
+}
+
+.fShadow-box(@var1 : 7px , @var2: 7px , @var3 : 7px , @color: gray )
+{
+    box-shadow: @var1 @var2 @var3 @color;
+}
+
+.fTransition(@tempo-transition: 0.8s)
+{
+  -webkit-transition: all @tempo-transition ease-in-out;
+  -moz-transition: all @tempo-transition ease-in-out;
+  -o-transition: all @tempo-transition ease-in-out;
+  transition: all @tempo-transition ease-in-out;
+}
+
+.fBorder(@largura: 0px , @color: black)
+{
+    border: @largura solid @color;
+}
+.fText-format( @size : 18px , @color : white)
+{
+    font-size: @size;
+    color: @color;
+ //   font-family: sans-serif
+}
