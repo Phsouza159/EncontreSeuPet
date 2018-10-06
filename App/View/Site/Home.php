@@ -40,7 +40,7 @@
                                     <h1>Ola visitante! :)</h1> 
                                     <h3>bola um texto ai era uma vez um grupo tentando fazer tcc, mas infelizmente a chapeuzinho vermelho invaiu e rackeou a aplicação. É isso, obreigada chapeuzinho</h3>
                                     
-                                    <button tupe='button' class="btn btn-outline-primary" onclick="window.location.href = './APP/view/layout/COLOCAR AQUI O ARQUIVO QND CRIAR'">Visitantes</button>
+                                    <button tupe='button' class="btn btn-outline-primary" onclick="window.location.href = './Visitante.php'">Visitantes</button>
                                 </center>
                             </div>
 

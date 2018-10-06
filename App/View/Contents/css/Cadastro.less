@@ -4,6 +4,7 @@
     Author     : FAMILY
 */
 @import "MyFunctions.less";
+@import "TelaCadastro.less"; // arquivo less para telas de cadastro(Formulario)
 body{
     .fImagemFundo-total("../img/dog-bk.png");
 }
@@ -12,16 +13,24 @@ body{
 
 .conteiner-center
 {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 85vh;
+    margin-top: 50px;
+    
 }
 
-.cadastro-etapa-01 , .cadastro-etapa-02
+.cadastro-etapa-01// , .cadastro-etapa-02
 {
-    .fShadow-box(14px , 14px , 14px);
+    .fShadow-box(0px , 0px , 0px);
     .fAlturaVSlargura(500px , 500px , #fff);
     .fBorder(3px , #00BFFF);
-    float: left;
-    margin: 25px;
+    .fTransition();
+    
+    &:hover{
+     .fShadow-box(14px , 14px , 14px);
+     .fTransition();
+    }
+    
+    
+    
 
 }
