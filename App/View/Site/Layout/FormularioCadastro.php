@@ -274,16 +274,27 @@ class CadastroTealas extends View {
                               <span class='text-descricao-group-principal-cadastro'>Nome:</span>
                             </td>
                             <td>
-                                <input name='cadastro-nome' type='text' class='input-principal-cadastro' placeholder='ex: João'/>
+                                <input name='cadastro-nome' type='text' class='input-principal-cadastro' placeholder='ex: '/>
                             </td>
                         </tr>
                         
                         <tr>
                             <td>
-                              <span class='text-descricao-group-principal-cadastro'>Sobrenome:</span>
+                              <span class='text-descricao-group-principal-cadastro'>Raça:</span>
                             </td>
                             <td>
-                                <input name='cadastro-sobrenome' type='text' class='input-principal-cadastro' placeholder='ex: Victor'/>
+                                <input name='cadastro-raça' type='text' class='input-principal-cadastro' placeholder='ex: '/>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                              <span class='text-descricao-group-principal-cadastro'>Sexo:</span>
+                            </td>
+                            <td>
+                                 <input type='radio' name='cadastro-male' value='cadastro-male'><span class='text-descricao-group-principal-cadastro'>Macho</span> 
+                                 <input type='radio' name='cadastro-female' value='cadastro-female'><span class='text-descricao-group-principal-cadastro'>Fêmea</span> 
+                                
                             </td>
                         </tr>
                         

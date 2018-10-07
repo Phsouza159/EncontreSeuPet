@@ -7,11 +7,12 @@
  */
 
 ?>
+
 <html>
     <head>
         <title>Home</title>
         <!--Chamar folha css (LESS) -->
-        <link rel="stylesheet/less" type="text/css" href="../Contents/css/Home.less?v=1.0.3" />
+        <link rel="stylesheet/less" type="text/css" href="../Contents/css/Home.less?v=1.0.7" />
         <!-- Chamar biblioteca (LESS)-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.7.1/less.min.js" ></script>
         <!-- include bootstrap --> 
