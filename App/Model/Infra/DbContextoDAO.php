@@ -5,10 +5,12 @@
  *
  * @author paulo-pc
  */
+DbContextoDAO::ConexaoMysql();
+echo 'a';
 class DbContextoDAO {
 
-    private static $FILE_CONF = '../AppConfig.ini';
-    private static $DataConfig; //config de acesso ao bancostatic 
+    private static $ArquivoConfig = '../AppConfig.ini';
+    private static $DataConfig; //config de acesso ao banco static 
    
 
     /*
@@ -16,7 +18,7 @@ class DbContextoDAO {
      */
 
     public static function ConexaoMysql() {
-        try {
+       try {
             self::GetConfiguracaoServer();
 
             $options = array(
@@ -26,7 +28,7 @@ class DbContextoDAO {
                     );
 
             $con = new PDO(
-                    "mysql:host=" . self::$DataConfig['host']
+                    "mysql:host=" . self::$DataConfig['host'] 
                     . ";dbname=" . self::$DataConfig['datasource']
                     , self::$DataConfig['user']
                     , self::$DataConfig['password']
@@ -34,12 +36,12 @@ class DbContextoDAO {
                     ) or die("Could connect to Database");
 
             if (!$con) {
-                //controlle erro;
+                echo "Sem conexao";
             }
             return $con;
-        } catch (Exception $ex) {
-            //controle erro;
-        }
+       } catch (Exception $ex) {
+           echo "Erro fatal: conexao";
+       }
     }
 
     public static function ConexaoMysql_Close($con) {
@@ -56,8 +58,8 @@ class DbContextoDAO {
      */
     private static function GetConfiguracaoServer() {
         // o arquivo exite ?
-        if (file_exists(self::$FILE_CONF)) {
-            $aux = parse_ini_file(self::$FILE_CONF, true);
+        if (file_exists(self::$ArquivoConfig)) {
+            $aux = parse_ini_file(self::$ArquivoConfig, true);
             //tratar aux // nao existe ainda
 
             self::setDataConfig($aux['conexao_mysql']);

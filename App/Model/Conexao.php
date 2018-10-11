@@ -9,9 +9,9 @@ include_once 'Infra/DbContextoDAO.php';
  */
 class Conexao extends DbContextoDAO {
     
-    private $con;
+    private $con;//conexão
 
-    function __construct() {
+    function __construct() { //configurando
         
         $this->setCon( parent::ConexaoMysql()); 
         if($this->getCon())

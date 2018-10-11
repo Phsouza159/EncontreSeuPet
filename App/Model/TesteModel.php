@@ -9,7 +9,7 @@ $p = new Pessoa();
 
 $p->setNome('souza');
         
-//PessoaDAO::SetNovoUsuario($p , $a->getCon());
+PessoaDAO::SetNovoUsuario($p , $a->getCon());
 
 $aux = PessoaDAO::GetUsuarios($a->getCon());
 

@@ -8,6 +8,7 @@ include_once 'Infra/CollectionsQuerys.php';
  *
  * @author paulo-pc
  */
+
 class PessoaDAO extends CollectionsQuerys {
     //salvar um novo usuario
     public static function SetNovoUsuario(Pessoa $Pessoa = null,$con = null) {

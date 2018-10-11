@@ -13,7 +13,7 @@ class CollectionsQuerys {
             exit;
         }
 
-        if ($commit) {
+        if ($commit) { 
             return true;
         } else {
 
