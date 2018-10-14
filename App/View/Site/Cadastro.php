@@ -20,7 +20,7 @@
         <header class="conteiner-center">
             
             <div class="cadastro-etapa-01">  
-              <?php
+              <?php 
                 View::getTelaCadastro();
               ?> 
             </div>

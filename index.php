@@ -17,7 +17,6 @@
              background-size: 100%;
            }
         </style>
-       
         <script type="text/javascript">
             
        //  jQuery(window).load(function() {

@@ -17,25 +17,28 @@ body{
     .fText-format();
 }
 
+@altura-imagens-divs: 100%;
+@largura-imagens-divs: 100%;
+
 .div-01{
-    .fAlturaVSlargura(100vh , 100%);
+    .fAlturaVSlargura(@altura-imagens-divs , @largura-imagens-divs);
     .fImagemFundo-total("../img/bk-01.jpg");
 }
 
 .div-02{
-    .fAlturaVSlargura(100vh , 100%);
+    .fAlturaVSlargura(@altura-imagens-divs , @largura-imagens-divs);
     .fImagemFundo-total("../img/bk-02.jpg");
      
 }
 
 .div-03{
-    .fAlturaVSlargura(100vh , 100%);
+    .fAlturaVSlargura(@altura-imagens-divs , @largura-imagens-divs);
     .fImagemFundo-total("../img/bk-03.jpg");
 
 }
 
 .div-04{
-    .fAlturaVSlargura(100vh , 100%);
+    .fAlturaVSlargura(@altura-imagens-divs , @largura-imagens-divs);
     .fImagemFundo-total("../img/bk-04.jpg");
 }
 
@@ -82,7 +85,7 @@ h1 , h2 , h3 , h4 , h5 , h6 {
     */
 }
 /**/
-.conteiner-corpo
+.conteiner-corpo // chamando função less
 {
     .fText-format();
 }
@@ -93,11 +96,11 @@ h1 , h2 , h3 , h4 , h5 , h6 {
 {
     /* config as margem do conteudo para ficar legalzinho*/
       // efeito mascara -- off - 
-    background-color: rgba( 0 , 0 , 0 , 0.6);
+    background-color: rgba( 0 , 0 , 0 , 0.3);
     padding: 10% 15%;
     width: 100%;
     height: 100%;
-    z-index: 100;
+    z-index: 100;  
 
 }
 
