@@ -19,10 +19,11 @@
         <link rel="stylesheet" type="text/css" href="../Contents/css/bootstrap.css">
     </head>
     <body>
+        <!--
 <div> 
     <h1 class="cabecalho-header" >Encontre Seu Pet</h1>
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                <!-- Indicators -->
+                <!-- Indicators - ->
                 <ol class="carousel-indicators">
                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>  
                     <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -30,7 +31,7 @@
                     <li data-target="#myCarousel" data-slide-to="3"></li>
                 </ol>
 
-                <!-- Wrapper for slides --> 
+                <!-- Wrapper for slides - -> 
                 <div class="carousel-inner">
 
                     <div class="item active">
@@ -88,7 +89,7 @@
                     </div>
                 </div>
 
-                <!-- Left and right controls -->
+                <!-- Left and right controls  - ->
                 <a class="left carousel-control" href="#myCarousel" data-slide="prev">
                     <span><img style='margin-top: 50vh' src='../Contents/img/seta-left.png' width='50px' height="50px"></span>
                     <span class="sr-only">Previous</span>
@@ -96,10 +97,50 @@
                 <a class="right carousel-control" href="#myCarousel" data-slide="next">
                     <span><img style='margin-top: 50vh' src='../Contents/img/seta-right.png' width='50px' height="50px"></span>
                     <span class="sr-only">Next</span> 
-                </a> 
+                </a>  po que triste kkkk aloooooooooooooo to ouvindo sim, mas eu não posso falar agora kk blz
             </div> 
         </div>
+-->
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleFade" data-slide-to="0" class="active"></li>  
+                    <li data-target="#carouselExampleFade" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleFade" data-slide-to="2"></li>
+                    <li data-target="#carouselExampleFade" data-slide-to="3"></li>
+                </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+    <div class='div-01'> 
+                            <div class='conteiner-corpo'>
+                                <center> 
+                                    <button tupe='button' class="btn btn-outline-primary" onclick="window.location.href = './APP/view/layout/CadastroAdocao.php'">Adoção</button>
+                                </center>
+                            </div>
+                        </div>
+    </div>
+    
+      <div class="carousel-item">
+          <div class='div-02'></div>
+    </div>
+        <div class="carousel-item">
+          <div class='div-03'></div>
+    </div>
+      
+      <div class="carousel-item">
+          <div class='div-04'></div>
+    </div>
+  
+  </div>
 
+    <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Anterior</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Próximo</span>
+  </a>
+</div>
         <footer>
             <h1>RODAPE</h1>
         </footer>
