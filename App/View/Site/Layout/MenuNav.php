@@ -23,10 +23,10 @@ class MenuNav {
                   </li>
                   
                     <li class='nav-item dropdown'>
-                            <a class='nav-link dropdown-toggle' data-toggle='dropdown' href='#' >Visitantes</a>
+                            <a class='nav-link dropdown-toggle' data-toggle='dropdown' href='./CriarPost.php' >Criar Posts</a>
                                 <div class = 'dropdown-menu'>
-                            <a class = 'dropdown-item' href = '#'>Perdidos</a>
-                            <a class = 'dropdown-item' href = '#'>Adoção</a>
+                            <a class = 'dropdown-item' href = './CriarPost.php'>Perdidos</a>
+                            <a class = 'dropdown-item' href = './CriarPost.php'>Adoção</a>
                                 </div>
                     </li>
                     
