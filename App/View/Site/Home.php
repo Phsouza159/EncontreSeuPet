@@ -23,7 +23,7 @@ include_once 'layout/MenuNav.php';
         
         <?php 
         MenuNav::menu(); 
-        ?>
+        ?> 
         <!--
 <div> 
     <h1 class="cabecalho-header" >Encontre Seu Pet</h1>
@@ -114,53 +114,87 @@ include_once 'layout/MenuNav.php';
                     <li data-target="#carouselExampleFade" data-slide-to="3"></li>
                 </ol>
   <div class="carousel-inner">
-    <div class="carousel-item active">
-    <div class='div-01 img-fluid'>   
-                            <div class='conteiner-corpo'>
-                                <center> 
-                                    <button tupe='button' class="btn btn-outline-primary" onclick="window.location.href = './APP/view/layout/CadastroAdocao.php'">Adoção</button>
-                                </center>
-                            </div>
-                        </div>
-    </div>
-    
+      
+      
+      <div class="carousel-item active">
+          <div class='div-01 img-fluid'>   
+              <div class='conteiner-corpo'>
+                  <center> 
+                      <h1></h1>
+                      <h3> 
+                          <span>
+                              Seja bem vindo
+                              <br>
+                              <br>
+                              ...
+                              <br>
+                          </span>
+                      </h3>
+
+                      <button tupe='button' class="btn btn-outline-primary" onclick="window.location.href = './Visitante.php'">Visitantes</button>
+                  </center>
+              </div>
+          </div>
+      </div>
+
       <div class="carousel-item">
           <div class='div-02'>
               <div class='conteiner-corpo'>
-                                <center> 
-                                     <h1></h1>
-                                     <h3> 
-                                         <span>
-                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                         </span>
-                                     </h3>
-                                     
-                                    
-                                    <button tupe='button' class="btn btn-outline-primary" onclick="window.location.href = './Cadastro.php'">Cadastro</button> 
-                            </div>
+                  <center> 
+                      <h1></h1>
+                      <h3> 
+                          <span>
+                              Seu animal de estimação está desaparecido?<br>
+                              Você acaba de encontra r o lugar certo para anunciar seu Pet.<br>
+                              Cadastre já em perdidos.
+                          </span>
+                      </h3>
+
+
+                      <button tupe='button' class="btn btn-outline-primary" onclick="window.location.href = './Cadastro.php'">Perdidos</button> 
+                  </center>             
+              </div>
+
           </div>
-    </div>
-        <div class="carousel-item">
-            <div class='div-03'>
-                
-                <div class='conteiner-corpo'>
-                                <center> 
-                                    <button tupe='button' class="btn btn-outline-primary" onclick="window.location.href = './APP/view/layout/CadastroAdocao.php'">Adoção</button>
-                                </center>
-                            </div> 
-            </div>
-    </div>
-      
+      </div>
+      <div class="carousel-item">
+          <div class='div-03'>
+              <div class='conteiner-corpo'>
+                  <center> 
+                      <h1></h1>
+                      <h3> 
+                          <span>
+                              Deseja doar algum animal?<br>
+                              Você acaba de encontar o lugar certo para anunciar o Pet.<br>
+                              Cadastre já em adoção, e ajude a encontrar um novo lar.  
+                          </span>
+                      </h3>
+                  <button tupe='button' class="btn btn-outline-primary" onclick="window.location.href = './APP/view/layout/CadastroAdocao.php'">Adoção</button>
+                  </center>
+              </div> 
+          </div>
+      </div>
+
       <div class="carousel-item">
           <div class='div-04'>
-                                          <div class='conteiner-corpo'>
-                                <center> 
-                                    <button style="margin: 250px 0 0 250px" class="btn btn-outline-primary" onclick="window.location.href = './APP/view/layout/COLOCAR AQUI O ARQUIVO QND CRIAR'">Patrocinadores</button>
-                                </center>
-                            </div>
+              <div class='conteiner-corpo'>
+                  <center> 
+                      <h1></h1>
+                      <h3> 
+                          <span>
+                              Encontre Seu Pet é um serviço de utilidade pública <br>
+                                 e não visa lucro com a prestação deste serviço. <br>
+                                 Para que a aplicação se mantenha, contamos com  <br>
+                                 a ajuda de patrocinadores e colaboradores. <br><br>
+                                 Torne patrocinador, e venha fazer parte                                                
+                          </span>
+                      </h3> 
+                      <button style="margin: 250px 0 0 250px" class="btn btn-outline-primary" onclick="window.location.href = './APP/view/layout/COLOCAR AQUI O ARQUIVO QND CRIAR'">Patrocinadores</button>
+                  </center>
+              </div>
           </div>
-    </div>
-  
+      </div>
+
   </div>
 
     <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">

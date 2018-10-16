@@ -20,28 +20,27 @@ class MenuNav {
 
                     <li class='nav-item'>
                         <a class='nav-link' href='#'>Home</a>
-                    </li>
-
-
+                  </li>
+                  
                     <li class='nav-item dropdown'>
-                        <a class='nav-link dropdown-toggle' href='#' id='dropdownsite'
-                           data-toggle='dropdawon'>Teste 1</a>
-                        <div class='dropdown-menu'>
-                            <a class='dropdown-item' href='#'>Produto 01</a>
-                            <div class='dropdown-divider'></div>
-                            <a class='dropdown-item' href='#'>Produto 02</a>
-                            <a class='dropdown-item' href='#'>Produto 03</a>
-                        </div>
+                            <a class='nav-link dropdown-toggle' data-toggle='dropdown' href='#' >Visitantes</a>
+                                <div class = 'dropdown-menu'>
+                            <a class = 'dropdown-item' href = '#'>Perdidos</a>
+                            <a class = 'dropdown-item' href = '#'>Adoção</a>
+                                </div>
                     </li>
-
+                    
                     <li class='nav-item'>
-                        <a class='nav-link' href='#'>Teste 2</a>
+                        <a class='nav-link' href='#'>Desaparecido</a>
                     </li>
                     <li class='nav-item'>
-                        <a class='nav-link' href='#'>Teste 3</a>
+                        <a class='nav-link' href='#'>Doação</a>
                     </li>
                     <li class='nav-item'>
-                        <a class='nav-link' href='#'>Teste 4</a>
+                        <a class='nav-link' href='#'>Patrocinadores</a>
+                    </li>
+                    <li class='nav-item'>
+                        <a class='nav-link' href='#'>Administrador</a>
                     </li>
 
                 </ul>
