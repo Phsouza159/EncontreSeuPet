@@ -19,25 +19,25 @@ class MenuNav {
                 <ul class='navbar-nav ml-auto'>
 
                     <li class='nav-item'>
-                        <a class='nav-link' href='#'>Home</a>
+                        <a class='nav-link' href='./Home.php'>Home</a>
                   </li>
                   
                     <li class='nav-item dropdown'>
                             <a class='nav-link dropdown-toggle' data-toggle='dropdown' href='./CriarPost.php' >Criar Posts</a>
                                 <div class = 'dropdown-menu'>
                             <a class = 'dropdown-item' href = './CriarPost.php'>Perdidos</a>
-                            <a class = 'dropdown-item' href = './CriarPost.php'>Adoção</a>
+                            <a class = 'dropdown-item' href = './CriarPost.php'>Doção</a>
                                 </div>
                     </li>
                     
                     <li class='nav-item'>
-                        <a class='nav-link' href='#'>Desaparecido</a>
+                        <a class='nav-link' href='./Cadastro.php'>Desaparecido</a>
                     </li>
                     <li class='nav-item'>
-                        <a class='nav-link' href='#'>Doação</a>
+                        <a class='nav-link' href='./CadastroAdocao.php'>Adoção</a>
                     </li>
                     <li class='nav-item'>
-                        <a class='nav-link' href='#'>Patrocinadores</a>
+                        <a class='nav-link' href='./CadastroPatrocinador.php'>Patrocinadores</a>
                     </li>
                     <li class='nav-item'>
                         <a class='nav-link' href='#'>Administrador</a>
