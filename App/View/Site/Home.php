@@ -7,13 +7,12 @@
  */
 include_once './layout/MenuNav.php';
 ?>
-
 <html>
     <head>
         <title>Home</title>
         <meta name="viewport" content="width=device-width">
         <!--Chamar folha css (LESS) -->
-        <link rel="stylesheet/less" type="text/css" href="../Contents/css/Home.less?v=1.0.<?php echo random_int(1 , 100)?>" />
+        <link rel="stylesheet/less" type="text/css" href="../Contents/css/Home.less?v=1.0." />
         <!-- Chamar biblioteca (LESS)-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.7.1/less.min.js" ></script>
         <!-- include bootstrap --> 
@@ -23,7 +22,7 @@ include_once './layout/MenuNav.php';
         
         <?php 
         MenuNav::menu(); 
-        ?> 
+        ?>
         
 <div id="carouselExampleFade" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
@@ -64,7 +63,7 @@ include_once './layout/MenuNav.php';
                       <h3> 
                           <span>
                               Seu animal de estimação está desaparecido?<br>
-                              Você acaba de encontra r o lugar certo para anunciar seu Pet.<br>
+                              Você acaba de encontrar o lugar certo para anunciar seu Pet.<br>
                               Cadastre já em perdidos.
                           </span>
                       </h3>
@@ -88,7 +87,7 @@ include_once './layout/MenuNav.php';
                               Cadastre já em adoção, e ajude a encontrar um novo lar.  
                           </span>
                       </h3>
-                  <button tupe='button' class="btn-acao-links" onclick="window.location.href = './APP/view/layout/CadastroAdocao.php'">Adoção</button>
+                  <button tupe='button' class="btn-acao-links" onclick="window.location.href = './CadastroAdocao.php'">Adoção</button>
                   </center>
               </div> 
           </div>
@@ -108,7 +107,7 @@ include_once './layout/MenuNav.php';
                                  Torne patrocinador, e venha fazer parte                                                
                           </span>
                       </h3> 
-                      <button class="btn-acao-links" onclick="window.location.href = './APP/view/layout/COLOCAR AQUI O ARQUIVO QND CRIAR'">Patrocinadores</button>
+                      <button class="btn-acao-links" onclick="window.location.href = './CadastroPatrocinador.php'">Patrocinadores</button>
                   </center>
               </div>
           </div>

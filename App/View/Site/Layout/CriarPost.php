@@ -2,6 +2,8 @@
     include_once '../../../Controller/GerarPaginaWebPost.php';
     include_once '../../../Controller/ErroController.php';
     
+    include_once 'MenuNav.php';
+    
     include_once '../../../NucleoClass/Pessoa.php';
     include_once '../../../NucleoClass/Animal.php';
     include_once '../../../NucleoClass/Post.php';
@@ -70,7 +72,13 @@
     
     <body>
 
+        <?php
+        MenuNav::menu("../");
+        ?>
+        
         <div class="container-body">
+            
+            
             
             <h4> <i class="note-icon-summernote"></i> Summernote
                 <span class="label label-info">Bootstrap v3.3.7</span>
@@ -84,7 +92,7 @@
                 <button class="btn btn-primary"  type="submit">Criar</button>
                 
             </form>
-                <button class="btn btn-primary" onclick="window.location.href='posts.php'" >Voltar Galeria</button>
+            <a class="btn btn-primary" href="../Posts.php" >Voltar Galeria</a>
 
 
         </div>

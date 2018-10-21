@@ -1,6 +1,7 @@
 <?php
          
  require_once '../View.php';
+ include_once 'layout/MenuNav.php';
 
 ?>
 <!DOCTYPE html>
@@ -16,6 +17,11 @@
         <link rel="stylesheet" type="text/css" href="../Contents/css/bootstrap.css">
     </head>
     <body> 
+        
+         <?php 
+        MenuNav::menu(); 
+        ?>
+        
         <header>
             <div class="div-box-01">
                 <center> 
@@ -23,13 +29,8 @@
                 Em "Adoção" daremos a opção de posts<br>
                 de animais que estão para adoção<br><br>
                
-                Encontre um Pet em adoção<br> vlwwwwwwwwwwwwwwwwwwwww, o negocio la das cores ? quais vão ser ? udou o fundo? sviocke que escolhe, achei essa estranha, tambem? pode escolher a palheta de cores 
-            
-              <br>
-              <br>
-                
-                 <br>
-                <br>
+                Encontre um Pet em adoção<br> 
+ 
                 
                 <button tupe='button' class="btn btn-outline-primary" onclick="window.location.href = './Visitante.php'">Adoção</button>
             </center>
