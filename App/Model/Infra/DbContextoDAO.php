@@ -5,11 +5,11 @@
  *
  * @author paulo-pc
  */
-DbContextoDAO::ConexaoMysql();
-echo 'a';
+
+//echo __DIR__;
 class DbContextoDAO {
 
-    private static $ArquivoConfig = '../AppConfig.ini';
+    private static $ArquivoConfig = "AppConfig.ini";
     private static $DataConfig; //config de acesso ao banco static 
    
 
@@ -20,7 +20,7 @@ class DbContextoDAO {
     public static function ConexaoMysql() {
        try {
             self::GetConfiguracaoServer();
-
+            
             $options = array(
                 PDO::ATTR_PERSISTENT => true,
                 PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES UTF8;',
@@ -33,14 +33,16 @@ class DbContextoDAO {
                     , self::$DataConfig['user']
                     , self::$DataConfig['password']
                     , $options
-                    ) or die("Could connect to Database");
+                    );
 
             if (!$con) {
                 echo "Sem conexao";
+                exit;
             }
             return $con;
-       } catch (Exception $ex) {
-           echo "Erro fatal: conexao";
+       } catch (Exception $con) {
+           ErroController::erroFatal("Erro ao conectar ao banco: " . $con->getMessage());
+          exit;
        }
     }
 
@@ -57,17 +59,46 @@ class DbContextoDAO {
      * Carregar configuracao do app config;
      */
     private static function GetConfiguracaoServer() {
+        
+        $arquivoConfig = self::verificarLocalizacaoArquivo();
+        
         // o arquivo exite ?
-        if (file_exists(self::$ArquivoConfig)) {
-            $aux = parse_ini_file(self::$ArquivoConfig, true);
+        if (file_exists($arquivoConfig)) {
+            $aux = parse_ini_file($arquivoConfig, true);
             //tratar aux // nao existe ainda
-
-            self::setDataConfig($aux['conexao_mysql']);
+           
+            self::setDataConfig($aux['conexao_mysql_localhost']);
+            
         } else {
-            //controlle erro;
+            echo self::verificarLocalizacaoArquivo();
+            ErroController::erroFatal("Nao foi possivel ler arquivo de configuração.");
+         
         }
     }
-
+    public static function verificarLocalizacaoArquivo()
+    {
+        
+        $cam = self::$ArquivoConfig;
+        
+        if(file_exists($cam))
+        {
+            return $cam;
+        }
+            
+        
+        for($int = 10 ; $int > 0 ; $int--)
+        {
+            $cam = "../" . $cam;
+            
+            if(file_exists($cam))
+            {
+                return $cam;
+            }
+        }
+        
+        return $cam;
+    }
+    
     private static function getDataConfig() {
         return self::$DataConfig;
     }

@@ -20,7 +20,9 @@ class Conexao {
                 self::$conexao = new PDO("mysql:host=localhost;dbname=aulaspoo","root","", $options);
 
             } catch (PDOException $exc) {
-                echo "Erro ao conectar ao banco ".$exc->getMessage();
+                
+                ErroController::erroFatal("Erro ao conectar ao banco: " . $exc->getMessage());
+
             }
         }
         return self::$conexao;

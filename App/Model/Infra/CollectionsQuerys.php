@@ -51,5 +51,23 @@ class CollectionsQuerys {
             return $Values;
         }
     }
+    
+    public static function Get_NEXT_ID_AUTO_INCREMENT_TABLE($nameTable = null , $con = null  )
+    {
+           self::VerificarParametros($nameTable, $con, 'Pegar proximo id da tabela a ser inserido');
+        try {
+            
+            $query = "SELECT AUTO_INCREMENT FROM information_schema.tables WHERE  table_name = '".$nameTable."';";
+            
+            $dbn = $con->prepare($query);
+            $dbn->execute();
+            $value = self::GetTratarValores('default', $dbn );
+            
+            return $value[0]['AUTO_INCREMENT'];
+            
+        } catch (Exception $exc) {
+            ErroController::erroFatal("Erro na tentativa de capturar o proximo id da tabela");
+        }
+    }
 
 }

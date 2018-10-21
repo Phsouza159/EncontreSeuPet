@@ -43,5 +43,5 @@ class PessoaDAO extends CollectionsQuerys {
             echo 'falta erro: ' . $con->errorInfo;
         }
     }
-
+    
 }

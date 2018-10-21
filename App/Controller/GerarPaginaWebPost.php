@@ -1,5 +1,7 @@
 <?php
 
+//include './NucleoClass/PerdidoPOST.php';
+
 
  class GerarPaginaWebPost 
  {
@@ -7,6 +9,8 @@
      private static $codigoFonte    = FALSE;  // codigo fonte do post 
      private static $paginaWeb      = "";     // pagina a ser criada
      private static $caminhoSalvar  = "../../Posts/"; // caminho a onde vai ser salvo o arquivo fisico
+     
+     private static $POST;
      
      public static function main( $cody = null)
      {
@@ -46,27 +50,41 @@
         if(is_null($codigo_fonte))
             return null;
         
+        $con = new Conexao();
+        self::$POST = new Post();
+        
+        self::$POST->setTitulo("Novo Post");
+        self::$POST->setDescricao($codigo_fonte);
+        
          $nomeArquivi = "postFile" . random_int(10, 99999) . ".php";
          
-         $head = "<head>"
-                 . "<titulo>NOMO DO POST</titulo>"
-                 . "</head>";
+         //$nomeArquivi = './MODE_POTS.php';
+        echo '<pre>';
+         print_r(file($nomeArquivi));
+         echo '</pre>';
          
-         $body   = "<body>"
-                 . $codigo_fonte
-                 . "<button onclick=\"window.location.href='../layout/CriarPost.php'\" >Criar novo Posts</button>"
-                 . "<button onclick=\"window.location.href='../layout/posts.php'\" >Voltar Galeria</button>"
-                 . "</boyd>";
+         $id_next = PostDAO::Get_NEXT_ID_AUTO_INCREMENT_TABLE('Post' , $con->getCon());
          
-         $pag = "<html>" . $head . $body . "</html>" ; 
          
-         if(file_put_contents(self::$caminhoSalvar.$nomeArquivi , $pag ))
+$POTS_PREPARA = "<?php
+    \$id_POST = '".$id_next."'; 
+    if(file_exists('../Site/Layout/MODE_POTS.php'))
+    {
+       include_once '../Site/Layout/MODE_POTS.php';
+    }
+    ?>";
+         
+         self::$POST->setCaminho($nomeArquivi);
+         PostDAO::SalvePost(self::$POST , $con->getCon());
+         
+         if(file_put_contents(self::$caminhoSalvar.$nomeArquivi , $POTS_PREPARA ))
          {
              header("location: ".self::$caminhoSalvar.$nomeArquivi);
          }
          else
          {
-            echo " erro ao criar a pagina";
+             ErroController::erroFatal("Erro ao tentar criar Post");
+            exit;
          } 
      }
  }

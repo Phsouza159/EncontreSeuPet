@@ -1,7 +1,7 @@
 <?php
 
 class MenuNav {
-   public static function menu()
+   public static function menu($camNormal = './')
    {
        echo "<nav class='navbar navbar-expand-lg navbar-dark bg-info sticky-top'>
         <div class='container '>
@@ -23,10 +23,10 @@ class MenuNav {
                   </li>
                   
                     <li class='nav-item dropdown'>
-                            <a class='nav-link dropdown-toggle' data-toggle='dropdown' href='./CriarPost.php' >Criar Posts</a>
+                            <a class='nav-link dropdown-toggle' data-toggle='dropdown' href='".$camNormal."Layout/CriarPost.php' >Criar Posts</a>
                                 <div class = 'dropdown-menu'>
-                            <a class = 'dropdown-item' href = './CriarPost.php'>Perdidos</a>
-                            <a class = 'dropdown-item' href = './CriarPost.php'>Adoção</a>
+                            <a class = 'dropdown-item' href = '".$camNormal."Layout/CriarPost.php'>Perdidos</a>
+                            <a class = 'dropdown-item' href = '".$camNormal."Layout/CriarPost.php'>Adoção</a>
                                 </div>
                     </li>
                     

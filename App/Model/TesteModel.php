@@ -1,18 +1,21 @@
 <?php
 
-include_once 'PessoaDAO.php';
-include_once '../NucleoClass/Pessoa.php';
-include_once 'Conexao.php';
+include '../Controller/ErroController.php';
 
-$a = new Conexao();
-$p = new Pessoa();
+include 'Infra/DbContextoDAO.php';
+include 'Infra/CollectionsQuerys.php';
+include 'Conexao.php';
+Include '../NucleoClass/Animal.php';
+Include '../NucleoClass/Pessoa.php';
+Include '../NucleoClass/Post.php';
 
-$p->setNome('souza');
-        
-PessoaDAO::SetNovoUsuario($p , $a->getCon());
+include 'PostDAO.php';
 
-$aux = PessoaDAO::GetUsuarios($a->getCon());
+$con  = new Conexao();
+$post = new Post(); 
 
-echo '<pre>';
-  echo print_r($aux);
-echo '</pre>';
+$post->setTitulo("Post Teste");
+$post->setDescricao("Post Teste - Descricao");
+
+//PostDAO::salvePost($post, $con->getCon());
+print_r( PostDAO::quantidadePost($con->getCon()) );

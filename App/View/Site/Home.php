@@ -5,7 +5,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-include_once 'layout/MenuNav.php';
+include_once './layout/MenuNav.php';
 ?>
 
 <html>
@@ -25,7 +25,7 @@ include_once 'layout/MenuNav.php';
         MenuNav::menu(); 
         ?> 
         
-<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+<div id="carouselExampleFade" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                     <li data-target="#carouselExampleFade" data-slide-to="0" class="active"></li>  
                     <li data-target="#carouselExampleFade" data-slide-to="1"></li>
@@ -36,7 +36,7 @@ include_once 'layout/MenuNav.php';
       
       
       <div class="carousel-item active">
-          <div class='div-01 img-fluid'>   
+          <div class='div-01'>   
               <div class='conteiner-corpo'>
                   <center> 
                       <h1></h1>
@@ -56,8 +56,8 @@ include_once 'layout/MenuNav.php';
           </div>
       </div>
 
-      <div class="carousel-item">
-          <div class='div-02'>
+      <div class="carousel-item div-02">
+          <div class=''>
               <div class='conteiner-corpo'>
                   <center> 
                       <h1></h1>
@@ -76,8 +76,8 @@ include_once 'layout/MenuNav.php';
 
           </div>
       </div>
-      <div class="carousel-item">
-          <div class='div-03'>
+      <div class="carousel-item div-03">
+          <div class=''>
               <div class='conteiner-corpo'>
                   <center> 
                       <h1></h1>
@@ -94,8 +94,8 @@ include_once 'layout/MenuNav.php';
           </div>
       </div>
 
-      <div class="carousel-item">
-          <div class='div-04'>
+      <div class="carousel-item div-04">
+          <div class=''>
               <div class='conteiner-corpo'>
                   <center> 
                       <h1></h1>

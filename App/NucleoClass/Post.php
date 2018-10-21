@@ -13,98 +13,134 @@
  */
 class Post {
  
-    private $NomePet;
-    private $PortePet;
-    private $RacaPet;
-    private $CorPet;
-    private $SexoPet;
-    private $PesoPet;
-    private $Idadepet;
-    private $NomeDono;
-    private $Localização;
-    private $FotoPet;
+    private $id;
+    private $ativo;
+    private $id_dono;
+    private $animal;
+
+    private $titulo;
+    private $caminho;
+    private $descricao;
+    private $dtCriacao;
+    private $hrCriacao;
+    private $dtInativacao;
+    private $hrInativacao;
     
     
-    function getNomePet() {
-        return $this->NomePet;
+    public function __construct(
+                 $id_dono = null
+                 ,$animal = null
+                 ,$titulo = null
+                 ,$descricao = null
+                 ){
+        /**
+         * Definir quais valore nao podem ser nulos
+         */
+       try{ 
+              $this->ativo = true;
+              $this->setId_dono(new Pessoa());
+              $this->setAnimal(new Animal());
+              $this->setTitulo($titulo);
+              $this->setDescricao($descricao);
+              $this->setDtCriacao(date("Y/m/d"));
+              $this->setHrCriacao(date("h:m:s"));
+              $this->setDtInativacao(null);
+              $this->setHrInativacao(null);
+              $this->setCaminho(null);
+          
+       }
+        catch(Exception $ex)
+       {
+           ErroController::erroFatal("Erroa ao instanciar a classe POST: " . $ex->getMessage());
+       }
+    }
+    
+    function getCaminho() {
+        return $this->caminho;
     }
 
-    function getPortePet() {
-        return $this->PortePet;
+    function setCaminho($caminho) {
+        $this->caminho = $caminho;
+    }
+    
+    function getId() {
+        return $this->id;
     }
 
-    function getRacaPet() {
-        return $this->RacaPet;
+    function getAtivo() {
+        return $this->ativo;
     }
 
-    function getCorPet() {
-        return $this->CorPet;
+    function getId_dono() {
+        return $this->id_dono;
     }
 
-    function getSexoPet() {
-        return $this->SexoPet;
+    function getAnimal() {
+        return $this->animal;
     }
 
-    function getPesoPet() {
-        return $this->PesoPet;
+    function getTitulo() {
+        return $this->titulo;
     }
 
-    function getIdadepet() {
-        return $this->Idadepet;
+    function getDescricao() {
+        return $this->descricao;
     }
 
-    function getNomeDono() {
-        return $this->NomeDono;
+    function getDtCriacao() {
+        return $this->dtCriacao;
     }
 
-    function getLocalização() {
-        return $this->Localização;
+    function getHrCriacao() {
+        return $this->hrCriacao;
     }
 
-    function getFotoPet() {
-        return $this->FotoPet;
+    function getDtInativacao() {
+        return $this->dtInativacao;
     }
 
-    function setNomePet($NomePet) {
-        $this->NomePet = $NomePet;
+    function getHrInativacao() {
+        return $this->hrInativacao;
     }
 
-    function setPortePet($PortePet) {
-        $this->PortePet = $PortePet;
+    function setId($id) {
+        $this->id = $id;
     }
 
-    function setRacaPet($RacaPet) {
-        $this->RacaPet = $RacaPet;
+    function setAtivo($ativo) {
+        $this->ativo = $ativo;
     }
 
-    function setCorPet($CorPet) {
-        $this->CorPet = $CorPet;
+    function setId_dono($id_dono) {
+        $this->id_dono = $id_dono;
     }
 
-    function setSexoPet($SexoPet) {
-        $this->SexoPet = $SexoPet;
+    function setAnimal($animal) {
+        $this->animal = $animal;
     }
 
-    function setPesoPet($PesoPet) {
-        $this->PesoPet = $PesoPet;
+    function setTitulo($titulo) {
+        $this->titulo = $titulo;
     }
 
-    function setIdadepet($Idadepet) {
-        $this->Idadepet = $Idadepet;
+    function setDescricao($descricao) {
+        $this->descricao = $descricao;
     }
 
-    function setNomeDono($NomeDono) {
-        $this->NomeDono = $NomeDono;
+    function setDtCriacao($dtCriacao) {
+        $this->dtCriacao = $dtCriacao;
     }
 
-    function setLocalização($Localização) {
-        $this->Localização = $Localização;
+    function setHrCriacao($hrCriacao) {
+        $this->hrCriacao = $hrCriacao;
     }
 
-    function setFotoPet($FotoPet) {
-        $this->FotoPet = $FotoPet;
+    function setDtInativacao($dtInativacao) {
+        $this->dtInativacao = $dtInativacao;
     }
 
-
+    function setHrInativacao($hrInativacao) {
+        $this->hrInativacao = $hrInativacao;
+    }
     
 }

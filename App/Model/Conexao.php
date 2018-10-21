@@ -1,6 +1,6 @@
 <?php
 
-include_once 'Infra/DbContextoDAO.php';
+//include_once 'Infra/DbContextoDAO.php';
 
 /**
  * Description of Conexao
@@ -20,7 +20,8 @@ class Conexao extends DbContextoDAO {
         }
         else if(!$this->getCon())
         {
-         //   echo 'conexao falide';
+           echo 'conexao falide';
+           exit;
         }
             
     }

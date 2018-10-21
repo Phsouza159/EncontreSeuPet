@@ -1,5 +1,19 @@
 <?php 
     include_once '../../../Controller/GerarPaginaWebPost.php';
+    include_once '../../../Controller/ErroController.php';
+    
+    include_once '../../../NucleoClass/Pessoa.php';
+    include_once '../../../NucleoClass/Animal.php';
+    include_once '../../../NucleoClass/Post.php';
+    include_once '../../../NucleoClass/PerdidoPOST.php';
+    
+    include_once "../../../Model/Infra/DbContextoDAO.php";
+    include_once "../../../Model/Conexao.php";
+    include_once "../../../Model/Infra/CollectionsQuerys.php";
+    include_once "../../../Model/PostDAO.php";
+    
+    
+    
     
     $dadosPostDoacao = isset($_REQUEST['Reload-Post']) ? $_REQUEST['Reload-Post'] : NULL;
     

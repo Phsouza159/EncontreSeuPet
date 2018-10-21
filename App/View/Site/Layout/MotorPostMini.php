@@ -4,7 +4,8 @@
    */
   Class MotorPostMini // extends Post --- herdar atributos e metados da class POST (Criar class )
   {
-    private $numPost;                     // quantidade de posters      
+    private $numPost;                     // quantidade de posters   
+    private $posts;                        // array com pots
     private $numPostForBloc;              // quantidade de posts por bloco de exibicao
     private $numForPost;                  // numero de butoes necessarios para navegar entre os blocos que contem o postesMini
     private $atualNumMiniPost;            // bloco atual do posters -- um blco igual a @var numPostForBloc
@@ -22,7 +23,8 @@
         ##################################### --- CONSTRUTOR
 
     public function __construct( // valore padroes
-                                $numPost             = 70,
+                                $numPost             = 0,
+                                $posts               = null,
                                 $numPostForBloc      = 5,
                                 $numQntExibirButtons = 6,
                                 $pagUrl              = "./posts.php")
@@ -32,14 +34,41 @@
       $this->numPostForBloc      = $numPostForBloc;
       $this->numQntExibirButtons = $numQntExibirButtons;
       $this->pagUrl              = $pagUrl;
-      $this->CarregarPostTEMPORARIO();
+      $this->CarregarPost($posts);
     }
     
     //************************
-    public function CarregarPostTEMPORARIO()
+    public function CarregarPost($posts)
     {
-        $caminho = "../GaleriaPosts/";
-        $caminho = dir($caminho);
+        
+        $this->posts = $posts;
+       // echo "<pre>";
+       //  print_r($posts);
+       // echo "</pre>";
+        $pots_ = array();
+        
+        for($i = 0 ; $i < count($posts) ; $i++)
+        {
+           $pots_[] = $posts[$i]['caminho'];                   
+        }
+        
+      //  print_r($pots_);
+        
+      //  exit;
+        
+       // PostDAO::getPostALL( $con->getCon() );
+        /*
+            $caminho = "../Posts/";
+            if(is_dir($caminho))
+            {
+              $caminho = dir($caminho);  
+            }
+            else
+            {
+                ErroController::erroFatal("Nao foi possivel localizar a pasta POST");
+            }
+          
+        
         $arrayPosts = array();
 
         while(false !== ($entry = $caminho->read())) 
@@ -50,11 +79,23 @@
                 $arrayPosts[$name[0]] = $entry;
             }
         }
-        echo "<pre>";
-          print_r($arrayPosts);
-        echo "</pre>";
-        $this->setNumPost(count($arrayPosts));
-        $this->setPostsNames($arrayPosts);
+        
+          echo "<pre>";
+            print_r($arrayPosts);
+          echo "</pre>";
+         */
+       // $this->setNumPost(count($arrayPosts));
+        $this->setPostsNames($pots_);
+    }
+    
+    private function setPosts($posts)
+    {
+        $this->posts = $posts;
+    }
+    
+    private function getPosts()
+    {
+        return $this->posts;
     }
     
     private function getPostsNames() 
@@ -81,12 +122,17 @@
       */
     public function ViewMiniPost()
     {
-      #------ Carregar informacoes necessarias
+        
+      #------ Carregar informacoes necessarias -- navegação
       $this->GetNumMiniPostNav();
       $this->GetAtualNavPost();
-      $files  = $this->getPostsNames();
+      
+      
+      $files  = $this->getPostsNames(); // nome dos arquivos que contem os pots 
       $chaves = array_keys($files);
-     // depois de ler - ele vem aqui - eu pego cada arquivo(post) e manda ali para baixo
+      
+      
+     
       echo "<fieldset>
               <legend>Posts</legend>";
               /**
@@ -99,16 +145,17 @@
                 # ------ Buscar Poster MINI
                 
                   // o primeiro parametro e o nome do arquivo : o segundo e o caminho dele : ai jogo para a funcao que cria o view do mini posts
-                    $this->GetMiniPost($chaves[$x-1] , "../GaleriaPosts/".$files[$chaves[$x-1]]);
-                 
+                    //$this->GetMiniPost($chaves[$x-1] , "../Posts/".$files[$chaves[$x-1]]);
+                    $this->GetMiniPost( $this->posts[$x - 1]);
                 
                 if($x == $this->numPost ) // Controlador -- bloquear de exibir mais posters do que existe
                   break;
               }
-              #---- Gerar nav buttons
+              
 
 
       echo"</fieldset>";
+              #---- Gerar nav buttons
               $this->GetNavBarMiniPost();
     }
 
@@ -248,15 +295,24 @@
       *            }
       * retorno null
       */
-    private function GetMiniPost($titulo , $caminho)
+   //private function GetMiniPost($titulo , $caminho)
+    private function  GetMiniPost($post)
     {
-      echo "<fieldset class='boyd-post-mini'>
-               <legend>Post: ".$titulo."</legend>
-                <div class='body-post-mini-img'><img src='#'></div>
-                <div class='body-post-mini-textoInfo'>algum texto resumido sobre o poster
-                <a href='".$caminho."'>Visualizar post<a/> 
+      echo "<div class='row card espaco-pots'>
+              
+                <div class='col'><img src='#'></div>
+                
+                <div class='card-body col'>
+                
+                    <h3 class='card-title'>".$post['titulo']."</h2>
+                     
+                    <p class='card-text'>".$post['descricao']."</p>
+                    <a class='btn btn-primary' href='../Posts/".$post['caminho']."'>Visualizar post<a/> 
+                    <br/>
+                    </hr>
+                    <p class='card-text'>publicação: ".$post['dtCriacao']."</p>
                 </div>
-             </fieldset>";
+             </div>";
     }
 
 
