@@ -128,8 +128,8 @@
       $this->GetAtualNavPost();
       
       
-      $files  = $this->getPostsNames(); // nome dos arquivos que contem os pots 
-      $chaves = array_keys($files);
+    //  $files  = $this->getPostsNames(); // nome dos arquivos que contem os pots 
+     // $chaves = array_keys($files);
       
       
      
@@ -175,10 +175,23 @@
       $this->SetValButtoNext($auxProx);
       $this->SetEfectButton($auxInicialNav ,$auxFinalNav );
 
-      echo "<center><section class='body-info-navButtons'>";
+      echo "<nav aria-label='Page navigation example'>
+                  <ul class='pagination justify-content-center pagination-sm'>";
 
-            echo "<button onclick=\"window.location.href='".$this->pagUrl."?AtualNavPost=1'\"><b><<</b></button>"; // voltar para o primeiro nav
-            echo "<button onclick=\"window.location.href='".$this->pagUrl."?AtualNavPost=".$auxAnter."'\"><b><</b></button>"; // voltar um nav antes - anterior
+            
+            if( 1 == $this->atualBlocMiniPost)
+            {
+                echo "<li class='page-item disabled'><a class='page-link' href='".$this->pagUrl."?AtualNavPost=1'><b><<</b></a></li>";
+                echo "<li class='page-item disabled'><a class='page-link' href='".$this->pagUrl."?AtualNavPost=".$auxAnter."'><b><</b></a></li>";
+            }
+            else
+            {
+                echo "<li class='page-item'><a class='page-link' href='".$this->pagUrl."?AtualNavPost=1'><b><<</b></a></li>";
+                echo "<li class='page-item'><a class='page-link' href='".$this->pagUrl."?AtualNavPost=".$auxAnter."'><b><</b></a></li>";
+            }
+
+            //echo "<button onclick=\"window.location.href='".$this->pagUrl."?AtualNavPost=1'\"><b><<</b></button>"; // voltar para o primeiro nav
+            //echo "<button onclick=\"window.location.href='".$this->pagUrl."?AtualNavPost=".$auxAnter."'\"><b><</b></button>"; // voltar um nav antes - anterior
 
             /**
               * @var int  $x                       = $auxInicialNav > nav INICIAL
@@ -190,18 +203,33 @@
               // gerar redirecionamento com o button pra cada nav com o seu bloco correspondente
 
               if($x == $this->atualBlocMiniPost)
-              { // da efeito visual do red onde o nav atual do bloco fica com a cor vermelha > se ta no nav buttom 2 = o buttom 2 fica vermelho
-                  echo "<button class='btn-atual-nav-motorpost' onclick=\"window.location.href='".$this->pagUrl."?AtualNavPost=".$x."'\"><span class='body-post-mini-numInfo'>".$x."<span></button>";
+              { // da efeito visual a onde o nav atual do bloco fica com a cor  > se ta no nav buttom 2 = o buttom 2 fica com a cor
+                //  echo "<button class='btn-atual-nav-motorpost' onclick=\"window.location.href='".$this->pagUrl."?AtualNavPost=".$x."'\"><span class='body-post-mini-numInfo'>".$x."<span></button>";
+                 echo "<li class='page-item active'><a class='page-link' href='".$this->pagUrl."?AtualNavPost=".$x."'>".$x."</a><span class='sr-only'>(current)</span></li>";
               }
               else
               { // demais buttons
-                echo "<button onclick=\"window.location.href='".$this->pagUrl."?AtualNavPost=".$x."'\"><span class='body-post-mini-numInfo'>".$x."<span></button>";
+               // echo "<button onclick=\"window.location.href='".$this->pagUrl."?AtualNavPost=".$x."'\"><span class='body-post-mini-numInfo'>".$x."<span></button>";
+                 echo "<li class='page-item'><a class='page-link' href='".$this->pagUrl."?AtualNavPost=".$x."'>".$x."</a></li>";
               }
             }
-            echo "<button onclick=\"window.location.href='".$this->pagUrl."?AtualNavPost=".$auxProx."'\"><b>></b></button>"; // avancar um nav buttom
-            echo "<button onclick=\"window.location.href='".$this->pagUrl."?AtualNavPost=".$this->numForPost."'\"><b>>></b></button>"; // ir para o ultimo nav
+             
+            //echo "<button onclick=\"window.location.href='".$this->pagUrl."?AtualNavPost=".$auxProx."'\"><b>></b></button>"; // avancar um nav buttom
+            //echo "<button onclick=\"window.location.href='".$this->pagUrl."?AtualNavPost=".$this->numForPost."'\"><b>>></b></button>"; // ir para o ultimo nav
+ 
+            if($this->atualBlocMiniPost == $auxFinalNav)
+            {
+                echo "<li class='page-item disabled'><a class='page-link' href='".$this->pagUrl."?AtualNavPost=".$auxProx."'><b>></b></a></li>";
+                echo "<li class='page-item disabled'><a class='page-link' href='".$this->pagUrl."?AtualNavPost=".$this->numForPost."'><b>>></b></a></li>";
+            }
+            else
+            {
+                echo "<li class='page-item'><a class='page-link' href='".$this->pagUrl."?AtualNavPost=".$auxProx."'><b>></b></a></li>";
+                echo "<li class='page-item'><a class='page-link' href='".$this->pagUrl."?AtualNavPost=".$this->numForPost."'><b>>></b></a></li>";
+            }
 
-      echo "</section></center>";
+      echo "</ul>
+          </nav>";
     }
     /**
       * Carregar valores do buttom anterior
@@ -271,12 +299,12 @@
         else                              // efeito so ativa se maior que o inicio do intervalo
         {
           $auxInicialNav = $this->atualBlocMiniPost - $intervaloDeButons; // pegar o atual e diminuir pelo raio do efeito a esquerda (inicio)
-          $auxFinalNav   = $this->atualBlocMiniPost + $intervaloDeButons; // pegar o atual e aumentar pelo raio do efeito a direita (dinal)
+          $auxFinalNav   = $this->atualBlocMiniPost + $intervaloDeButons; // pegar o atual e aumentar pelo raio do efeito a direita (final)
           /*
                 Explicacao:
                             atual = 14;
                             num exibicao = 5;
-                            raio do efeito 3 -> (5/2 -> se o numero sair como real - funcao agrega mais 1 e reitra a dizima - (5/2) = 2.5 = 3.5 = 3)
+                            raio do efeito 3 -> (5/2 -> se o numero sair como real - funcao agrega mais 1 e retira a dizima - (5/2) = 2.5 = 3.5 = 3)
                             incial = atual - raio do efeito = 14 - 3 = 11 -> inicial comeca no buttom 11
                             final = atual + raio do efeito  = 14 + 3 = 17 -> final termina com o buttom 17
           */
@@ -379,7 +407,7 @@
     private function GetNumMiniPostNav()
     {
       $aux = $this->numPost / $this->numPostForBloc; //dividir a quantidade de posts pela quantidae de saida dos posters na tela (que sao 5)
-      if(is_float($aux)) // verificar se o resultdao da divisao de um numero real
+      if(is_float($aux)) // verificar se o resultdao da divisao der um numero real
       {
         $aux = intval($aux) + 1; // se for numero real, pegar o seu valor inteiro e somar +1 ;
       }

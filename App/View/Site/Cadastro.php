@@ -12,6 +12,7 @@
         <title>Cadastro Perdidos</title>
                 <!--Chamar folha css (LESS) -->
         <link rel="stylesheet/less" type="text/css" href="../Contents/css/Cadastro.less?v=1.0.8" />
+        <link rel="stylesheet/less" type="text/css" href="../Contents/css/footer.less?v=<?php echo random_int(1, 10000) ?>" />
         <!-- Chamar biblioteca (LESS)-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.7.1/less.min.js" ></script>
         <!-- include bootstrap --> 
@@ -38,6 +39,9 @@
             </div>
              -->
         </header>
+         <?php
+           //MenuNav::footer();
+         ?>
        
         <!-- Chamar dependencias javascript -->
         <script src="../Contents/js/jquery3.3.1.js"></script>

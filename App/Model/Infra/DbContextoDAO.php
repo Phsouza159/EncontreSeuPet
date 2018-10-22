@@ -67,7 +67,23 @@ class DbContextoDAO {
             $aux = parse_ini_file($arquivoConfig, true);
             //tratar aux // nao existe ainda
            
-            self::setDataConfig($aux['conexao_mysql_localhost']);
+             if($aux['tipo_conexao']['localhost'] == true)
+             {    
+                 self::setDataConfig($aux['conexao_mysql_localhost']);
+             }
+             elseif($aux['tipo_conexao']['webhost'] == true)
+             {
+                 self::setDataConfig($aux['conexao_mysql_webhost']);
+             }
+             elseif($aux['tipo_conexao']['webhost'] == false && $aux['tipo_conexao']['localhost'] == false)
+             {
+                 ErroController::erroFatal("Nem uma tipo de conexao definida para a base de dados");
+             }
+             else
+             {
+                 ErroController::erroFatal("Nao foi possivel ler o tipo de conexao no arquivo de configuração");
+             }
+                       
             
         } else {
             echo self::verificarLocalizacaoArquivo();
