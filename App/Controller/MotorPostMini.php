@@ -27,7 +27,7 @@
                                 $posts               = null,
                                 $numPostForBloc      = 5,
                                 $numQntExibirButtons = 6,
-                                $pagUrl              = "./posts.php")
+                                $pagUrl              = "./Posts.php")
     {
       
       $this->numPost             = $numPost;

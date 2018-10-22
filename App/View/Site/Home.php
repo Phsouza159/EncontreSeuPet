@@ -4,25 +4,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-include_once './layout/MenuNav.php';
+include_once './Layout/MenuNav.php';
 ?>
 <html>
     <head>
         <title>Home</title>
         <meta name="viewport" content="width=device-width">
         <!--Chamar folha css (LESS) -->
-        <link rel="stylesheet/less" type="text/css" href="../Contents/css/Home.less?v=<?php echo random_int(1, 10000) ?>" />
-        <link rel="stylesheet/less" type="text/css" href="../Contents/css/footer.less?v=<?php echo random_int(1, 10000) ?>" />
-    
+        <link rel="stylesheet/less" type="text/css" href="../Contents/css/Home.less?v=1" />
+        <link rel="stylesheet/less" type="text/css" href="../Contents/css/footer.less?v=1" />
+        
+        <!-- <link rel="stylesheet" type="text/css" href="../Contents/css/bootstrap.css"> -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">       
         <!-- Chamar biblioteca (LESS)-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.7.1/less.min.js" ></script>
         <!-- include bootstrap --> 
-        <link rel="stylesheet" type="text/css" href="../Contents/css/bootstrap.css">
+        
     </head>
     <body>
 
         <?php
-        MenuNav::menu();
+          MenuNav::menu();
         ?>
 
         <div id="carouselExampleFade" class="carousel slide" data-ride="carousel">

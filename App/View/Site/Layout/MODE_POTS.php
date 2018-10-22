@@ -38,10 +38,12 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width">
         <!--Chamar folha css (LESS) -->
         <link rel="stylesheet/less" type="text/css" href="../Contents/css/Post.less?v=1.0.<?php echo random_int(1 , 100)?>" />
+        <link rel="stylesheet/less" type="text/css" href="../Contents/css/footer.less?v=1.0.<?php echo random_int(1 , 100)?>" />
         <!-- Chamar biblioteca (LESS)-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.7.1/less.min.js" ></script>
         <!-- include bootstrap --> 
-        <link rel="stylesheet" type="text/css" href="../Contents/css/bootstrap.css">
+        <!-- <link rel="stylesheet" type="text/css" href="../Contents/css/bootstrap.css"> -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     </head>
     <body>
         <?php
@@ -60,10 +62,14 @@ and open the template in the editor.
              echo '</pre>';
            
            ?>    
-        <div>
+        
             <div>
-                 <button onclick="window.location.href='../Site/layout/CriarPost.php'" >Criar novo Posts</button>
-                 <button onclick="window.location.href='../Site/posts.php'" >Voltar Galeria</button>
+                 <button onclick="window.location.href='../Site/Layout/CriarPost.php'" >Criar novo Posts</button>
+                 <button onclick="window.location.href='../Site/Posts.php'" >Voltar Galeria</button>
             </div>
+        </div>
+        <?php
+          MenuNav::footer();
+        ?>
     </body>
 </html>

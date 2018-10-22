@@ -2,7 +2,7 @@
     include_once '../../../Controller/GerarPaginaWebPost.php';
     include_once '../../../Controller/ErroController.php';
     
-    include_once 'MenuNav.php';
+    include_once './MenuNav.php';
     
     include_once '../../../NucleoClass/Pessoa.php';
     include_once '../../../NucleoClass/Animal.php';
@@ -39,7 +39,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-        <link rel="stylesheet" href="../../Contents/css/bootstrap.css" />
+        <!-- <link rel="stylesheet" type="text/css" href="../Contents/css/bootstrap.css"> -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
         <link rel="stylesheet" href="./post/dist/summernote.css">
 
         <title>summernote</title>
@@ -98,6 +99,7 @@
         </div>
             <?php
                 GerarPaginaWebPost::main();
+                MenuNav::footer()
             ?>
     </body>
 

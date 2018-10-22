@@ -103,7 +103,7 @@ class PostDAO extends CollectionsQuerys {
         $post->setDescricao($values['descricao']);
         $post->setDtCriacao($values['dtCriacao']);
         $post->setHrCriacao($values['hrCriacao']);
-        $post->setCaminho($values['hrCriacao']);
+        $post->setCaminho($values['caminho']);
         
         
         return $post;

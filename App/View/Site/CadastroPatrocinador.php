@@ -1,7 +1,7 @@
 <?php
  
  require_once '../View.php';
- include_once 'layout/MenuNav.php';
+ include_once './Layout/MenuNav.php';
 
 ?>
 <html>
@@ -13,7 +13,8 @@
         <!-- Chamar biblioteca (LESS)-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.7.1/less.min.js" ></script>
         <!-- include bootstrap --> 
-        <link rel="stylesheet" type="text/css" href="../Contents/css/bootstrap.css">
+        <!-- <link rel="stylesheet" type="text/css" href="../Contents/css/bootstrap.css"> -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     </head>
     <body>
       <?php 

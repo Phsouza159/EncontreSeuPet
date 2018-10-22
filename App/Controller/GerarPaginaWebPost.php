@@ -8,6 +8,7 @@
      
      private static $codigoFonte    = FALSE;  // codigo fonte do post 
      private static $paginaWeb      = "";     // pagina a ser criada
+     
      private static $caminhoSalvar  = "../../Posts/"; // caminho a onde vai ser salvo o arquivo fisico
      
      private static $POST;
@@ -49,7 +50,7 @@
        // depois de criar o arquivo 
         if(is_null($codigo_fonte))
             return null;
-        
+        date_default_timezone_set('America/Sao_Paulo');
         $con = new Conexao();
         self::$POST = new Post();
         
@@ -59,11 +60,11 @@
          $nomeArquivi = "postFile" . random_int(10, 99999) . ".php";
          
          //$nomeArquivi = './MODE_POTS.php';
-        echo '<pre>';
-         print_r(file($nomeArquivi));
-         echo '</pre>';
+         //echo '<pre>';
+         //print_r(file($nomeArquivi));
+         //echo '</pre>';
          
-         $id_next = PostDAO::Get_NEXT_ID_AUTO_INCREMENT_TABLE('Post' , $con->getCon());
+         $id_next = PostDAO::Get_NEXT_ID_AUTO_INCREMENT_TABLE('post' , $con->getCon());
          
          
 $POTS_PREPARA = "<?php
