@@ -9,14 +9,10 @@
 //echo __DIR__;
 class DbContextoDAO {
 
-    private static $ArquivoConfig = "AppConfig.ini";
     private static $DataConfig; //config de acesso ao banco static 
-   
-
     /*
      * Carregar conexao
      */
-
     public static function ConexaoMysql() {
        try {
             self::GetConfiguracaoServer();
@@ -36,7 +32,7 @@ class DbContextoDAO {
                     );
 
             if (!$con) {
-                echo "Sem conexao";
+                ErroController::erroFatal("Nao foi possivel estabelecer conexao com host ".self::$DataConfig['host'] .": " . $con->getMessage());
                 exit;
             }
             return $con;
@@ -60,59 +56,21 @@ class DbContextoDAO {
      */
     private static function GetConfiguracaoServer() {
         
-        $arquivoConfig = self::verificarLocalizacaoArquivo();
-        
-        // o arquivo exite ?
-        if (file_exists($arquivoConfig)) {
-            $aux = parse_ini_file($arquivoConfig, true);
-            //tratar aux // nao existe ainda
-           
-             if($aux['tipo_conexao']['localhost'] == true)
-             {    
-                 self::setDataConfig($aux['conexao_mysql_localhost']);
-             }
-             elseif($aux['tipo_conexao']['webhost'] == true)
-             {
-                 self::setDataConfig($aux['conexao_mysql_webhost']);
-             }
-             elseif($aux['tipo_conexao']['webhost'] == false && $aux['tipo_conexao']['localhost'] == false)
-             {
-                 ErroController::erroFatal("Nem uma tipo de conexao definida para a base de dados");
-             }
-             else
-             {
-                 ErroController::erroFatal("Nao foi possivel ler o tipo de conexao no arquivo de configuração");
-             }
-                       
-            
-        } else {
-            echo self::verificarLocalizacaoArquivo();
-            ErroController::erroFatal("Nao foi possivel ler arquivo de configuração.");
-         
+        $tipoConexao = GetConfigApp::Get("tipo_conexao");
+            // ErroController::erroFatal("Nao foi possivel verificar o tipo de conexao a ser feita pela aplicacao: DbContextoDAO");
+     
+        if($tipoConexao['localhost'] == true)
+        {    
+          self::setDataConfig(GetConfigApp::Get("conexao_mysql_localhost"));
         }
-    }
-    public static function verificarLocalizacaoArquivo()
-    {
-        
-        $cam = self::$ArquivoConfig;
-        
-        if(file_exists($cam))
+        elseif($tipoConexao['webhost'] == true)
         {
-            return $cam;
+          self::setDataConfig(GetConfigApp::Get("conexao_mysql_webhost"));
         }
-            
-        
-        for($int = 10 ; $int > 0 ; $int--)
+        elseif(GetConfigApp::Get("webhost") == false && GetConfigApp::Get("localhost") == false)
         {
-            $cam = "../" . $cam;
-            
-            if(file_exists($cam))
-            {
-                return $cam;
-            }
+            ErroController::erroFatal("Nem uma tipo de conexao definida para a base de dados");
         }
-        
-        return $cam;
     }
     
     private static function getDataConfig() {

@@ -5,6 +5,11 @@
  * and open the template in the editor.
  */
 include_once './Layout/MenuNav.php';
+include_once '../../Controller/SessionController.php';
+
+
+SessionController::VerificarSession();
+
 ?>
 <html>
     <head>
@@ -13,11 +18,14 @@ include_once './Layout/MenuNav.php';
         <!--Chamar folha css (LESS) -->
         <link rel="stylesheet/less" type="text/css" href="../Contents/css/Home.less?v=1" />
         <link rel="stylesheet/less" type="text/css" href="../Contents/css/footer.less?v=1" />
-        
-        <!-- <link rel="stylesheet" type="text/css" href="../Contents/css/bootstrap.css"> -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">       
         <!-- Chamar biblioteca (LESS)-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.7.1/less.min.js" ></script>
+        <script type="text/javascript" src="../Contents/plugins/less/dist/less.min.js"></script> 
+        
+        <link rel="stylesheet" type="text/css" href="../Contents/plugins/bootstrap/css/bootstrap.css">
+       <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">     
+        
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.7.1/less.min.js" ></script>-->
+       
         <!-- include bootstrap --> 
         
     </head>
@@ -136,7 +144,7 @@ include_once './Layout/MenuNav.php';
 
         <!-- Chamar dependencias javascript -->
         <script src="../Contents/js/jquery3.3.1.js"></script>
-        <script src="../Contents/js/bootstrap.min.js"></script>
+        <script src="../Contents/plugins/bootstrap/js/bootstrap.js"></script>
 
     </body>
 </html>

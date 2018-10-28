@@ -10,7 +10,7 @@ class MenuNav {
 
             <button class='navbar-toggler' type='button'
                     data-toggle='collapse' data-target='#navbarSiteMenu'>
-                <span class='navbar-toggler-icon'></span>
+                    <span class='navbar-toggler-icon'></span>
             </button>
 
 
@@ -26,12 +26,8 @@ class MenuNav {
                         <a class='nav-link' href='".$camNormal."Posts.php'>Galeria Posts</a>
                     </li>
                   
-                    <li class='nav-item dropdown'>
-                            <a class='nav-link dropdown-toggle' data-toggle='dropdown' href='".$camNormal."Layout/CriarPost.php' >Criar Posts</a>
-                                <div class = 'dropdown-menu'>
-                            <a class = 'dropdown-item' href = '".$camNormal."Layout/CriarPost.php'>Perdidos</a>
-                            <a class = 'dropdown-item' href = '".$camNormal."Layout/CriarPost.php'>Adoção</a>
-                                </div>
+                    <li class='nav-item'>
+                        <a class='nav-link' href='".$camNormal."CriarPost.php' >Criar Posts</a>
                     </li>
                     
                     <li class='nav-item'>
@@ -55,6 +51,7 @@ class MenuNav {
 
    public static function footer()
    {
+     
        echo "<div class=''>
                <p class='h3 m-2 text-center p-5'>Alguns dos nossos patrocinadores:</p>
               <hr />

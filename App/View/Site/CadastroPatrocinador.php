@@ -11,10 +11,10 @@
                 <!--Chamar folha css (LESS) -->
         <link rel="stylesheet/less" type="text/css" href="../Contents/css/CadastroPatrocinador.less?v=1.0.8" />
         <!-- Chamar biblioteca (LESS)-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.7.1/less.min.js" ></script>
+        <script src="../Contents/plugins/less/dist/less.js" ></script>
         <!-- include bootstrap --> 
-        <!-- <link rel="stylesheet" type="text/css" href="../Contents/css/bootstrap.css"> -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../Contents/plugins/bootstrap/css/bootstrap.css"> 
+        <title>Cadastro Patrocinador</title>
     </head>
     <body>
       <?php 
@@ -22,6 +22,11 @@
         ?>
 
         <h1>Cadastro Patrocinador</h1>
+        
+        <script src="../Contents/js/jquery3.3.1.js"></script>
+        <script src="../Contents/plugins/bootstrap/js/bootstrap.js" ></script>
+    </body>
+</html>
        
       
    

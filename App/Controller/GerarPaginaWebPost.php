@@ -9,7 +9,7 @@
      private static $codigoFonte    = FALSE;  // codigo fonte do post 
      private static $paginaWeb      = "";     // pagina a ser criada
      
-     private static $caminhoSalvar  = "../../Posts/"; // caminho a onde vai ser salvo o arquivo fisico
+     private static $caminhoSalvar  = "../Posts/"; // caminho a onde vai ser salvo o arquivo fisico
      
      private static $POST;
      

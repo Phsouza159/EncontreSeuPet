@@ -3,7 +3,7 @@
  include_once '../Site/Layout/MenuNav.php';
 
  include_once '../../Controller/ErroController.php';
-
+ include_once '../../Controller/GetConfigApp.php';
  include_once '../../Model/Infra/CollectionsQuerys.php';
  include_once '../../Model/Infra/DbContextoDAO.php';
  include_once '../../Model/Conexao.php';
@@ -64,7 +64,7 @@ and open the template in the editor.
            ?>    
         
             <div>
-                 <button onclick="window.location.href='../Site/Layout/CriarPost.php'" >Criar novo Posts</button>
+                 <button onclick="window.location.href='../Site/CriarPost.php'" >Criar novo Posts</button>
                  <button onclick="window.location.href='../Site/Posts.php'" >Voltar Galeria</button>
             </div>
         </div>

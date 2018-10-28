@@ -1,4 +1,3 @@
-
 /* 
     Created on : 06/10/2018, 00:25:43
     Author     : FAMILY
@@ -9,13 +8,10 @@ body{
     .fImagemFundo-total("../img/dog-bk.png");
 }
 
-
-
 .conteiner-center
 {
     margin-left: 85vh;
     margin-top: 50px;
-    
 }
 
 .cadastro-etapa-01// , .cadastro-etapa-02
@@ -29,8 +25,104 @@ body{
      .fShadow-box(14px , 14px , 14px);
      .fTransition();
     }
-    
-    
-    
+}
 
+.controle-etapas
+{
+    background-color: red;
+    min-height: 110px;
+    min-width: 100%;
+}
+
+.etapas-cards
+{
+    border: 1px solid gray;
+    background-color: blue;
+    width: 100px;
+    height: 100px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border: 5px solid #d4d4d4;
+    border-radius: 100%;
+   .fTransition();  
+    
+    &:hover {
+        background-color: #fff;
+        color: black;
+    }
+    
+}
+
+.etapas-cards-active {
+    background-color: #00BFFF;
+    .fTransition();  
+}
+
+.etapas-cards-sucesso {
+    background-color: green;
+   .fTransition();  
+}
+
+.etapas-linha
+{
+    background-color: #000;
+    width: 170px;
+    height: 3px;
+    margin-top: 55px;
+    .fTransition();  
+}
+
+.etapas-icon
+{
+   background-color: white;
+   width: 65px;
+   height: 55px;
+   margin-top: 20px;
+   margin-left: 13px;
+   text-align: center;
+   .fTransition();  
+}
+
+.etapas-descricao{
+    .etapas-icon;
+    
+    & label{
+     margin-left: 0px;
+    margin-right: 0px;
+    }
+   .fTransition();  
+}
+
+
+
+.requerid-custom 
+{
+    position: absolute;
+    border-left: 25px solid yellow;
+    text-align: center;
+    background-color: red;
+    height: 35px;
+    width: 220px;
+    margin-left: -270px;
+    margin-top: 60px;
+    z-index: 100;
+    
+    &::before {
+        content: "Campo obrigatório!";
+    }
+}
+
+.requerid-custom-telefone
+{
+    .requerid-custom;
+    &::before {
+        content: "Telefone inválido";
+    }
+}
+
+.requerid-custom-data
+{
+    .requerid-custom;
+    margin-left: -176px;
+    margin-top: 35px; 
 }
