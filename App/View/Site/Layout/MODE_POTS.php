@@ -7,6 +7,7 @@
  include_once '../../Model/Infra/CollectionsQuerys.php';
  include_once '../../Model/Infra/DbContextoDAO.php';
  include_once '../../Model/Conexao.php';
+ include_once '../../Model/AnimalDAO.php';
  include_once '../../Model/PostDAO.php';
  include_once '../../NucleoClass/Animal.php';
  include_once '../../NucleoClass/Pessoa.php';
@@ -15,7 +16,8 @@
     
  
  $con  = new Conexao();
- $post = PostDAO::getPots( $id_POST , $con->getCon());
+ //AnimalDAO::GetAnimal(1 , $con->getCon());
+ $post = PostDAO::getPost( $id_POST , $con->getCon());
  
  if(is_null($post))
  {

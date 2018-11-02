@@ -13,6 +13,8 @@
  */
 class Animal {
     
+    private $id;
+    private $idDono;
     private $NomePet;
     private $PortePet;
     private $RacaPet;
@@ -24,6 +26,29 @@ class Animal {
     private $Localização;
     private $FotoPet;
     
+    public function __construct(
+                   $NomePet = null
+                 , $PortePet = null
+                 , $RacaPet = null
+                 , $CorPet = null
+                 , $SexoPet = null
+                 , $PesoPet = null
+                 , $Idadepet = null
+                 , $NomeDono = null
+                 , $Localização = null
+                 , $FotoPet = null)
+    {
+        $this->setNomePet($NomePet);
+        $this->setPortePet($PortePet);
+        $this->setRacaPet($RacaPet);
+        $this->setCorPet($CorPet);
+        $this->setSexoPet($SexoPet);
+        $this->setPesoPet($PesoPet);
+        $this->setIdadepet($Idadepet);
+        $this->setNomeDono($NomeDono);
+        $this->setLocalização($Localização);
+        $this->setFotoPet($FotoPet);
+    }
     
     function getNomePet() {
         return $this->NomePet;
@@ -82,7 +107,7 @@ class Animal {
     }
 
     function setSexoPet($SexoPet) {
-        $this->SexoPet = $SexoPet;
+        $this->SexoPet = bindec($SexoPet);       
     }
 
     function setPesoPet($PesoPet) {
@@ -104,7 +129,20 @@ class Animal {
     function setFotoPet($FotoPet) {
         $this->FotoPet = $FotoPet;
     }
+    
+    function setId($id) {
+        $this->id = $id;
+    }
 
+    function getId() {
+        return $this->id;
+    }
+    
+    function setIdDono($idDono) {
+       $this->idDono = $idDono;
+    }
 
-
+    function getIdDono() {
+        return $this->idDono;
+    }
 }

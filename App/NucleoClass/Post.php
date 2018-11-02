@@ -14,6 +14,7 @@
 class Post {
  
     private $id;
+    private $idAnimal;
     private $ativo;
     private $id_dono;
     private $animal;
@@ -32,14 +33,20 @@ class Post {
                  ,$animal = null
                  ,$titulo = null
                  ,$descricao = null
+                 ,$idAnimal = null
                  ){
         /**
          * Definir quais valore nao podem ser nulos
          */
        try{ 
               $this->ativo = true;
-              $this->setId_dono(new Pessoa());
-              $this->setAnimal(new Animal());
+              
+              $AUX_PESSOA = is_null($id_dono) ? new Pessoa() : $id_dono;
+              $this->setId_dono($AUX_PESSOA);
+              
+              $AUX_ANIMAL = is_null($animal) ? new Animal() : $animal;
+              $this->setAnimal( $AUX_ANIMAL);
+              
               $this->setTitulo($titulo);
               $this->setDescricao($descricao);
               $this->setDtCriacao(date("Y/m/d"));
@@ -47,6 +54,7 @@ class Post {
               $this->setDtInativacao(null);
               $this->setHrInativacao(null);
               $this->setCaminho(null);
+              $this->setIdAnimal($idAnimal);
           
        }
         catch(Exception $ex)
@@ -143,4 +151,11 @@ class Post {
         $this->hrInativacao = $hrInativacao;
     }
     
+    function setIdAnimal($idAnimal) {
+        $this->idAnimal = $idAnimal;
+    }
+    
+    function getIdAnimal() {
+        return $this->idAnimal;
+    }
 }

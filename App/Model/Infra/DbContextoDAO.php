@@ -7,15 +7,16 @@
  */
 
 //echo __DIR__;
+
 class DbContextoDAO {
 
     private static $DataConfig; //config de acesso ao banco static 
     /*
      * Carregar conexao
      */
-    public static function ConexaoMysql() {
+    public static function ConexaoMysql() { 
        try {
-            self::GetConfiguracaoServer();
+            self::GetConfiguracaoServer(); 
             
             $options = array(
                 PDO::ATTR_PERSISTENT => true,

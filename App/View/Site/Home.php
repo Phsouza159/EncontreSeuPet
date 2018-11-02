@@ -5,10 +5,10 @@
  * and open the template in the editor.
  */
 include_once './Layout/MenuNav.php';
-include_once '../../Controller/SessionController.php';
+//include_once '../../Controller/SessionController.php';
 
 
-SessionController::VerificarSession();
+//SessionController::VerificarSession();
 
 ?>
 <html>

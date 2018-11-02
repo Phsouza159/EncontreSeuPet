@@ -2,7 +2,7 @@
   /**
    * Funcao que traz um mini poster contendo informcaoes.. bla bla
    */
-  Class MotorPostMini // extends Post --- herdar atributos e metados da class POST (Criar class )
+  Class PaginacaoPots // extends Post --- herdar atributos e metados da class POST (Criar class )
   {
     private $numPost;                     // quantidade de posters   
     private $posts;                        // array com pots
@@ -174,7 +174,8 @@
       $this->SetValButtoAnter($auxAnter);
       $this->SetValButtoNext($auxProx);
       $this->SetEfectButton($auxInicialNav ,$auxFinalNav );
-
+      
+    
       echo "<nav aria-label='Page navigation example'>
                   <ul class='pagination justify-content-center pagination-sm'>";
 
@@ -200,6 +201,7 @@
               */
             for($x = $auxInicialNav ; $x <= $auxFinalNav ; $x++)
             {
+                
               // gerar redirecionamento com o button pra cada nav com o seu bloco correspondente
 
               if($x == $this->atualBlocMiniPost)
@@ -272,9 +274,9 @@
         */
       private function SetEfectButton(&$auxInicialNav , &$auxFinalNav )
       {
-
         $numButtonsExibicao = $this->numQntExibirButtons; // Carregar a quantidade de exibicao de buttons
-
+        
+        
         if($numButtonsExibicao >= $this->numPost) // mecanismo de controle de erro --- numero de posts menor que a de buttons a exibir
         {
             $numButtonsExibicao = $this->numPost;
@@ -282,37 +284,47 @@
             $auxFinalNav        = $this->numForPost;
             return null;
         }
-
         $intervaloDeButons = $numButtonsExibicao / 2; // Carregar intervalo do efeito
-        if(is_float($intervaloDeButons)) // verificar se o resultdao da divisao de um numero real
-        {
-          $intervaloDeButons = intval($intervaloDeButons) + 1; // se for numero real, pegar o seu valor inteiro e somar +1 ;
-        }
 
-
-
+        $qntButtoesNecessario =  $this->numPost / $this->numPostForBloc;
+        
+        
+        $qntButtoesNecessario = is_float($qntButtoesNecessario) // verificar se o resultdao da divisao de um numero real
+                                            ? intval($qntButtoesNecessario) + 1 // se for numero real, pegar o seu valor inteiro e somar +1 ;
+                                                 : $qntButtoesNecessario;
+        
+       // echo $qntButtoesNecessario . " -- " ;
+        
+                
+        $intervaloDeButons = is_float($intervaloDeButons) // verificar se o resultdao da divisao de um numero real
+                                            ? intval($intervaloDeButons) + 1 // se for numero real, pegar o seu valor inteiro e somar +1 ;
+                                                 : $intervaloDeButons;
+        //echo $intervaloDeButons;
+        
         if($this->atualBlocMiniPost <= $intervaloDeButons) // incio dos nav -- efeito OFF
         {
           $auxInicialNav = 1;
-          $auxFinalNav   = $numButtonsExibicao + 1;
+          $auxFinalNav   = $qntButtoesNecessario <= $intervaloDeButons 
+                                                       ? $numButtonsExibicao 
+                                                       : $numButtonsExibicao > $qntButtoesNecessario 
+                                                                                  ? $qntButtoesNecessario 
+                                                                                  : $numButtonsExibicao;
+        // echo " -- " .$auxFinalNav;
         }
-        else                              // efeito so ativa se maior que o inicio do intervalo
+        else                          
         {
-          $auxInicialNav = $this->atualBlocMiniPost - $intervaloDeButons; // pegar o atual e diminuir pelo raio do efeito a esquerda (inicio)
+          $auxInicialNav = $this->atualBlocMiniPost - $intervaloDeButons;// pegar o atual e diminuir pelo raio do efeito a esquerda (inicio)
+
           $auxFinalNav   = $this->atualBlocMiniPost + $intervaloDeButons; // pegar o atual e aumentar pelo raio do efeito a direita (final)
-          /*
-                Explicacao:
-                            atual = 14;
-                            num exibicao = 5;
-                            raio do efeito 3 -> (5/2 -> se o numero sair como real - funcao agrega mais 1 e retira a dizima - (5/2) = 2.5 = 3.5 = 3)
-                            incial = atual - raio do efeito = 14 - 3 = 11 -> inicial comeca no buttom 11
-                            final = atual + raio do efeito  = 14 + 3 = 17 -> final termina com o buttom 17
-          */
+
           if($auxFinalNav > $this->numForPost) // quando chegar no limite de exibicao dos navs buttons o efeito para -- efeito OFF
           {
             $auxFinalNav   = $this->numForPost;  // final pega o ultimo buttom
-            $auxInicialNav = $auxFinalNav - $numButtonsExibicao ; // inicio pega o final menos a quantidade de buttons que vai na exibicao
+            $auxInicialNav = ($auxFinalNav - $numButtonsExibicao) <= 0 ? 1 : ($auxFinalNav - $numButtonsExibicao);
+
+
           }
+          //echo " -- " .$auxInicialNav;
         }
       }
 

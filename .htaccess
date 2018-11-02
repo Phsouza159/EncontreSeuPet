@@ -14,7 +14,7 @@
 #order deny,allow
 
 # bloquear listagem de diretorio
-#Options -Indexes
+#SOptions -Indexes
 
 
 ## bloquear arquivos no acesso pela url

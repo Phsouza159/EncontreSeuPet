@@ -7,7 +7,7 @@
  */
 class CollectionsQuerys {
 
-    public static function ValidarCommit(bool $commit = null, $con = null) {
+    public static function ValidarCommit(bool $commit = false, $con = null) {
         if (is_null($commit) || is_null($con)) {
             //controle erro
             exit;
@@ -17,7 +17,7 @@ class CollectionsQuerys {
             return true;
         } else {
 
-            $con->rollBack();
+            $con->rollBack();// volta informação anterior
         }
     }
 

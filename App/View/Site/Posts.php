@@ -2,21 +2,24 @@
  include_once '../Site/Layout/MenuNav.php';
  
  include_once '../../Controller/ErroController.php';
- include_once '../../Controller/MotorPostMini.php';
+ include_once '../../Controller/PaginacaoPots.php';
  include_once '../../Controller/GetConfigApp.php';
  include_once '../../Model/Infra/CollectionsQuerys.php';
  include_once '../../Model/Infra/DbContextoDAO.php';
  include_once '../../Model/Conexao.php';
+ include_once '../../Model/AnimalDAO.php';
  include_once '../../Model/PostDAO.php';
  
  include_once '../../NucleoClass/Post.php';
  include_once '../../NucleoClass/PerdidoPOST.php';
  
-   $con = new Conexao();
+   $con = new Conexao(); //conexão bando de dados
    
    $qntPost = PostDAO::quantidadePost( $con->getCon() );  
    
-   $GaleriaPosts = new MotorPostMini( $qntPost , PostDAO::getPostALL( $con->getCon() ) , 2);
+   $GaleriaPosts = new PaginacaoPots( $qntPost 
+                                    , PostDAO::getPostALL( $con->getCon() ) 
+                                    , 2);
 
  ?>
 

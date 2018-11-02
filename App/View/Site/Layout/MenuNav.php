@@ -1,7 +1,7 @@
 <?php
 
-class MenuNav {
-   public static function menu($camNormal = './')
+class MenuNav { 
+   public static function menu($camNormal = './') /* primeiro metodo. */ 
    {
        echo "<nav class='navbar navbar-expand-lg navbar-dark bg-info sticky-top'>
         <div class='container '>
@@ -49,7 +49,7 @@ class MenuNav {
     </nav>";
    }
 
-   public static function footer()
+   public static function footer() /*segundo metodo */ 
    {
      
        echo "<div class=''>

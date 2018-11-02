@@ -1,26 +1,29 @@
-<?php
+ <?php
 
-include_once __DIR__ . "/ErroController.php";
+
+include_once __DIR__ . "/ErroController.php"; /*DIR: endereço de onde esta a classe, endereço fisico e inclui direto*/
 include_once __DIR__ . "/GetConfigApp.php";
 
 
+/* classe que cria a sessão*/
 
+/**/
 Class SessionController
 {
-    private static $config;
-    private static $reload;
+    private static $config; /*static = não há necessidade de estanciar, ou seja, não precisa criar um objeto*/
+    private static $reload; /* pega ultima url*/
     
-    public static function validarAcesso()
+    public static function validarAcesso() /*valida o acesso*/
     {
-        self::$config = GetConfigApp::Get("Server_hospedagem");
+        self::$config = GetConfigApp::Get("Server_hospedagem"); /*self: apelido da classe. Self só é valido para o static, o self apelida*/
         
-        self::sessionStatus();
+        self::sessionStatus(); /**/
         self::VerificarLogin();
         
         
     }
     
-    private static function setSessionUser( /* $user = null*/)
+    private static function setSessionUser( /* $user = null*/) 
     {
         date_default_timezone_set('America/Sao_Paulo');
         self::sessionStatus();
@@ -32,7 +35,7 @@ Class SessionController
            //,'USER_DADOS' =>  $user
         );
         
-        $_SESSION['SESSION_USER_LOG'] = $user;
+        $_SESSION['SESSION_USER_LOG'] = $user; /* criando uma sessão com o indice */ 
         
         
         echo "<pre>";
@@ -40,15 +43,15 @@ Class SessionController
         echo "</pre>";
         
         echo "<a type='button' href='./App/View/Site/Home.php'>Ir para a Home</a>";
-       // header("Location: ./App/View/Site/Home.php");
+       // header("Location: ./App/View/Site/Home.php"); /*location: muda pra pagina que está no caminho */ 
     }
     
-    private static function sessionStatus()
+    private static function sessionStatus() /* verificar se a sessão esta ligada ou desligada */ 
     {
-        if(session_status() !== PHP_SESSION_ACTIVE)
+        if(session_status() !== PHP_SESSION_ACTIVE)/* variavel global:session_status= se está ligada a sessão */ 
         {
-            session_start();
-            return true;
+            session_start(); /* inicando sessão*/ 
+            return true; /*retorno como verdadeiro*/ 
         }
     }
     
@@ -75,11 +78,11 @@ Class SessionController
         return false;
     }
     
-    public static function verificarLogin($login = null , $senha = null , $conexao = null) 
+    public static function verificarLogin($login = null , $senha = null , $conexao = null) /*três parametros */ 
     { 
         // UserDAO -- CRIAR
         //$usuario = UserDAO($login , $senha , $conexao)
-        $acesso = GetConfigApp::Get('server');
+        $acesso = GetConfigApp::Get('server'); /* puxa server do getConfigApp.ini  */ 
         
         if($login == $acesso['userAcesso'] && $senha == $acesso['senhaAcesso'])
         {
