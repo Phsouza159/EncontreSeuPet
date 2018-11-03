@@ -40,7 +40,7 @@ class MenuNav {
                         <a class='nav-link' href='".$camNormal."CadastroPatrocinador.php'>Patrocinadores</a>
                     </li>
                     <li class='nav-item'>
-                        <a class='nav-link' href='#'>Administrador</a>
+                        <a class='nav-link' href='".$camNormal."PainelControleAdmin.php'>Administrador</a>
                     </li>
 
                 </ul>

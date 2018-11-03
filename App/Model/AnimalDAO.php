@@ -31,6 +31,42 @@ class AnimalDAO extends CollectionsQuerys {
         }
     }
     
+    public static function quantidadeAnimal($con){
+        parent::VerificarParametros('Default', $con , 'Quantidade de Animal');
+        
+        try {
+            
+            $query = "SELECT COUNT(id) FROM animal";
+            
+            $dbn = $con->prepare($query);
+            $dbn->execute();
+            $count = self::GetTratarValores('default', $dbn );
+            return $count[0]['COUNT(id)'];
+            
+            
+        } catch (Exception $exc) {
+            ErroController::erroFatal("Nao foi possivel carregar quantidade de animais(quantidadeAnimal) :: " . $exc->getMessage());          
+        }
+    }
+        public static function getAnimalALL( $con)
+    {
+                parent::VerificarParametros('Default', $con , 'Buscar todos os posts');
+        
+        try {
+            
+            $query = "SELECT * FROM animal ORDER BY id DESC";
+            
+            $dbn = $con->prepare($query);
+            $dbn->execute();
+            return self::GetTratarValores('default', $dbn );
+            
+        } catch (Exception $exc) {
+            
+           ErroController::erroFatal("Nao foi possivel carregar tabela com todos os Animais :: " . $exc->getMessage()); 
+        }
+    }
+    
+    
     public static function GetAnimal(int $id = 0,$con = null)
     {
          self::VerificarParametros($id, $con , 'Get Animal ' . $id);

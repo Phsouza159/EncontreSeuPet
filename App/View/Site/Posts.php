@@ -37,6 +37,7 @@
         <script src="../Contents/plugins/less/dist/less.js" ></script>
         <!-- include bootstrap --> 
         <link rel="stylesheet" type="text/css" href="../Contents/plugins/bootstrap/css/bootstrap.css">
+        
     </head>
     <body>
         <?php

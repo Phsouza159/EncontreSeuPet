@@ -5,28 +5,17 @@ include_once './App/Controller/FormController.php';
 <html>
     <head>
         <title>Login</title>
+        <meta name="viewport" content="width=device-width">
         <!--Chamar folha css (LESS) -->
-        <link rel="stylesheet/less" type="text/css" href="App /View/Contents/css/Home.less" />
+        <link rel="stylesheet/less" type="text/css" href="App/View/Contents/css/Index.less" />
         <!-- Chamar biblioteca (LESS)-->
         <script src="./App/View/Contents/plugins/less/dist/less.js" ></script>
         <!-- Chamar biblioteca (BOOSTSTRAP)-->
         <link rel="stylesheet" type="text/css" href="./App/View/Contents/plugins/bootstrap/css/bootstrap.css">
         
         <style type="text/css">
-            body{
-              background-color: rgb(65 , 64 , 65);
-            }
-            
-            .img-logo{
-                filter: invert(75%);
-                background-image: url('./App/View/Contents/img/giphy.webp');
-                background-repeat: no-repeat;
-                background-size: 450px;
-                min-height: 450px;
-                min-width: 450px;
-                
-                margin-left: 30%;
-                margin-top: 50px;
+            body {
+                background-color: rgb(65 , 64 , 65);
             }
         </style>
         <script type="text/javascript">
@@ -38,23 +27,52 @@ include_once './App/Controller/FormController.php';
                 var e = tempo;
                 
                 var element = document.getElementById("PORC");
-                //element.innerHTML = e + "%";
+                    element.innerHTML = e + "%";
                 
                 element = document.getElementById("bar-prog");
-                element.style.width = e + "%";
+                    element.style.width = e + "%";
                
+                element = document.getElementById("descricaoCarregamento");
+                   
+                switch(tempo)
+                {
+                    case 1:
+                        element.innerHTML = "Carregando Localização";
+                        break;
+                    case 25:
+                        element.innerHTML = "Carregando 1";
+                        break;
+                        
+                    case 50:
+                        element.innerHTML = "Carregando 23";
+                        break;
+                        
+                    case 75:
+                        element.innerHTML = "Carregando 3";
+                        break;    
+                    
+                    case 99:
+                        element.innerHTML = "Carregamentp Complento";
+                        break;    
+                       
+                    default:
+                        break;
+                }
+                   
+                   
         
                 if(e >= 100)
                 {
-                    //setTimeout("self.location.href='./App/View/Site/Home.php';", 1999);
+                    setTimeout("self.location.href='./App/View/Site/Home.php';", 1999);
                     return;
                 }
                 
                 tempo++;
+                setTimeout( "CarregarProgress()",50);
             }
             
             
-setTimeout( CarregarProgress(), 2999);
+//setTimeout( CarregarProgress(), 2999);
             function tempo() {
                // setTimeout("self.location.href='./App/View/Site/Home.php';", 4999);
             }
@@ -64,12 +82,19 @@ setTimeout( CarregarProgress(), 2999);
     </script> 
 </head>
 <body class="grid-container" onLoad="CarregarProgress()">
-    <div class="img-logo"></div>
- 
-    <div class="progress">
-        <div class="progress-bar" id="bar-prog"role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span id="PORC"></span></div>
-</div>
-    <!--
+    
+    <center>
+        <div class="img-logo"></div>
+        <div class="corpo-progresso justify-content-center">
+        <h1><span id="PORC"></span></h1>
+            <div aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" id="bar-prog" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <span id="descricaoCarregamento"></span>
+        </div>
+        
+    </center>
+        <!--
        <form action="index.php" method="POST">
             <lable>Usuário:</lable>
             
