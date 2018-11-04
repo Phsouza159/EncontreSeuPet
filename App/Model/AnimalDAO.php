@@ -45,7 +45,7 @@ class AnimalDAO extends CollectionsQuerys {
             
             
         } catch (Exception $exc) {
-            ErroController::erroFatal("Nao foi possivel carregar quantidade de animais(quantidadeAnimal) :: " . $exc->getMessage());          
+            ErroController::errroSql("Nao foi possivel carregar quantidade de animais(quantidadeAnimal) :: " . $exc->getMessage());          
         }
     }
         public static function getAnimalALL( $con)

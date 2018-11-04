@@ -41,12 +41,17 @@ class CollectionsQuerys {
                 echo 'Erro_ Retorno nullo';
 
             return $Values;
-        } catch (Exception $exc) {
             
-            $Values = $con->fetch(PDO::FETCH_ASSOC);
-
-            if (is_null($Values))
-                echo 'Erro_ Retorno nullo';
+        } catch (Exception $Values) {
+            
+            try {
+                $Values = $con->fetch(PDO::FETCH_ASSOC);
+                return $Values;
+            }  
+            catch (Exception $Values) {
+                return "Script sucesso :: sem dados de retorno :: quantidades de linhas afetadas :: " . $con->rowCount();
+            }
+            
 
             return $Values;
         }
