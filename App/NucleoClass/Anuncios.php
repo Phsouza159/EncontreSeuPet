@@ -13,5 +13,25 @@
  */
 class Anuncios {
     
-    private $Nome;
+    private static $NomeModeAnuncio = "./Layout/" . "MODE_ANUNCIO.php";
+    
+    
+    public static function GerarAnuncio()
+    {
+        self::incluirModeAnuncio();
+    }
+    
+    private static function incluirModeAnuncio()
+    {
+        if(file_exists(self::$NomeModeAnuncio))
+        {
+            include_once self::$NomeModeAnuncio;
+        }
+        if(file_exists("../Site/Layout/MODE_ANUNCIO.php"))
+        {
+            include_once "../Site/Layout/MODE_ANUNCIO.php";
+        }
+        
+       
+    }
 }

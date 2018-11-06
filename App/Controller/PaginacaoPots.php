@@ -147,6 +147,12 @@
                   // o primeiro parametro e o nome do arquivo : o segundo e o caminho dele : ai jogo para a funcao que cria o view do mini posts
                     //$this->GetMiniPost($chaves[$x-1] , "../Posts/".$files[$chaves[$x-1]]);
                     $this->GetMiniPost( $this->posts[$x - 1]);
+                    
+                    if(($x % 2 != 0))
+                    {
+                        Anuncios::GerarAnuncio();
+                    }
+                    
                 
                 if($x == $this->numPost ) // Controlador -- bloquear de exibir mais posters do que existe
                   break;

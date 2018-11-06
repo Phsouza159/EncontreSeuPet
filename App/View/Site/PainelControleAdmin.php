@@ -41,8 +41,15 @@ $qntAnimal = AnimalDAO::quantidadeAnimal($con->getCon());
         <script>
         </script>
     </head>
-    <body>
-
+    <body class="p-5">
+        <div class="justify-content-center">
+            <p class="h3"> Painel Administrador</p>
+            <button class="d2" onclick="window.location.href = 'home.php'">
+                <span>home</span>
+            </button>
+            
+        </div>
+        </hr>
         <div class="body-elementos-painel">
             <p class="h1" style="">Elementos Diponiveis</p>
             <div class="body-elementos-painel-overflow">
@@ -61,13 +68,8 @@ $qntAnimal = AnimalDAO::quantidadeAnimal($con->getCon());
                                 <div class="card-body">
                                     <h5 class="card-title">Pots</h5>
                                     <p class="card-text">...</p>
-                                    <div class="div-button">
-                                        <button class="d2" id="BT-VISULIZAR-POTS" 
-                                                data-toggle="collapse" 
-                                                href="#collapseExample" 
-                                                role="button" 
-                                                aria-expanded="false" 
-                                                aria-controls="collapseExample">
+                                    <div>
+                                        <button class="d2" id="BT-VISULIZAR-POTS">
                                             <span>visualizar Pots</span>
                                         </button>
                                     </div>
@@ -86,12 +88,7 @@ $qntAnimal = AnimalDAO::quantidadeAnimal($con->getCon());
                                     <h5 class="card-title">Animal</h5>
                                     <p class="card-text">...</p>
                                     <div>
-                                        <button class="d2" id="BT-VISULIZAR-ANIMAIS" 
-                                                data-toggle="collapse" 
-                                                href="#collapseExample" 
-                                                role="button" 
-                                                aria-expanded="false" 
-                                                aria-controls="collapseExample">
+                                        <button class="d2" id="BT-VISULIZAR-ANIMAIS">
                                             <span>visualizar Animais</span>
                                         </button>
                                     </div>
@@ -110,12 +107,7 @@ $qntAnimal = AnimalDAO::quantidadeAnimal($con->getCon());
                                     <h5 class="card-title">atualizacao de scripts</h5>
                                     <p class="card-text">...</p>
                                     <div>
-                                        <button class="d2" id="BT-VISULIZAR-BANCODADOSATUALIZAR" 
-                                                data-toggle="collapse" 
-                                                href="#collapseExample" 
-                                                role="button" 
-                                                aria-expanded="false" 
-                                                aria-controls="collapseExample">
+                                        <button class="d2" id="BT-VISULIZAR-BANCODADOSATUALIZAR">
                                             <span>Visulizar Banco de Dados</span>
                                         </button>
                                     </div>
@@ -134,12 +126,7 @@ $qntAnimal = AnimalDAO::quantidadeAnimal($con->getCon());
                                     <h5 class="card-title">ControleAvançado Banco de Dados</h5>
                                     <p class="card-text">...</p>
                                     <div>
-                                        <button class="d2" id="BT-VISULIZAR-PHPMYADMIN" 
-                                                data-toggle="collapse" 
-                                                href="#collapseExample" 
-                                                role="button" 
-                                                aria-expanded="false" 
-                                                aria-controls="collapseExample">
+                                        <button class="d2" id="BT-VISULIZAR-PHPMYADMIN">
                                             <span>PhpMyAdmin</span>
                                         </button>
                                     </div>
@@ -158,12 +145,7 @@ $qntAnimal = AnimalDAO::quantidadeAnimal($con->getCon());
                                     <h5 class="card-title">...</h5>
                                     <p class="card-text">...</p>
                                     <div>
-                                        <button class="d2" id="" 
-                                                data-toggle="collapse" 
-                                                href="#collapseExample" 
-                                                role="button" 
-                                                aria-expanded="false" 
-                                                aria-controls="collapseExample">
+                                        <button class="d2" id="" >
                                             <span>...</span>
                                         </button>
                                     </div>
@@ -182,12 +164,7 @@ $qntAnimal = AnimalDAO::quantidadeAnimal($con->getCon());
                                     <h5 class="card-title">...</h5>
                                     <p class="card-text">...</p>
                                     <div>
-                                        <button class="d2" id="" 
-                                                data-toggle="collapse" 
-                                                href="#collapseExample" 
-                                                role="button" 
-                                                aria-expanded="false" 
-                                                aria-controls="collapseExample">
+                                        <button class="d2" id="">
                                             <span>...</span>
                                         </button>
                                     </div>
@@ -198,24 +175,21 @@ $qntAnimal = AnimalDAO::quantidadeAnimal($con->getCon());
         
                         -->
                     </tr>
-                </table>>
+                </table>
             </div>
         </div>
         <?php
         // put your code here
-        ?>
-
-        <div class="justify-content-center">
-            <button class="d2" onclick="window.location.href = 'home.php'"><span>home</span></button>
-        </div>
-
-
+        ?> 
 
         <div class="body-acaoes">
 
             <div class="collapse" id="collapseExample">
                 <div class="card card-body iframe-controle">
-                    <span id="POST-TABELA"></span>
+                    <span id="POST-TABELA">
+                        
+                        <h1>Selecione Um elemento :)</h1>
+                    </span>
                 </div>
             </div>
 
@@ -226,22 +200,23 @@ $qntAnimal = AnimalDAO::quantidadeAnimal($con->getCon());
 
         $(function () {
 
-            var controle = false;
-
-
             $("#BT-VISULIZAR-POTS").click(function () {
+                Controle_collapse();
                 InserirIframe("TABELA_POTS");
             });
 
             $("#BT-VISULIZAR-ANIMAIS").click(function () {
+                Controle_collapse();
                 InserirIframe("TABELA_ANIMAL");
             });
 
             $("#BT-VISULIZAR-BANCODADOSATUALIZAR").click(function () {
+                Controle_collapse();
                 InserirIframe("CONTROLE_SCRIPTS");
             });
 
             $("#BT-VISULIZAR-PHPMYADMIN").click(function () {
+                Controle_collapse();
                 InserirIframe("http://127.0.0.1:8080/eds-modules/phpmyadmin470x180902201004/index.php", true);
             });
 
@@ -249,18 +224,30 @@ $qntAnimal = AnimalDAO::quantidadeAnimal($con->getCon());
             function InserirIframe(FrameIclude, custom = false)
             {
 
-                if (!controle && !custom)
+                if (!custom)
                 {
                     document.getElementById("POST-TABELA").innerHTML = "<iframe class='iframe-style' src='./Layout/" + FrameIclude + ".php' frameborder='0' allowfullscreen></iframe>";
-                    controle = true;
-                } else if (!custom)
-                {
-                    controle = false;
-                } else
+                   // controle_iframe = true;
+                }else if(custom)
                 {
                     document.getElementById("POST-TABELA").innerHTML = "<iframe class='iframe-style' src='" + FrameIclude + "' frameborder='0' allowfullscreen></iframe>";
-                    controle = true;
+                  //   controle_iframe = true;
+                }
+                
             }
+            
+            function Controle_collapse(invisivel = false)
+            {
+                if(!invisivel)
+                {
+                    $('#collapseExample').show();
+                    $('#POST-TABELA').show();
+                }
+                else 
+                {
+                   $('#collapseExample').hide(); 
+                    
+                }
             }
 
         });

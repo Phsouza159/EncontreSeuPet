@@ -4,6 +4,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+include_once '../../NucleoClass/Anuncios.php';
 include_once './Layout/MenuNav.php';
 //include_once '../../Controller/SessionController.php';
 
@@ -18,6 +19,7 @@ include_once './Layout/MenuNav.php';
         <!--Chamar folha css (LESS) -->
         <link rel="stylesheet/less" type="text/css" href="../Contents/css/Home.less?v=1" />
         <link rel="stylesheet/less" type="text/css" href="../Contents/css/footer.less?v=1" />
+        <link rel="stylesheet/less" type="text/css" href="../Contents/css/Anuncios.less?v=1" />
         <!-- Chamar biblioteca (LESS)-->
         <script type="text/javascript" src="../Contents/plugins/less/dist/less.min.js"></script> 
         
@@ -135,6 +137,13 @@ include_once './Layout/MenuNav.php';
                 <span class="sr-only">Próximo</span>
             </a>
         </div>
+       <?php
+
+        Anuncios::GerarAnuncio();
+
+       ?> 
+       
+        
         <footer class="footer-body">
            <?php
               MenuNav::footer();

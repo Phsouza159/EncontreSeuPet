@@ -31,7 +31,7 @@ $SQL = isset($_REQUEST['SCRIPT_TEXTO']) ? $_REQUEST['SCRIPT_TEXTO'] : "";
         <script src="../../Contents/js/jquery3.3.1.js"></script>
         <style>
             table td{
-                font-size: 12px;
+                font-size: 15px;
                 border-bottom: 1px solid gray;
             }    
             table th {
