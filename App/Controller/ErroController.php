@@ -88,18 +88,7 @@ echo "
             exit;
         
     }
-    public static function errroSql($sql = null)
-    {
-         if(is_null($sql))
-        {
-            echo " Erro Desconhecido!";
-            exit;
-        }
-        else
-        {
-             return $sql;
-        }
-    }
+
 
     //put your code here
 }

@@ -16,7 +16,7 @@
     private $pagUrl;                      // aux para a pagina que vai a fucao
 
     
-    
+    private $controleDireitaEsquerda = false;
     private $postsNames = array();
     
 
@@ -344,7 +344,19 @@
    //private function GetMiniPost($titulo , $caminho)
     private function  GetMiniPost($post)
     {
-      echo "<div class='row card espaco-pots'>
+        if($this->controleDireitaEsquerda)
+        {
+           include __DIR__ . "../../View/Site/Layout/MODE_MINI_POST_RIGHT.php"; 
+           $this->controleDireitaEsquerda = false;
+        }
+        else 
+        {
+            include __DIR__ . "../../View/Site/Layout/MODE_MINI_POST_LEFT.php";
+            $this->controleDireitaEsquerda = true;
+        }
+        
+        
+      /*echo "<div class='row card espaco-pots'>
               
                 <div class='col'><img src='#'></div>
                 
@@ -358,7 +370,7 @@
                     </hr>
                     <p class='card-text'>publicação: ".$post['dtCriacao']."</p>
                 </div>
-             </div>";
+             </div>";*/
     }
 
 

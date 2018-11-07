@@ -402,7 +402,6 @@ include_once './Layout/MenuNav.php';
             </div>
 
             <!-- Chamar dependencias javascript -->
-        <script src="../Contents/js/site.js"></script>   
          <script src="../Contents/plugins/bootstrap/js/bootstrap.js"></script>
         <script type="text/javascript" src="./Layout/post/dist/summernote-lite.js"></script>
         <script src="./Layout/post/dist/lang/summernote-pt-BR.min.js"></script>

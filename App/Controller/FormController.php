@@ -8,7 +8,7 @@ include_once __DIR__ . "/SessionController.php";
 
 if(isset( $_REQUEST['ACAO_FORM']))  /*função fora da classe, executa sem chamar classe, código somente para esse arquivo*/  
 {  /*isset: verificação se o valor, a variavel existe*/  
-   $RESULT = FormController::main($_REQUEST['ACAO_FORM']);  /*request: post e get em uma variavel, request.*/  
+    FormController::main($_REQUEST['ACAO_FORM']);  /*request: post e get em uma variavel, request.*/  
 }
 
 
@@ -20,8 +20,6 @@ class FormController {  /*apenas o  nome da classe*/
     
     public static function main($oper) /*principal metodo da classe: main*/  
     {
-        self::$CON = new Conexao();
-         
         switch($oper)  /*switch:if*/    /*$oper: operação, valor do parametro*/  
         {
             case "login":  /**/  
@@ -32,18 +30,11 @@ class FormController {  /*apenas o  nome da classe*/
             case "CADASTRO-POTS":
                 self::FormCadastroPots();
                 break;
-            
-            case "ATUALIZAR_SCRIPT":
-                return self::FormScriptAtualizar();
-               
-            
             default:  /*valor não encontrado e aciona o controle de erro:*/  
 
                 ErroController::erroFatal("nao foi possivel efetuar o controle de formularios para a acao: " . $oper);
                 break;
         }
-        
-         self::$CON = null;
     }
     
     private static function FormLogin()
@@ -97,12 +88,5 @@ class FormController {  /*apenas o  nome da classe*/
             ErroController::erroFatal("Solicitacao de valor nao existe para o input : " . $key);
             /*se não retorna o erro*/ 
         }
-    }
-    
-    public static function FormScriptAtualizar()
-    {
-       
-       return AdminDAO::ProcessarScriptSql( self::getKey("SCRIPT_TEXTO") 
-                                    , self::$CON->getCon());     
     }
 }
