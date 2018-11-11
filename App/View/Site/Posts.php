@@ -10,11 +10,11 @@
  include_once '../../Model/AnimalDAO.php';
  include_once '../../Model/PostDAO.php';
  
- include_once '../../NucleoClass/Anuncios.php';
- include_once '../../NucleoClass/Post.php';
- include_once '../../NucleoClass/PerdidoPOST.php';
+ include_once '../../NucleoClass/AnuncioDTO.php';
+ include_once '../../NucleoClass/PostDTO.php';
  
   include_once '../../Controller/PaginacaoPots.php';
+  
    $con = new Conexao(); //conexão bando de dados
    
    $qntPost = PostDAO::quantidadePost( $con->getCon() );  

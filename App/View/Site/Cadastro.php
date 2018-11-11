@@ -7,20 +7,21 @@ include_once './Layout/MenuNav.php';
     <head>
         <meta charset="UTF-8">
         <title>Cadastro Perdidos</title>
-        
+        <meta name="viewport" content="width=device-width">
         <!--Chamar folha css (LESS) -->
         <link rel="stylesheet/less" type="text/css" href="../Contents/css/Cadastro.less?v=1.0.8" />
         <link rel="stylesheet/less" type="text/css" href="../Contents/css/footer.less?v=1.0.8" />
         <link rel="stylesheet/less" type="text/css" href="../Contents/css/CriarPots.less?v=1" />
-        
+
         <!-- Chamar biblioteca (LESS)-->
         <script src="../Contents/plugins/less/dist/less.js" ></script>
         <script src="../Contents/js/jquery3.3.1.js" ></script>
         <!-- include bootstrap --> 
         <link rel="stylesheet" type="text/css" href="../Contents/plugins/bootstrap/css/bootstrap.css">
         <link rel="stylesheet" href="./Layout/post/dist/summernote-lite.css">
-        
-        
+        <!-- Icones  -->
+        <link rel="stylesheet" href="../Contents/Css/font-awesome.css" type="text/css" />
+
         <style>
             input[type=text], select {
                 width: 80%;
@@ -56,16 +57,18 @@ include_once './Layout/MenuNav.php';
             .passo2, .passo3{
                 display:none;
             }
+
+
         </style>
         <script type="text/javascript">
-                //$('#summernote').summernote();
-                $(document).ready(function () {
-                    $('#summernote').summernote({
-                        widht: 400,
-                        height: 400,
-                        tabsize: 2
-                    });
+            //$('#summernote').summernote();
+            $(document).ready(function () {
+                $('#summernote').summernote({
+                    widht: 400,
+                    height: 400,
+                    tabsize: 2
                 });
+            });
 
         </script>
 
@@ -79,35 +82,35 @@ include_once './Layout/MenuNav.php';
 
             <div class='container'>
 
-                <div class="row m-2 controle-etapas justify-content-center">
+                <div class="row m-5 controle-etapas justify-content-center">
 
                     <section class="etapas1 etapas-cards etapas-cards-active">
-                        <label class="etapas-icon">1</label>
-                        <!-- <label class="etapas-descricao text-center">Cadastro Pessoa</label> -->
+                        <label class="etapas-icon"><i class="fa fa-user"></i></label>
+                        <label class="etapas-descricao text-center">Pessoa</label>
                     </section>
 
                     <section class="etapas-linha"></section>
 
                     <section class="etapas2 etapas-cards">
-                        <label class="etapas-icon">1</label>
-                        <!--  <label class="etapas-descricao text-center">Cadastro Pessoa</label> -->
+                        <label class="etapas-icon"><i class="fa fa-key"></i></label>
+                        <label class="etapas-descricao text-center">Login</label>
                     </section>
 
                     <section class="etapas-linha"></section>
 
                     <section class="etapas3 etapas-cards">
-                        <label class="etapas-icon">1</label>
-                        <!-- <label class="etapas-descricao text-center">Cadastro Pessoa</label> -->
+                        <label class="etapas-icon"><i class="fa fa-paw"></i></label>
+                        <label class="etapas-descricao text-center">Post</label>
                     </section>
 
                 </div>
 
                 <form>
-                <div class="passo1" style="background: gray">
+                    <div class="passo1">
 
                         <p class='h1'>Pessoa</p>
                         <div class="row m-2">
-                            <section class="col" style="background: green">  
+                            <section class="col" >  
 
                                 <input id="formCadastroNome"
                                        name='cadastro-nome' 
@@ -117,7 +120,7 @@ include_once './Layout/MenuNav.php';
 
                                 <a class="input-name"></a> 
                             </section>
-                            <section class="col" style="background: green">  
+                            <section class="col">  
 
                                 <input id="formCadastroSobrenome" 
                                        name='cadastro-sobrenome' 
@@ -127,7 +130,7 @@ include_once './Layout/MenuNav.php';
 
                                 <a class="input-sobrenome"></a> 
                             </section>
-                            <section class="col" style="background: green">  
+                            <section class="col">  
                                 <input name='cadastro-estado' 
                                        type='text' 
                                        class='input-principal-cadastro' 
@@ -140,7 +143,7 @@ include_once './Layout/MenuNav.php';
 
                         <div class="row m-2">
 
-                            <section class="col" style="background: green"> 
+                            <section class="col"> 
 
                                 <select id="formCadastroCidade" class='section-cidade-group-principal-cadastro'>
                                     <option class='section-cidade-group-principal-cadastro' value=''>Cidade...</option>
@@ -178,10 +181,10 @@ include_once './Layout/MenuNav.php';
 
                                 </select>
                                 <a class="input-cidade"></a> 
-                                
+
                             </section>
 
-                            <section class="col" style="background: green"> 
+                            <section class="col" > 
 
                                 <input id="formCadastroTelefone"
                                        name='cadastro-telefone' 
@@ -192,7 +195,7 @@ include_once './Layout/MenuNav.php';
                                 <a class="input-telefone"></a> 
                             </section>
 
-                            <section class="col" style="background: green"> 
+                            <section class="col"> 
                                 <input id="formCadastroEndereco" 
                                        name='cadastro-nome' 
                                        type='text' 
@@ -202,13 +205,13 @@ include_once './Layout/MenuNav.php';
                                 <a class="input-endereco"></a> 
                             </section> 
                         </div>
-                        
+
                         <div class="row m-4">
-                            
-                            <section class="col" style="background: green"> 
-                                
+
+                            <section class="col"> 
+
                                 <label>Data de Nacimento:</label>
-                                    <br />
+                                <br />
                                 <input id="formCadastroDtNascimento"
                                        name='cadastro-dataNescimento' 
                                        type='date' 
@@ -217,22 +220,22 @@ include_once './Layout/MenuNav.php';
 
                                 <a class="input-dtNascimento"></a> 
                             </section>
-                            <section class="col" style="background: green"></section> 
-                            <section class="col" style="background: green"> 
-                                
+                            <section class="col"></section> 
+                            <section class="col"> 
+
                                 <label>Sexo:</label>
-                                    <br />
+                                <br />
                                 <input type='radio' 
                                        name='cadastro-sexo' 
                                        value='cadastro-masc' 
                                        checked="checked">
                                 <span class='text-descricao-group-principal-cadastro' >Masculino</span> 
-                                
+
                                 <input type='radio' 
                                        name='cadastro-sexo' 
                                        value='cadastro-femi'>
                                 <span class='text-descricao-group-principal-cadastro'>Feminino</span> 
-                                
+
                                 <input type='radio' 
                                        name='cadastro-sexo'
                                        value='cadastro-other'>
@@ -241,153 +244,153 @@ include_once './Layout/MenuNav.php';
                             </section>
                         </div>
                         <input type="button"  class="button_passo2" value="seguinte" />
-                      </div>
-                        
+                    </div>
+
                     <div class="passo2">
-                          <p class='h1'>Login</p>
+                        <p class='h1'>Login</p>
 
-                            <br>
+                        <br>
 
-                            <label></label>
-                            <input name='cadastro-login' type='text' class='input-principal-cadastro' placeholder='...'> 
-                            <br>
-                            <label></label>
-                            <input name='cadastro-senha' type='text' class='input-principal-cadastro' placeholder='Senha...'> 
+                        <label></label>
+                        <input name='cadastro-login' type='text' class='input-principal-cadastro' placeholder='...'> 
+                        <br>
+                        <label></label>
+                        <input name='cadastro-senha' type='text' class='input-principal-cadastro' placeholder='Senha...'> 
 
-                            <br>
+                        <br>
 
-                            <label></label>
-                            <input name='cadastro-senha confirmação' type='text' class='input-principal-cadastro' placeholder='Senha confirmação...'> 
+                        <label></label>
+                        <input name='cadastro-senha confirmação' type='text' class='input-principal-cadastro' placeholder='Senha confirmação...'> 
 
-                            <br>
+                        <br>
 
-                            <input type="button" class="button_passo1" value="voltar" />
-                            <input type="button" class="button_passo3" value="seguinte" />
-                        </div>
+                        <input type="button" class="button_passo1" value="voltar" />
+                        <input type="button" class="button_passo3" value="seguinte" />
+                    </div>
 
-                        <div class="passo3">
-                           <section class="row"> 
+                    <div class="passo3">
+                        <section class="row"> 
 
-                    <label class="col-sm-2 col-form-label">Insira o Titulo:</label>
+                            <label class="col-sm-2 col-form-label">Insira o Titulo:</label>
 
-                    <section class="form-group col m-2">     
-                        <input type="text"
-                               name="POTS-TITULO"
-                               class="input-tam form form-control"
-                               placeholder="Insira o Titulo"
-                               required="true">
-                    </section> 
-                </section>
-                <section class="row"> 
+                            <section class="form-group col m-2">     
+                                <input type="text"
+                                       name="POTS-TITULO"
+                                       class="input-tam form form-control"
+                                       placeholder="Insira o Titulo"
+                                       required="true">
+                            </section> 
+                        </section>
+                        <section class="row"> 
 
-                    <label class="col-sm-2 col-form-label">Nome do Pet:</label>
+                            <label class="col-sm-2 col-form-label">Nome do Pet:</label>
 
-                    <section class="col m-2">     
-                        <input type="text"
-                               name="POTS-NOME-PET"
-                               class="input-tam  form form-control"
-                               placeholder="Nome Animal"
-                               required="true">
-                    </section>
-
-
-                    <label class="col-sm-2 col-form-label">Raça Animal:</label>
-
-                    <section class="col m-2">  
-
-                        <input type="text"
-                               name="POTS-RACA-PET"
-                               class="input-tam  form form-control"
-                               placeholder="Raça Animal"
-                               required="true">
-
-                    </section>
-                </section>
-
-                <section class="row">     
+                            <section class="col m-2">     
+                                <input type="text"
+                                       name="POTS-NOME-PET"
+                                       class="input-tam  form form-control"
+                                       placeholder="Nome Animal"
+                                       required="true">
+                            </section>
 
 
-                    <label class="col-sm-2 col-form-label">Cor Animal:</label>
+                            <label class="col-sm-2 col-form-label">Raça Animal:</label>
 
-                    <section class="col m-2">     
-                        <input type="text"
-                               name="POTS-COR-ANIMAL"
-                               class="input-tam  form form-control"
-                               placeholder="Cor Animal"
-                               required="true">
-                    </section>
+                            <section class="col m-2">  
+
+                                <input type="text"
+                                       name="POTS-RACA-PET"
+                                       class="input-tam  form form-control"
+                                       placeholder="Raça Animal"
+                                       required="true">
+
+                            </section>
+                        </section>
+
+                        <section class="row">     
+
+
+                            <label class="col-sm-2 col-form-label">Cor Animal:</label>
+
+                            <section class="col m-2">     
+                                <input type="text"
+                                       name="POTS-COR-ANIMAL"
+                                       class="input-tam  form form-control"
+                                       placeholder="Cor Animal"
+                                       required="true">
+                            </section>
 
 
 
-                    <label class="col-sm-2 col-form-label">Sexo do Animal:</label>
+                            <label class="col-sm-2 col-form-label">Sexo do Animal:</label>
 
-                    <select class="input-tam form-control m-2" 
-                            name="POTS-SEXO-PET">
-                        <option value="0" checked>Macho</option>>
-                        <option value="1">Fêmea</option>
-                    </select>
-                </section>
+                            <select class="input-tam form-control m-2" 
+                                    name="POTS-SEXO-PET">
+                                <option value="0" checked>Macho</option>>
+                                <option value="1">Fêmea</option>
+                            </select>
+                        </section>
 
-                <section class="row">     
-                    <label class="col-sm-2 col-form-label">Peso do Animal:</label> 
+                        <section class="row">     
+                            <label class="col-sm-2 col-form-label">Peso do Animal:</label> 
 
-                    <section class="col m-2">     
-                        <input type="text"
-                               name="POTS-PESO-ANIMAL"
-                               class="input-tam form-control"
-                               placeholder="Peso Animal"
-                               required="true">
-                    </section>
+                            <section class="col m-2">     
+                                <input type="text"
+                                       name="POTS-PESO-ANIMAL"
+                                       class="input-tam form-control"
+                                       placeholder="Peso Animal"
+                                       required="true">
+                            </section>
 
-                    <label class="col-sm-2 col-form-label">Idade do Animal:</label>
+                            <label class="col-sm-2 col-form-label">Idade do Animal:</label>
 
-                    <section class="col m-2">     
-                        <input type="text"
-                               name="POTS-IDADE-PET"
-                               class="input-tam  form-control"
-                               placeholder="Idade Animal"
-                               required="true">
-                    </section>
+                            <section class="col m-2">     
+                                <input type="text"
+                                       name="POTS-IDADE-PET"
+                                       class="input-tam  form-control"
+                                       placeholder="Idade Animal"
+                                       required="true">
+                            </section>
 
-                </section>
-                <section class="row"> 
-                    <section class="col m-2"> 
-                        <h6> <i class="note-icon-summernote"></i> Summernote
-                            <span class="label label-info">Bootstrap v3.3.7</span>
-                            <span class="label label-success">with Summernote Icons</span>
-                        </h6>
-                    </section>
-                </section>
-                <section class="row"> 
-                    <section class="col m-2"> 
-                        <textarea id="summernote" 
-                                  name="POTS-DESCRICAO-POST"><p>Crie seu pots aqui!</p></textarea>
+                        </section>
+                        <section class="row"> 
+                            <section class="col m-2"> 
+                                <h6> <i class="note-icon-summernote"></i> Summernote
+                                    <span class="label label-info">Bootstrap v3.3.7</span>
+                                    <span class="label label-success">with Summernote Icons</span>
+                                </h6>
+                            </section>
+                        </section>
+                        <section class="row"> 
+                            <section class="col m-2"> 
+                                <textarea id="summernote" 
+                                          name="POTS-DESCRICAO-POST"><p>Crie seu pots aqui!</p></textarea>
 
-                        <button class="btn btn-primary"  type="submit">Criar</button>
+                                <button class="btn btn-primary"  type="submit">Criar</button>
 
-                        </form>
-                        <button class="btn btn-primary" onclick="window.location.href = 'posts.php'" >Voltar Galeria</button>
-                    </section>
-                    
-                    <section class="col m-2">
-                        
-                        
-                        <section class="col m-2">     
-                            
-                        <label class="col-form-label">Idade do Animal:</label>
+                                </form>
+                                <button class="btn btn-primary" onclick="window.location.href = 'posts.php'" >Voltar Galeria</button>
+                            </section>
 
-                            <input type="File"
-                               name=""
-                               class="input-tam  form-control"
-                               placeholder=""
-                               required="true">
-                    </section>
-                    </section>
-                    
-                </section>
-                            <input type="button" class="button_passo2" value="voltar" />
-                            <input type="submit" />
-                        </div>
+                            <section class="col m-2">
+
+
+                                <section class="col m-2">     
+
+                                    <label class="col-form-label">Idade do Animal:</label>
+
+                                    <input type="File"
+                                           name=""
+                                           class="input-tam  form-control"
+                                           placeholder=""
+                                           required="true">
+                                </section>
+                            </section>
+
+                        </section>
+                        <input type="button" class="button_passo2" value="voltar" />
+                        <input type="submit" />
+                    </div>
                 </form>
             </div>
 
@@ -402,9 +405,10 @@ include_once './Layout/MenuNav.php';
             </div>
 
             <!-- Chamar dependencias javascript -->
-         <script src="../Contents/plugins/bootstrap/js/bootstrap.js"></script>
-        <script type="text/javascript" src="./Layout/post/dist/summernote-lite.js"></script>
-        <script src="./Layout/post/dist/lang/summernote-pt-BR.min.js"></script>
+            <script src="../Contents/js/site.js"></script>   
+            <script src="../Contents/plugins/bootstrap/js/bootstrap.js"></script>
+            <script type="text/javascript" src="./Layout/post/dist/summernote-lite.js"></script>
+            <script src="./Layout/post/dist/lang/summernote-pt-BR.min.js"></script>
 
     </body>
 </html>

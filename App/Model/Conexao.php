@@ -13,23 +13,10 @@ class Conexao extends DbContextoDAO {
 
     function __construct() { //configurando
         
-        $this->setCon( parent::ConexaoMysql()); 
-        if($this->getCon())
-        {
-         //   echo 'Conexao sucesso!';
-        }
-        else if(!$this->getCon())
-        {
-           echo 'conexao falide';
-           exit;
-        }
-            
+        $this->setCon( self::ConexaoMysql()); 
+              
     }
-    
-    function __destruct() {
-        parent::ConexaoMysql_Close($this->getCon());
-    }
-    
+        
     public function getCon() {
         return $this->con;
     }

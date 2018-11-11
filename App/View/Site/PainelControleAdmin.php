@@ -11,8 +11,8 @@ include_once '../../Model/Conexao.php';
 include_once '../../Model/AnimalDAO.php';
 include_once '../../Model/PostDAO.php';
 
-include_once '../../NucleoClass/Post.php';
-include_once '../../NucleoClass/PerdidoPOST.php';
+include_once '../../NucleoClass/PostDTO.php';
+
 
 $con = new Conexao(); //conexão bando de dados
 

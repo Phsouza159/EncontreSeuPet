@@ -7,10 +7,7 @@ include_once "../../Model/Infra/CollectionsQuerys.php";
 include_once "../../Model/PostDAO.php";
 include_once "../../Model/AnimalDAO.php";
 
-include_once '../../NucleoClass/Pessoa.php';
-include_once '../../NucleoClass/Animal.php';
-include_once '../../NucleoClass/Post.php';
-include_once '../../NucleoClass/PerdidoPOST.php';
+include_once '../../NucleoClass/PostDTO.php';
 
 include_once '../../Controller/GetConfigApp.php';
 include_once '../../Controller/GerarPaginaWebPost.php';

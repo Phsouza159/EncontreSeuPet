@@ -122,6 +122,13 @@
       */
     public function ViewMiniPost()
     {
+      
+        if($this->posts == null)
+        {
+            echo "sem registro :/";
+            return;
+        }
+        
         
       #------ Carregar informacoes necessarias -- navegação
       $this->GetNumMiniPostNav();

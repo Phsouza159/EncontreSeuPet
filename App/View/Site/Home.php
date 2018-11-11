@@ -4,7 +4,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-include_once '../../NucleoClass/Anuncios.php';
+include_once '../../NucleoClass/AnuncioDTO.php';
 include_once './Layout/MenuNav.php';
 //include_once '../../Controller/SessionController.php';
 
@@ -23,20 +23,16 @@ include_once './Layout/MenuNav.php';
         <!-- Chamar biblioteca (LESS)-->
         <script type="text/javascript" src="../Contents/plugins/less/dist/less.min.js"></script> 
         
-        <link rel="stylesheet" type="text/css" href="../Contents/plugins/bootstrap/css/bootstrap.css">
-       <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">     
-        
-        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.7.1/less.min.js" ></script>-->
-       
+        <link rel="stylesheet" href="../Contents/Css/font-awesome.css" type="text/css" />
         <!-- include bootstrap --> 
-        
+         <link rel="stylesheet" type="text/css" href="../Contents/plugins/bootstrap/css/bootstrap.css">
     </head>
     <body>
 
         <?php
           MenuNav::menu();
         ?>
-
+        <i class="fa fa-envelope fa-fw">asds</i>
         <div id="carouselExampleFade" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleFade" data-slide-to="0" class="active"></li>  
@@ -139,7 +135,7 @@ include_once './Layout/MenuNav.php';
         </div>
        <?php
 
-        Anuncios::GerarAnuncio();
+        AnuncioDTO::GerarAnuncio();
 
        ?> 
        

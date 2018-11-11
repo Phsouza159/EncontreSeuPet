@@ -20,6 +20,8 @@ class FormController {  /*apenas o  nome da classe*/
     
     public static function main($oper) /*principal metodo da classe: main*/  
     {
+        self::$CON = new Conexao();
+        
         switch($oper)  /*switch:if*/    /*$oper: operação, valor do parametro*/  
         {
             case "login":  /**/  
@@ -30,6 +32,15 @@ class FormController {  /*apenas o  nome da classe*/
             case "CADASTRO-POTS":
                 self::FormCadastroPots();
                 break;
+            
+            case "EXCLUIR_POST":
+                self::FormExcluirPost();
+                break;
+            
+            case "EDITAR_POST":
+                self::FormEditarPost();
+                break;
+            
             default:  /*valor não encontrado e aciona o controle de erro:*/  
 
                 ErroController::erroFatal("nao foi possivel efetuar o controle de formularios para a acao: " . $oper);
@@ -37,6 +48,18 @@ class FormController {  /*apenas o  nome da classe*/
         }
     }
     
+    public static function  getKey($key = 'default')  /*busca chave, key: array*/  
+    {
+        if(array_key_exists($key, $_REQUEST))  /*verificando se o valor existe no request*/  
+        {
+            return $_REQUEST[$key];  /*se sim retorna a chave*/  
+        }
+        else
+        {
+            ErroController::erroFatal("Solicitacao de valor nao existe para o input : " . $key);
+            /*se não retorna o erro*/ 
+        }
+    }
     private static function FormLogin()
     {
        /* $CON = new Conexao();  cria  objeto*/  
@@ -77,16 +100,22 @@ class FormController {  /*apenas o  nome da classe*/
         exit;
     }
     
-    public static function  getKey($key = 'default')  /*busca chave, key: array*/  
+
+    /*
+     * Excluir Post
+     */
+    public static function FormExcluirPost()
     {
-        if(array_key_exists($key, $_REQUEST))  /*verificando se o valor existe no request*/  
-        {
-            return $_REQUEST[$key];  /*se sim retorna a chave*/  
-        }
-        else
-        {
-            ErroController::erroFatal("Solicitacao de valor nao existe para o input : " . $key);
-            /*se não retorna o erro*/ 
-        }
+        PostDAO::inativarPost(self::getKey('excluirId') , self::$CON->getCon());
     }
+    
+    
+    /*
+     * Editar Post
+     */
+    public static function FormEditarPost()
+    {
+        PostDAO::inativarPost(self::getKey('editarId') , self::$CON->getCon());
+    }
+    
 }
