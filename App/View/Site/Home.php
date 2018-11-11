@@ -32,7 +32,7 @@ include_once './Layout/MenuNav.php';
         <?php
           MenuNav::menu();
         ?>
-        <i class="fa fa-envelope fa-fw">asds</i>
+
         <div id="carouselExampleFade" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleFade" data-slide-to="0" class="active"></li>  

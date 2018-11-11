@@ -1,6 +1,14 @@
 <?php
 require_once '../View.php';
 include_once './Layout/MenuNav.php';
+
+include_once '../../Controller/FormController.php';
+
+echo "<pre>";
+    echo "estou pritando aqui :: o valor do tipo post vai conforme o tipo que escolho > perdido 1 | adoacao 2 ";
+    print_r($_REQUEST);
+echo "</pre>";
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -68,12 +76,49 @@ include_once './Layout/MenuNav.php';
                     height: 400,
                     tabsize: 2
                 });
-            });
+            });         
+            
+            function esconderFormularioPrincipal(oper = 0)
+            {
+                var formulario = document.getElementById('formularioPrincipal');
+                var texto = document.getElementById('texto');
+                var opcaoPet = document.getElementById('opcaoPet');
+                var tipoPostValor = document.getElementById('tipoPostValor');
+                
+                
+                switch (oper)
+                {
+                    case 0:
+                        formulario.hidden = !formulario.hidden;
+                        break;
 
+                    case 1:
+                        formulario.hidden = !formulario.hidden;
+                        opcaoPet.hidden = !opcaoPet.hidden;
+                        texto.innerHTML = "Perdido :(";
+                        tipoPostValor.value = 1;
+                        break;
+
+                    case 2:
+                        formulario.hidden = !formulario.hidden;
+                        opcaoPet.hidden = !opcaoPet.hidden;
+                        texto.innerHTML = "Adoção :)";
+                        tipoPostValor.value = 2;
+                        break;
+
+                    case 3:
+                        formulario.hidden = !formulario.hidden;
+                        opcaoPet.hidden = !opcaoPet.hidden;
+                        texto.innerHTML = "";
+
+
+                        break;
+            }
+            }
         </script>
 
     </head>
-    <body>
+    <body onload="esconderFormularioPrincipal(0)">
         <?php
         MenuNav::menu();
         ?>
@@ -269,127 +314,146 @@ include_once './Layout/MenuNav.php';
                     </div>
 
                     <div class="passo3">
-                        <section class="row"> 
 
-                            <label class="col-sm-2 col-form-label">Insira o Titulo:</label>
+                        <div id="opcaoPet" class="opcaoes-pet row">
 
-                            <section class="form-group col m-2">     
-                                <input type="text"
-                                       name="POTS-TITULO"
-                                       class="input-tam form form-control"
-                                       placeholder="Insira o Titulo"
-                                       required="true">
-                            </section> 
-                        </section>
-                        <section class="row"> 
+                            <a onclick='esconderFormularioPrincipal(1)' class='card col p-5'>
+                                <section>
+                                    Perdido :(
+                                </section>
+                            </a>
+                            <center>
+                                <div style='padding-top: 150px'>Escolha uma opcao, so clicar em um dos cards azuis :)<br/>efeito do card azul no CriarPost.Less</div>
+                            </center>
+                            <a onclick='esconderFormularioPrincipal(2)' class='card col p-5'>
+                                <section>
+                                    Adoção :)
+                                </section>
+                            </a>
+                        </div>
 
-                            <label class="col-sm-2 col-form-label">Nome do Pet:</label>
 
-                            <section class="col m-2">     
-                                <input type="text"
-                                       name="POTS-NOME-PET"
-                                       class="input-tam  form form-control"
-                                       placeholder="Nome Animal"
-                                       required="true">
+                        <div id="formularioPrincipal">
+
+                            <section claas='row'>
+                                <h1>  
+                                    <label id='texto'></label>
+                                </h1>
+                                <a  class='btn btn-info' onclick="esconderFormularioPrincipal(3)">Escolher outra opcao</a>
                             </section>
+                            <section class="row"> 
 
+                                <input id='tipoPostValor' type='hidden' value='1' name='TIPO-POST'>
+                                
+                                <label class="col-sm-2 col-form-label">Insira o Titulo:</label>
 
-                            <label class="col-sm-2 col-form-label">Raça Animal:</label>
-
-                            <section class="col m-2">  
-
-                                <input type="text"
-                                       name="POTS-RACA-PET"
-                                       class="input-tam  form form-control"
-                                       placeholder="Raça Animal"
-                                       required="true">
-
-                            </section>
-                        </section>
-
-                        <section class="row">     
-
-
-                            <label class="col-sm-2 col-form-label">Cor Animal:</label>
-
-                            <section class="col m-2">     
-                                <input type="text"
-                                       name="POTS-COR-ANIMAL"
-                                       class="input-tam  form form-control"
-                                       placeholder="Cor Animal"
-                                       required="true">
-                            </section>
-
-
-
-                            <label class="col-sm-2 col-form-label">Sexo do Animal:</label>
-
-                            <select class="input-tam form-control m-2" 
-                                    name="POTS-SEXO-PET">
-                                <option value="0" checked>Macho</option>>
-                                <option value="1">Fêmea</option>
-                            </select>
-                        </section>
-
-                        <section class="row">     
-                            <label class="col-sm-2 col-form-label">Peso do Animal:</label> 
-
-                            <section class="col m-2">     
-                                <input type="text"
-                                       name="POTS-PESO-ANIMAL"
-                                       class="input-tam form-control"
-                                       placeholder="Peso Animal"
-                                       required="true">
-                            </section>
-
-                            <label class="col-sm-2 col-form-label">Idade do Animal:</label>
-
-                            <section class="col m-2">     
-                                <input type="text"
-                                       name="POTS-IDADE-PET"
-                                       class="input-tam  form-control"
-                                       placeholder="Idade Animal"
-                                       required="true">
-                            </section>
-
-                        </section>
-                        <section class="row"> 
-                            <section class="col m-2"> 
-                                <h6> <i class="note-icon-summernote"></i> Summernote
-                                    <span class="label label-info">Bootstrap v3.3.7</span>
-                                    <span class="label label-success">with Summernote Icons</span>
-                                </h6>
-                            </section>
-                        </section>
-                        <section class="row"> 
-                            <section class="col m-2"> 
-                                <textarea id="summernote" 
-                                          name="POTS-DESCRICAO-POST"><p>Crie seu pots aqui!</p></textarea>
-
-                                <button class="btn btn-primary"  type="submit">Criar</button>
-
-                                </form>
-                                <button class="btn btn-primary" onclick="window.location.href = 'posts.php'" >Voltar Galeria</button>
-                            </section>
-
-                            <section class="col m-2">
-
-
-                                <section class="col m-2">     
-
-                                    <label class="col-form-label">Idade do Animal:</label>
-
-                                    <input type="File"
-                                           name=""
-                                           class="input-tam  form-control"
-                                           placeholder=""
+                                <section class="form-group col m-2">     
+                                    <input type="text"
+                                           name="POTS-TITULO"
+                                           class="input-tam form form-control"
+                                           placeholder="Insira o Titulo"
                                            required="true">
                                 </section>
+
+                                <label class="col-sm-2 col-form-label">Nome do Pet:</label>
+
+                                <section class="col m-2">     
+                                    <input type="text"
+                                           name="POTS-NOME-PET"
+                                           class="input-tam  form form-control"
+                                           placeholder="Nome Animal"
+                                           required="true">
+                                </section>
+
+                            </section>
+                            <section class="row"> 
+
+                                <label class="col-sm-2 col-form-label">Raça Animal:</label>
+
+                                <section class="col m-2">  
+
+                                    <input type="text"
+                                           name="POTS-RACA-PET"
+                                           class="input-tam  form form-control"
+                                           placeholder="Raça Animal"
+                                           required="true">
+
+                                </section>
+
+                                <label class="col-sm-2 col-form-label">Cor Animal:</label>
+
+                                <section class="col m-2">     
+                                    <input type="text"
+                                           name="POTS-COR-ANIMAL"
+                                           class="input-tam  form form-control"
+                                           placeholder="Cor Animal"
+                                           required="true">
+                                </section>
+
                             </section>
 
-                        </section>
-                        <input type="button" class="button_passo2" value="voltar" />
-                        <input type="submit" />
+                            <section class="row">     
+
+                                <label class="col-sm-2 col-form-label">Sexo do Animal:</label>
+
+                                <select class="form-control m-2" style="width: 200px"
+                                        name="POTS-SEXO-PET">
+                                    <option value="0" checked>Macho</option>>
+                                    <option value="1">Fêmea</option>
+                                    
+                                </select>
+                           
+                                <label class="col-sm-2 col-form-label">Peso do Animal:</label> 
+
+                                <section class="col m-2">     
+                                    <input type="text"
+                                           name="POTS-PESO-ANIMAL"
+                                           class="input-tam form-control"
+                                           placeholder="Peso"
+                                           required="true">
+                                </section>
+
+                                <label class="col-sm-2 col-form-label">Idade do Animal:</label>
+
+                                <section class="col m-2">     
+                                    <input type="text"
+                                           name="POTS-IDADE-PET"
+                                           class="input-tam  form-control"
+                                           placeholder="Idade"
+                                           required="true">
+                                </section>
+
+                            </section>
+
+                            <section class="row"> 
+
+                                <section class="col m-2">
+
+
+                                    <section class="col m-2">     
+
+                                        <label class="col-form-label">Foto do Animal:</label>
+
+                                        <input type="File"
+                                               name=""
+                                               class="input-tam  form-control"
+                                               placeholder=""
+                                               required="true">
+                                    </section>
+                                </section>
+
+                            </section>
+                            <label class="col-form-label">Ponto de referencia para localização:</label>
+                            <section class="row"> 
+                                <section class="col m-2">
+                                    
+                                <textarea>
+                                </textarea>
+                                  </section>  
+                            </section>
+                            <input type="button" class="button_passo2" value="voltar" />
+                            <input type="submit" />
+                        </div>
                     </div>
                 </form>
             </div>

@@ -63,16 +63,28 @@ if (!is_null($dadosPostDoacao)) {
         </style>
     </head>
 
-    <body>
+    <body onload="esconderFormularioPrincipal()">
 
         <?php
         MenuNav::menu();
         ?>
-        <div class="container-body">
+        
+        <div id="opcaoPet" class="opcaoes-pet row">
+            
+                <section class='card col'>
+                
+                </section>
+                <section class='card col'>
+                
+                </section>
+            
+        </div>
+        
+        <div id="formularioPrincipal" class="container-body">
 
             <form method="get" action="CriarPost.php">
                 
-                <input type="hiddle" name="ACAO_FORM" value="CADASTRO-POTS">
+                <input type="hidden" name="ACAO_FORM" value="CADASTRO-POST">
                 
                 <section class="row"> 
 
@@ -206,6 +218,12 @@ if (!is_null($dadosPostDoacao)) {
                         tabsize: 2
                     });
                 });
+                
+                function esconderFormularioPrincipal()
+                {
+                    var elemento = document.getElementById('formularioPrincipal');
+                    elemento.hidden = !elemento.hidden; 
+                }
 
         </script>
 
