@@ -1,6 +1,6 @@
 <?php
 
-//include_once 'Infra/DbContextoDAO.php';
+include_once __DIR__ . '/Infra/DbContextoDAO.php';
 
 /**
  * Description of Conexao

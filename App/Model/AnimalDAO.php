@@ -1,30 +1,35 @@
 <?php
 
+include_once __DIR__ . '/Infra/CollectionsQuerys.php';
+
 class AnimalDAO extends CollectionsQuerys {
   
-    public static function SetNovoAnimal(Animal $Animal = null,$con = null) {
+    public static function SetNovoAnimal(AnimalDTO $Animal = null, $con = null) {
         
         parent::VerificarParametros($Animal, $con , 'Insert into Animal');
 
         $con->beginTransaction();
-
-        $query = "INSERT INTO `animal` (`NomePet`, `PortePet`, `RacaPet`, `CorPet`, `SexoPet`, `PesoPet`, `Idadepet`, `NomeDono`, `Localizacao`, `FotoPet`)"
-                . " VALUES ('".$Animal->getNomePet()."'"
-                . ",  ".$Animal->getPesoPet().""
-                . ", '".$Animal->getRacaPet()."'"
-                . ", '".$Animal->getCorPet()."'"
-                . ", ".$Animal->getSexoPet().""
-                . ", ".$Animal->getPesoPet().""
-                . ", ".$Animal->getIdadepet().""
-                . ", '".$Animal->getNomeDono()."'"
-                . ", '".$Animal->getLocalização()."'"
-                . ", '".$Animal->getFotoPet()."')";
+            
         
+        $query = "INSERT INTO `animal` (`ID`, `TipoAnimal`, `NomePet`, `PortePet`, `RacaPet`, `CorPet`, `SexoPet`, `IdadePet`, `FotoPet`, `Ativo`, `POST_ID`, `PESSOA_ID`) 
+                  VALUES ( NULL
+                   , ".$Animal->getTipoAnimal()
+                . ", '".$Animal->getNomePet()   ."'"
+                . ",  ".$Animal->getPortePet()
+                . ", '".$Animal->getRacaPet()   ."'"
+                . ", '".$Animal->getCorPet()    ."'"
+                . ", '".$Animal->getSexo()      ."'"
+                . ",  ".$Animal->getIdadePet()
+                . ", '".$Animal->getFotoPet()   ."'"
+                . ",  ".$Animal->getAtivo()
+                . ",  ".$Animal->getPOST()
+                . ",    NULL)"; // esse ultimo null retirar pelo id da pessoa quando tiver
+  
         try {
 
             $con->exec($query);
             self::ValidarCommit($con->commit(), $con);
-            return self::Get_NEXT_ID_AUTO_INCREMENT_TABLE('Animal' , $con) - 1;
+            //return self::Get_NEXT_ID_AUTO_INCREMENT_TABLE('Animal' , $con) - 1;
 
         } catch (PDOException $con) {
             ErroController::erroFatal("Nao foi possivel salvar o animal na base de dados: Querey -> " . $query . " erro :" . $con->getMessage() );
@@ -67,16 +72,17 @@ class AnimalDAO extends CollectionsQuerys {
     }
     
     
-    public static function GetAnimal(int $id = 0,$con = null)
+    public static function GetAnimal($id , $con)
     {
-         self::VerificarParametros($id, $con , 'Get Animal ' . $id);
          
-         $query = "SELECT * FROM Animal WHERE id = " . $id;
-     
+         $query = "SELECT * FROM Animal WHERE ID = " . $id;
+         
        try {
             $dbn = $con->prepare($query);
             $dbn->execute();
-            
+        } catch (PDOException $con) {
+            ErroController::erroFatal("Nao foi possivel salvar o animal na base de dados: Querey -> " . $query . " erro :" . $con->getMessage() );
+        } 
             $values = parent::GetTratarValores('default', $dbn );
             if(empty($values))
             {
@@ -86,29 +92,29 @@ class AnimalDAO extends CollectionsQuerys {
             //echo "<pre>";
             //  print_r($values);
             //echo "</pre>";
-            return self::alimentarAnimalDados(new Animal() , $values[0]);
-           
-              
-        } catch (PDOException $con) {
-            ErroController::erroFatal("Nao foi possivel salvar o animal na base de dados: Querey -> " . $query . " erro :" . $con->getMessage() );
-        }
+            return self::alimentarAnimalDados(new AnimalDTO() , $values[0]);
+        
     }
     
-    private static function alimentarAnimalDados(Animal $Animal ,array $values) : Animal
+    private static function alimentarAnimalDados(AnimalDTO $Animal ,array $values) : AnimalDTO
     {
+        //echo "<pre>";
+        //    print_r($values);
+        //echo "</pre>";
+     
         try{
-           $Animal->setId($values['id']);
-           $Animal->setIdDono($values['id_dono']);
+           $Animal->setId($values['ID']);
+           $Animal->setTipoAnimal($values['TipoAnimal']);
            $Animal->setNomePet($values['NomePet']);
            $Animal->setPortePet($values['PortePet']);
            $Animal->setRacaPet($values['RacaPet']);
            $Animal->setCorPet($values['CorPet']);
-           $Animal->setSexoPet($values['SexoPet']);
-           $Animal->setPesoPet($values['PesoPet']);
-           $Animal->setIdadepet($values['Idadepet']);
-           $Animal->setNomeDono($values['NomeDono']);
-           $Animal->setLocalização($values['NomeDono']);
+           $Animal->setSexo($values['SexoPet']);
+           $Animal->setIdadepet($values['IdadePet']);
            $Animal->setFotoPet($values['FotoPet']);
+           $Animal->setAtivo($values['Ativo']);
+           $Animal->setPOST($values['POST_ID']);
+           $Animal->setPESSOA($values['PESSOA_ID']);
            
            return $Animal;
         }

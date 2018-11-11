@@ -2,6 +2,8 @@
   /**
    * Funcao que traz um mini poster contendo informcaoes.. bla bla
    */
+  include_once __DIR__ . '/ErroController.php';
+
   Class PaginacaoPots // extends Post --- herdar atributos e metados da class POST (Criar class )
   {
     private $numPost;                     // quantidade de posters   
@@ -42,49 +44,16 @@
     {
         
         $this->posts = $posts;
-       // echo "<pre>";
-       //  print_r($posts);
-       // echo "</pre>";
+        //echo "<pre>";
+        // print_r($posts);
+        //echo "</pre>";
         $pots_ = array();
         
         for($i = 0 ; $i < count($posts) ; $i++)
         {
-           $pots_[] = $posts[$i]['caminho'];                   
+           $pots_[] = $posts[$i]['CaminhoPost'];                   
         }
-        
-      //  print_r($pots_);
-        
-      //  exit;
-        
-       // PostDAO::getPostALL( $con->getCon() );
-        /*
-            $caminho = "../Posts/";
-            if(is_dir($caminho))
-            {
-              $caminho = dir($caminho);  
-            }
-            else
-            {
-                ErroController::erroFatal("Nao foi possivel localizar a pasta POST");
-            }
-          
-        
-        $arrayPosts = array();
-
-        while(false !== ($entry = $caminho->read())) 
-        {
-            if($entry != "." && $entry != "..")
-            {
-                $name = explode("." , $entry);
-                $arrayPosts[$name[0]] = $entry;
-            }
-        }
-        
-          echo "<pre>";
-            print_r($arrayPosts);
-          echo "</pre>";
-         */
-       // $this->setNumPost(count($arrayPosts));
+ 
         $this->setPostsNames($pots_);
     }
     
@@ -157,7 +126,7 @@
                     
                     if(($x % 2 != 0))
                     {
-                        Anuncios::GerarAnuncio();
+                        AnuncioDTO::GerarAnuncio();
                     }
                     
                 

@@ -2,44 +2,44 @@
 /**
 
  */
+include_once __DIR__ . "/Infra/CollectionsQuerys.php";
+
 class PostDAO extends CollectionsQuerys {
    
     public static function salvePost(PostDTO $post, $con){ // salvar um post no banco de dados
        
         $con->beginTransaction(); //função do PDO,desliga o comiti.  
              
-        $query = "INSERT INTO `post` (`TipoPost`,`Titulo` , `DtCriacao` ,`HrCriacao` , `Ativo` , `CaminhoPost` , `LOCALIZACAO_ID`)"
+        $query = "INSERT INTO `post` (`TipoPost`,`Titulo` , `DtCriacao` ,`HrCriacao` , `Ativo` , `CaminhoPost`)"
                  ." VALUES (" . 
                         $post->getTipoPost()  
                 . ", '".$post->getTitulo()    ."'"
                 . ", '".$post->getDtCriacao()    ."'"
                 . ", '".$post->getHrCriacao()   ."'"
                 . ", ".$post->getAtivo() ." "
-                . ", '".$post->getCaminhoPost() ."' "
-                . ", ".$post->getLocalizacao() .")";
+                . ", '".$post->getCaminhoPost() ."' )";
         try {
 
             $con->exec($query);
             self::ValidarCommit($con->commit(), $con);//verificação se deu certo o comiti
             
         } catch (PDOException $con) {
-            ErroController::erroFatal("Nao foi possivel criar o novo pots :: " . $con->getMessage() . " :: sql :: " . $query);
+            ErroController::erroFatal("Nao foi possivel criar o novo post :: " . $con->getMessage() . " :: sql :: " . $query);
         }
     }
     /*
      * EDITAR
      */
-    public static function editarPost($id = null, PostDTO $post = null , $con = null)
+    public static function editarPost(PostDTO $post = null , $con = null)
     {
         $con->beginTransaction(); //função do PDO,desliga o comiti.  
              
         $query = "UPDATE post set `tipoPost`         =  ". $post->getTipoPost()  
                                   .",`Titulo`         = '". $post->getTitulo()     . "'"
                                   .",`DtCriacao`      = '" .$post->getDtCriacao()  ."'"
-                                  .",`HrCriacao`      = '".$post->getDtCriacao()   ."'"
+                                  .",`HrCriacao`      = '".$post->getHrCriacao()   ."'"
                                   .",`Ativo`          =  ".$post->getAtivo()       
                                   .",`CaminhoPost`    = '".$post->getCaminhoPost() ."'"
-                                  .",`LOCALIZACAO_ID` =  ".$post->getLocalizacao()
                                   ." where id = " . $post->getId();
         
         try {
@@ -48,13 +48,13 @@ class PostDAO extends CollectionsQuerys {
             self::ValidarCommit($con->commit(), $con);//verificação se deu certo o comiti
             
         } catch (PDOException $con) {
-            ErroController::erroFatal("Nao foi possivel criar o novo pots :: " . $con->getMessage() . " :: sql :: " . $query);
+            ErroController::erroFatal("Nao foi possivel editar o post atual :: " . $con->getMessage() . " :: sql :: " . $query);
         }
     }
     /*
      * Excluir // Inativar
      */
-        public static function inativarPost($id = null , $con = null)
+    public static function inativarPost($id = null , $con = null)
     {
         $con->beginTransaction(); //função do PDO,desliga o comiti.  
              
@@ -114,8 +114,8 @@ class PostDAO extends CollectionsQuerys {
     public static function getPost($id , $con)
     {
         try {
-            
-            $query = "SELECT * FROM post where id = '" . $id ."'  && `Ativo` = 1";
+            // apelidadno a coluna ID da tabela animal de id PARA ID_ANIMAL ==== cuidado !!!!!
+            $query = "SELECT * , a.ID as ID_ANIMAL FROM post p RIGHT JOIN animal a on a.POST_ID = p.id where p.id = ".$id." && p.Ativo = 1";
             
             $dbn = $con->prepare($query);
             $dbn->execute();
@@ -139,6 +139,10 @@ class PostDAO extends CollectionsQuerys {
      */
     private static function alimentarPostDados(PostDTO $post ,array $values , $con) : PostDTO
     {
+       //echo "<pre>";
+       //         print_r($values);
+       //echo  "</pre>";
+       
        try{
            // $post->setId_dono() value[id] // carregar objeto ;; ainda nao existe :(
           $post->setId($values['ID']);
@@ -148,6 +152,8 @@ class PostDAO extends CollectionsQuerys {
           $post->setHrCriacao($values['HrCriacao']);
           $post->setAtivo($values['Ativo']);
           $post->setCaminhoPost($values['CaminhoPost']);
+          
+          $post->setANIMAL( AnimalDAO::GetAnimal($values['ID_ANIMAL'] , $con) );
            return $post;
         }
         catch (Exception $post)

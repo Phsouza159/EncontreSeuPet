@@ -4,7 +4,11 @@
  /*DIR: caminho fisico do arquivo*/  
 include_once __DIR__ . "/ErroController.php";
 include_once __DIR__ . "/SessionController.php";
+include_once __DIR__ . "../../Model/Conexao.php";
+include_once __DIR__ . "../../NucleoClass/AnimalDTO.php";
+include_once __DIR__ . "../../NucleoClass/PostDTO.php";
 
+include_once __DIR__ . "/GerarPaginaWebPost.php";
 
 if(isset( $_REQUEST['ACAO_FORM']))  /*função fora da classe, executa sem chamar classe, código somente para esse arquivo*/  
 {  /*isset: verificação se o valor, a variavel existe*/  
@@ -29,8 +33,8 @@ class FormController {  /*apenas o  nome da classe*/
                 self::FormLogin();
                 break;  /*parar, sai do switch*/  
             
-            case "CADASTRO-POTS":
-                self::FormCadastroPots();
+            case "CADASTRO-POST":
+                self::FormCadastroPost();
                 break;
             
             case "EXCLUIR_POST":
@@ -39,6 +43,10 @@ class FormController {  /*apenas o  nome da classe*/
             
             case "EDITAR_POST":
                 self::FormEditarPost();
+                break;
+            
+            case "ALTERACAO-POST-ADMIN";
+                self::FormEdicaoPostViaAdmin();
                 break;
             
             default:  /*valor não encontrado e aciona o controle de erro:*/  
@@ -56,7 +64,7 @@ class FormController {  /*apenas o  nome da classe*/
         }
         else
         {
-            ErroController::erroFatal("Solicitacao de valor nao existe para o input : " . $key);
+            ErroController::erroFatal("Solicitacao de valor nao existe para o input no formulario enviado : " . $key ." :: RESQUEST : <pre>". print_r($_REQUEST)."</pre>");
             /*se não retorna o erro*/ 
         }
     }
@@ -71,32 +79,33 @@ class FormController {  /*apenas o  nome da classe*/
                                           ,self::getKey('pass_log') 
                                           , null);  /*conexão de banco de dados*/  
     }
-    
-    private static function FormCadastroPots()
+    /**
+     * PARA LOGIN
+     */
+    private static function FormCadastroPost()
     {
-        $CON    = new Conexao();
-        
-        $Animal = new Animal(self::getKey("POTS-NOME-PET")
-                                ,self::getKey("POTS-PESO-ANIMAL")
-                                ,self::getKey("POTS-RACA-PET")
-                                ,self::getKey("POTS-COR-ANIMAL")
-                                ,self::getKey("POTS-SEXO-PET")
-                                ,self::getKey("POTS-PESO-ANIMAL")
-                                ,self::getKey("POTS-IDADE-PET")
+              
+        $Animal = new AnimalDTO( 
+                                null // ID
+                                ,self::getKey("POST-ANIMAL-TIPO")
+                                ,self::getKey("POST-NOME-PET")
+                                ,self::getKey("POST-ANIMAL-PORT")
+                                ,self::getKey("POST-RACA-PET")
+                                ,self::getKey("POST-COR-ANIMAL")
+                                ,self::getKey("POST-SEXO-PET")
+                                ,self::getKey("POST-IDADE-PET")
                                 ,NULL
-                                ,NULL
-                                ,NULL
+                                ,true
                             );
          
-        $Pots = new Post( null 
-                , $Animal 
-                , self::getKey('POTS-TITULO')
-                , self::getKey('POTS-DESCRICAO-POST'));
+
+        $Post = new PostDTO( 
+                            null 
+                            , $Animal 
+                            , self::getKey("TIPO-POST")
+                            , self::getKey('POST-TITULO'));
         
-        echo "<pre>";
-           print_r($_REQUEST);
-        echo "</pre>";
-        GerarPaginaWebPost::main($Pots, $CON->getCon());
+        GerarPaginaWebPost::main($Post);
         exit;
     }
     
@@ -115,7 +124,25 @@ class FormController {  /*apenas o  nome da classe*/
      */
     public static function FormEditarPost()
     {
-        PostDAO::inativarPost(self::getKey('editarId') , self::$CON->getCon());
+           $post = new PostDTO( self::getKey('ID')
+                               ,NULL
+                               ,self::getKey('TipoPost')
+                               ,self::getKey('Titulo')
+                               ,self::getKey('DtCriacao')
+                               ,self::getKey('HrCriacao')
+                               ,self::getKey('Ativo')
+                               ,self::getKey('CaminhoPost') );
+        
+        PostDAO::editarPost($post ,self::$CON->getCon());
     }
-    
+    /**
+     * Editar post via admin
+     */
+    public static function FormEdicaoPostViaAdmin()
+    {
+        self::FormEditarPost();
+    }
+
+
+    ////////////////////////////// END acoes para POST
 }

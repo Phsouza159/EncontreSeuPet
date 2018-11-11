@@ -8,11 +8,10 @@ include_once '../../Model/Infra/DbContextoDAO.php';
 include_once '../../Model/Conexao.php';
 include_once '../../Model/AnimalDAO.php';
 include_once '../../Model/PostDAO.php';
-include_once '../../NucleoClass/Anuncios.php';
-include_once '../../NucleoClass/Animal.php';
-include_once '../../NucleoClass/Pessoa.php';
-include_once '../../NucleoClass/Post.php';
-include_once '../../NucleoClass/PerdidoPOST.php';
+include_once '../../NucleoClass/AnimalDTO.php';
+include_once '../../NucleoClass/AnuncioDTO.php';
+include_once '../../NucleoClass/PostDTO.php';
+
 
 
 $con = new Conexao();
@@ -21,6 +20,10 @@ $post = PostDAO::getPost($id_POST, $con->getCon());
 
 if (is_null($post)) {
     ErroController::erroFatal("Erro ao carregar Post -- Post vazio :(");
+}
+if(is_null($post->getAnimal()))
+{
+    ErroController::erroFatal("Post sem Animal vinculado");
 }
 ?>
 
@@ -50,11 +53,6 @@ and open the template in the editor.
     <body>
 <?php
 MenuNav::menu('../Site/');
-
-if(is_null($post->getAnimal()))
-{
-    ErroController::erroFatal("Post sem Animal vinculado");
-}
 
 ?>
         <div class="container">
@@ -86,11 +84,11 @@ if(is_null($post->getAnimal()))
                         <li>Cor do Pet: <?php echo $post->getAnimal()->getPortePet(); ?></li>
                         <li>Raça do Pet: <?php echo $post->getAnimal()->getRacaPet(); ?></li>
                         <li>Cor do Pet: <?php echo $post->getAnimal()->getCorPet(); ?></li>
-                        <li>Sexo Pet: <?php echo $post->getAnimal()->getSexoPet(); ?></li>
-                        <li>Peso do Pet: <?php echo $post->getAnimal()->getPesoPet(); ?></li>
+                        <li>Sexo Pet: <?php echo $post->getAnimal()->getSexo(); ?></li>
+
                         <li>idade Pet: <?php echo $post->getAnimal()->getIdadepet(); ?></li>
-                        <li>Nome dono: <?php echo $post->getAnimal()->getNomeDono(); ?></li>
-                        <li>Localização: <?php echo $post->getAnimal()->getLocalização(); ?></li>
+                        <li>Nome dono: <?php echo $post->getAnimal()->getPESSOA(); ?></li>
+                        <li>Localização: <?php echo $post->getLocalizacao(); ?></li>
 
                     </ul>
                     <section class="col m-2">
@@ -106,47 +104,14 @@ if(is_null($post->getAnimal()))
             <div class="row">
                
                 <p class="">
-<?php
-echo $post->getDescricao();
-echo "</p>";
-//echo '<pre>';
-//print_r($post);
-//echo '</pre>';
-?>      
-</div>
-        <div class="row">
-
-            <section class="col-sm justify-content-center">
-                    <p class="h1 post-titulo text-info">Dono do cachorro</p>
-                    
-                    <p class="post-publicacao-text"><?php echo "Data de publicação: " . $post->getDtCriacao()?>
-                                as: <?php echo $post->getHrCriacao()?></p>
-                    <hr />
-                    <ul class="descricao-pet">
-                        <li>Nome Dono: <?php echo $post->getAnimal()->getNomePet(); ?></li>
-                        <li>Cor do Pet: <?php echo $post->getAnimal()->getPortePet(); ?></li>
-                        <li>Raça do Pet: <?php echo $post->getAnimal()->getRacaPet(); ?></li>
-                        <li>Cor do Pet: <?php echo $post->getAnimal()->getCorPet(); ?></li>
-                        <li>Sexo Pet: <?php echo $post->getAnimal()->getSexoPet(); ?></li>
-                        <li>Peso do Pet: <?php echo $post->getAnimal()->getPesoPet(); ?></li>
-                        <li>idade Pet: <?php echo $post->getAnimal()->getIdadepet(); ?></li>
-                        <li>Nome dono: <?php echo $post->getAnimal()->getNomeDono(); ?></li>
-                        <li>Localização: <?php echo $post->getAnimal()->getLocalização(); ?></li>
-
-                    </ul>
-                </section>
-                                            <section class="col-sm">
-<?php //$post->getImage ?>
-                    <section class='img-pet-pot ' style="background-image: url('../Contents/img/user.png')">
-                        
-                    </section>
-                </section>
-           </div>
+    
+            </div>
+        
                 <div>
                     <button onclick="window.location.href = '../Site/CriarPost.php'" >Criar novo Posts</button>
                     <button onclick="window.location.href = '../Site/Posts.php'" >Voltar Galeria</button>
                 </div>
-<?php Anuncios::GerarAnuncio(); ?>
+<?php AnuncioDTO::GerarAnuncio(); ?>
             
         </div>
                 <?php

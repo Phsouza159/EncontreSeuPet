@@ -57,21 +57,25 @@ class CollectionsQuerys {
            self::VerificarParametros($nameTable, $con, 'Pegar proximo id da tabela a ser inserido');
         try {
             
-           // $query = "SELECT AUTO_INCREMENT FROM information_schema.tables WHERE  table_name = '".$nameTable."';";
             $query = "SELECT max(`id`) FROM `".$nameTable."`;";
-            
-            
+
             $dbn = $con->prepare($query);
             $dbn->execute();
+
             $value = self::GetTratarValores('default', $dbn );
+            if(is_null($value))
+            {
+                echo "ssd";
+            
+                exit;
+            }
             
             if($value[0]['max(`id`)'] <= 0)
             { 
-                throw new Exception();
+                return 1;
             }
             
             return ($value[0]['max(`id`)'] + 1);
-            //return $value[0]['AUTO_INCREMENT'];
             
         } catch (Exception $exc) {
             ErroController::erroFatal("Erro na tentativa de capturar o proximo id da tabela");

@@ -1,11 +1,7 @@
 <?php
  include_once '../Site/Layout/MenuNav.php';
- 
- include_once '../../Controller/ErroController.php';
-
  include_once '../../Controller/GetConfigApp.php';
- include_once '../../Model/Infra/CollectionsQuerys.php';
- include_once '../../Model/Infra/DbContextoDAO.php';
+
  include_once '../../Model/Conexao.php';
  include_once '../../Model/AnimalDAO.php';
  include_once '../../Model/PostDAO.php';

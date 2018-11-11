@@ -202,7 +202,7 @@ $qntAnimal = AnimalDAO::quantidadeAnimal($con->getCon());
 
             $("#BT-VISULIZAR-POTS").click(function () {
                 Controle_collapse();
-                InserirIframe("TABELA_POTS");
+                InserirIframe("TABELA_POST");
             });
 
             $("#BT-VISULIZAR-ANIMAIS").click(function () {

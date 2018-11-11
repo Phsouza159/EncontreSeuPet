@@ -46,7 +46,7 @@ class AnimalDTO {
                          $Sexo = null,
                          $IdadePet = null,
                          $FotoPet = null,
-                         $Ativo = null,
+                         $Ativo = true, // sempre criar como verdade 
                          $POST = null,
                          $PESSOA= null) 
     {

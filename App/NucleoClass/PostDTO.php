@@ -12,6 +12,7 @@
 class PostDTO {
  
     private $Id;
+    private $ANIMAL ; // objeto animal do post
     private $TipoPost;
     private $Titulo;
     private $DtCriacao;
@@ -19,18 +20,21 @@ class PostDTO {
     private $Ativo;
     private $CaminhoPost;
     private $LOCALIZACAO;
-    
+
     public function __construct(
                                 $id = null, 
+                                $ANIMAL = null,
                                 $TipoPost = null,
                                 $Titulo = null, 
                                 $DtCriacao = null,
                                 $HrCriacao = null,
-                                $Ativo = null,
+                                $Ativo = true, // ja cria o objeto como ativo
                                 $CaminhoPost = null,
                                 $LOCALIZACAO = null)
                           
     {
+        date_default_timezone_set('America/Sao_Paulo');
+        
         $this->setId($id);
         $this->setTipoPost($TipoPost);
         $this->setTitulo($Titulo); 
@@ -39,6 +43,7 @@ class PostDTO {
         $this->setAtivo($Ativo);
         $this->setCaminhoPost($CaminhoPost);
         $this->setLocalizacao($LOCALIZACAO);
+        $this->setANIMAL($ANIMAL);
       
     }
     
@@ -92,10 +97,21 @@ class PostDTO {
     }
 
     function setDtCriacao($DtCriacao) {
+        
+        if(is_null($DtCriacao))
+        {
+            $this->DtCriacao = date("Y-m-d");
+            return;
+        }
         $this->DtCriacao = $DtCriacao;
     }
 
     function setHrCriacao($HrCriacao) {
+         if(is_null($HrCriacao))
+        {
+            $this->HrCriacao = date("h:m:s");
+            return;
+        }
         $this->HrCriacao = $HrCriacao;
     }
 
@@ -105,6 +121,14 @@ class PostDTO {
 
     function setCaminhoPost($CaminhoPost) {
         $this->CaminhoPost = $CaminhoPost;
+    }
+    
+    function getANIMAL() {
+        return $this->ANIMAL;
+    }
+
+    function setANIMAL($ANIMAL) {
+        $this->ANIMAL = $ANIMAL;
     }
 }
 
