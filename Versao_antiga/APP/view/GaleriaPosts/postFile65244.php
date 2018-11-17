@@ -1,1 +1,0 @@
-<html><head><titulo>NOMO DO POST</titulo></head><body><p>Ola crie seu post aqui!</p><button onclick="window.location.href='../layout/CriarPost.php'" >Criar novo Posts</button><button onclick="window.location.href='../layout/posts.php'" >Voltar Galeria</button></boyd></html>

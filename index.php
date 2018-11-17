@@ -1,7 +1,4 @@
-<?php
-include_once './App/NucleoClass/Pessoa.php';
-include_once './App/Controller/FormController.php';
-?>
+
 <html>
     <head>
         <title>Login</title>

@@ -3,11 +3,6 @@
     <coverage xmlns="http://www.netbeans.org/ns/code-coverage/1" enabled="false"/>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/J:/EasyPHP-Devserver-17/eds-www/EncontreSeuPet/App/Model/PostDAO.php</file>
-            <file>file:/J:/EasyPHP-Devserver-17/eds-www/EncontreSeuPet/App/View/Site/Layout/MODE_POTS.php</file>
-            <file>file:/J:/EasyPHP-Devserver-17/eds-www/EncontreSeuPet/App/View/Posts/PrimeiroTeste18111155.php</file>
-            <file>file:/J:/EasyPHP-Devserver-17/eds-www/EncontreSeuPet/App/Model/AnimalDAO.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

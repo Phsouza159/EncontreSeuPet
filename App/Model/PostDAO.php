@@ -99,7 +99,7 @@ class PostDAO extends CollectionsQuerys {
              
         try {
             
-            $query = "SELECT * FROM post where `Ativo` = 1 ORDER BY id DESC" ;
+            $query = "SELECT * FROM post p left join animal a on p.id = a.POST_ID where p.Ativo = 1 ORDER BY p.id DESC" ;
             
             $dbn = $con->prepare($query);
             $dbn->execute();

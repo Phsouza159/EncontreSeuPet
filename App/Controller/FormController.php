@@ -5,8 +5,10 @@
 include_once __DIR__ . "/ErroController.php";
 include_once __DIR__ . "/SessionController.php";
 include_once __DIR__ . "../../Model/Conexao.php";
+include_once __DIR__ . "../../Model/PessoaDAO.php";
 include_once __DIR__ . "../../NucleoClass/AnimalDTO.php";
 include_once __DIR__ . "../../NucleoClass/PostDTO.php";
+include_once __DIR__ . "../../NucleoClass/PessoaDTO.php";
 
 include_once __DIR__ . "/GerarPaginaWebPost.php";
 
@@ -28,13 +30,17 @@ class FormController {  /*apenas o  nome da classe*/
         
         switch($oper)  /*switch:if*/    /*$oper: operação, valor do parametro*/  
         {
+            
+            
             case "login":  /**/  
                 echo "login";
                 self::FormLogin();
                 break;  /*parar, sai do switch*/  
             
+            
             case "CADASTRO-POST":
-                self::FormCadastroPost();
+                $id = self::FormCadastroPessoa();
+                self::FormCadastroPost($id);
                 break;
             
             case "EXCLUIR_POST":
@@ -68,6 +74,27 @@ class FormController {  /*apenas o  nome da classe*/
             /*se não retorna o erro*/ 
         }
     }
+    /**
+     * Carregar arquivo
+     */
+    private static function FormUploadFile($nome , $caminho = "../view/Contents/img/")
+    {
+        if(array_key_exists($nome, $_FILES))
+        {           
+            $File = $_FILES[$nome];
+            $ext = strtolower(substr($File['name'], -4));
+            $NomeArquivo = md5(time()) . $ext;
+            $Dir = $caminho . $NomeArquivo;
+            
+            move_uploaded_file($File["tmp_name"] ,__DIR__ ."/". $Dir);
+    
+            return $NomeArquivo;
+        }
+        else
+        {
+            ErroController::erroFatal("Nao foi possivel achar o arquivo : " . $nome);
+        }
+    }
     private static function FormLogin()
     {
        /* $CON = new Conexao();  cria  objeto*/  
@@ -80,9 +107,32 @@ class FormController {  /*apenas o  nome da classe*/
                                           , null);  /*conexão de banco de dados*/  
     }
     /**
+     * PARA CADASTRO PESSOA
+     */
+    
+    private static function FormCadastroPessoa()
+    {
+        
+        $Pessoa = new PessoaDTO(
+                null // ID
+                 ,self::getKey("cadastro-nome")
+                 ,self::getKey("cadastro-sobrenome")
+                 ,self::getKey("cadastro-sexo")
+                 ,self::getKey("cadastro-dataNescimento")
+                 ,TRUE
+                 ,NULL
+                 ,1 );
+        
+       return pessoaDAO::SetNovoUsuario($Pessoa, self::$CON->getCon());
+        
+    }
+
+    
+
+    /**
      * PARA LOGIN
      */
-    private static function FormCadastroPost()
+    private static function FormCadastroPost($id)
     {
               
         $Animal = new AnimalDTO( 
@@ -94,8 +144,10 @@ class FormController {  /*apenas o  nome da classe*/
                                 ,self::getKey("POST-COR-ANIMAL")
                                 ,self::getKey("POST-SEXO-PET")
                                 ,self::getKey("POST-IDADE-PET")
-                                ,NULL
+                                ,self::FormUploadFile("CADASTRO-FOTO-ANIMAL")
                                 ,true
+                                ,NULL
+                                ,$id
                             );
          
 

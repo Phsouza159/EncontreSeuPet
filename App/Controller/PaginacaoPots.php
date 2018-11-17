@@ -109,8 +109,7 @@
       
       
      
-      echo "<fieldset>
-              <legend>Posts</legend>";
+      echo "<div class='row'>";
               /**
                 * @var int   $x                            = poster inicial do bloco
                 * @var int   $this->numPostForBloc         = Quantidae de posts por bloco
@@ -122,11 +121,15 @@
                 
                   // o primeiro parametro e o nome do arquivo : o segundo e o caminho dele : ai jogo para a funcao que cria o view do mini posts
                     //$this->GetMiniPost($chaves[$x-1] , "../Posts/".$files[$chaves[$x-1]]);
+                   
+                    
                     $this->GetMiniPost( $this->posts[$x - 1]);
                     
-                    if(($x % 2 != 0))
+                    if(($x % 2 == 0))
                     {
-                        AnuncioDTO::GerarAnuncio();
+                        echo "</div>";
+                            AnuncioDTO::GerarAnuncio();
+                         echo "<div class='row'>";
                     }
                     
                 
@@ -136,7 +139,7 @@
               
 
 
-      echo"</fieldset>";
+      echo"</div>";
               #---- Gerar nav buttons
               $this->GetNavBarMiniPost();
     }
@@ -320,33 +323,8 @@
    //private function GetMiniPost($titulo , $caminho)
     private function  GetMiniPost($post)
     {
-        if($this->controleDireitaEsquerda)
-        {
-           include __DIR__ . "../../View/Site/Layout/MODE_MINI_POST_RIGHT.php"; 
-           $this->controleDireitaEsquerda = false;
-        }
-        else 
-        {
-            include __DIR__ . "../../View/Site/Layout/MODE_MINI_POST_LEFT.php";
-            $this->controleDireitaEsquerda = true;
-        }
+           include __DIR__ . "../../View/Site/Layout/MODE_MINI_POST_LEFT.php"; 
         
-        
-      /*echo "<div class='row card espaco-pots'>
-              
-                <div class='col'><img src='#'></div>
-                
-                <div class='card-body col'>
-                
-                    <h3 class='card-title'>".$post['titulo']."</h2>
-                     
-                    <p class='card-text'>".$post['descricao']."</p>
-                    <a class='btn btn-primary' href='../Posts/".$post['caminho']."'>Visualizar post<a/> 
-                    <br/>
-                    </hr>
-                    <p class='card-text'>publicação: ".$post['dtCriacao']."</p>
-                </div>
-             </div>";*/
     }
 
 

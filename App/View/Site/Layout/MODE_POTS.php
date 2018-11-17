@@ -68,9 +68,7 @@ MenuNav::menu('../Site/');
             <div class="row m-5">
 
                 <section class="col-sm">
-<?php //$post->getImage ?>
-                    <section class='img-pet-pot ' style="background-image: url('https://static.wixstatic.com/media/913019_92f637ae488548e18ff7a4f755abd173~mv2_d_3760_3760_s_4_2.jpg/v1/fill/w_475,h_475,al_c,q_80,usm_0.66_1.00_0.01/913019_92f637ae488548e18ff7a4f755abd173~mv2_d_3760_3760_s_4_2.webp')">
-                    </section>
+<?php echo "<section class='img-pet-pot' style=\"background-image: url('../Contents/img/".$post->getAnimal()->getFotoPet()."')\"></section>"?>
                 </section>
 
                 <section class="col-sm justify-content-center">

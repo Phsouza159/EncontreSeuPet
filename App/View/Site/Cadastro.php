@@ -18,7 +18,7 @@ echo "</pre>";
         <!--Chamar folha css (LESS) -->
         <link rel="stylesheet/less" type="text/css" href="../Contents/css/Cadastro.less?v=1.0.8" />
         <link rel="stylesheet/less" type="text/css" href="../Contents/css/footer.less?v=1.0.8" />
-        <link rel="stylesheet/less" type="text/css" href="../Contents/css/CriarPots.less?v=1" />
+        <link rel="stylesheet/less" type="text/css" href="../Contents/css/CriarPots.less?v=1.22" />
 
         <!-- Chamar biblioteca (LESS)-->
         <script src="../Contents/plugins/less/dist/less.js" ></script>
@@ -149,7 +149,7 @@ echo "</pre>";
 
                 </div>
 
-                <form>
+                <form action="Cadastro.php" method="POST" enctype="multipart/form-data">
 
                     <input type='hidden' value='CADASTRO-POST' name='ACAO_FORM' />
 
@@ -274,18 +274,18 @@ echo "</pre>";
                                 <br />
                                 <input type='radio' 
                                        name='cadastro-sexo' 
-                                       value='cadastro-masc' 
+                                       value='m' 
                                        checked="checked">
                                 <span class='text-descricao-group-principal-cadastro' >Masculino</span> 
 
                                 <input type='radio' 
                                        name='cadastro-sexo' 
-                                       value='cadastro-femi'>
+                                       value='f'>
                                 <span class='text-descricao-group-principal-cadastro'>Feminino</span> 
 
                                 <input type='radio' 
                                        name='cadastro-sexo'
-                                       value='cadastro-other'>
+                                       value='o'>
                                 <span class='text-descricao-group-principal-cadastro'>outro</span> 
 
                             </section>
@@ -319,7 +319,7 @@ echo "</pre>";
 
                         <div id="opcaoPet" class="opcaoes-pet row">
 
-                            <a onclick='esconderFormularioPrincipal(1)' class='card col p-5'>
+                            <a onclick='esconderFormularioPrincipal(1)' class='card opcao-perdido col p-5'>
                                 <section>
                                     Perdido :(
                                 </section>
@@ -328,7 +328,7 @@ echo "</pre>";
                                 <div style='padding-top: 150px'>Escolha uma opcao, so clicar em um dos cards azuis :)<br/>efeito do card azul no CriarPost.Less</div>
                                 <hr  />
                             </center>
-                            <a onclick='esconderFormularioPrincipal(2)' class='card col p-5'>
+                            <a onclick='esconderFormularioPrincipal(2)' class='card col opcao-doacao p-5'>
                                 <section>
                                     Doação :)
                                 </section>
@@ -439,8 +439,8 @@ echo "</pre>";
 
 
 
-                                    <input type="File"
-                                           name=""
+                                    <input type="file"
+                                           name="CADASTRO-FOTO-ANIMAL"
                                            class="input-tam  form-control"
                                            placeholder=""
                                            required="true">

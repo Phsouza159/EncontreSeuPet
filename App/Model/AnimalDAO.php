@@ -23,7 +23,7 @@ class AnimalDAO extends CollectionsQuerys {
                 . ", '".$Animal->getFotoPet()   ."'"
                 . ",  ".$Animal->getAtivo()
                 . ",  ".$Animal->getPOST()
-                . ",    NULL)"; // esse ultimo null retirar pelo id da pessoa quando tiver
+                . ",  ".$Animal->getPESSOA().");"; 
   
         try {
 
