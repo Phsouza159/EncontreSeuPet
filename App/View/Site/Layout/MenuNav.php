@@ -22,20 +22,18 @@ class MenuNav {
                         <a class='nav-link' href='".$camNormal."Home.php'>Home</a>
                     </li>
                     
-                    <li class='nav-item'>
-                        <a class='nav-link' href='".$camNormal."Posts.php'>Galeria Posts</a>
-                    </li>
                   
-                    <li class='nav-item'>
-                        <a class='nav-link' href='".$camNormal."CriarPost.php' >Criar Posts</a>
-                    </li>
-                    
-                    <li class='nav-item'>
-                        <a class='nav-link' href='".$camNormal."Cadastro.php'>Desaparecido</a>
-                    </li>
-                    <li class='nav-item'>
-                        <a class='nav-link' href='".$camNormal."CadastroAdocao.php'>Adoção</a>
-                    </li>
+                      <li class='nav-item dropdown'>
+        <a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown'>
+          Galeria Posts
+        </a>
+        <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
+          <a class='dropdown-item' href='".$camNormal."Posts.php'>Desaparecidos</a>
+          <a class='dropdown-item' href='".$camNormal."Posts.php'>Adoção</a>
+        </div>
+      </li>
+            
+
                     <li class='nav-item'>
                         <a class='nav-link' href='".$camNormal."CadastroPatrocinador.php'>Patrocinadores</a>
                     </li>
@@ -65,9 +63,7 @@ class MenuNav {
     <div class='carousel-item'>
       " . self::getPatrocinador() . "
     </div>
-    <div class='carousel-item'>
-      " . self::getPatrocinador() . "
-    </div>
+
     
     
   
@@ -81,51 +77,7 @@ class MenuNav {
     <span class='sr-only'>Next</span>
   </a>
 
- <div class='footer-body-nav p-5'>
-  <div class='row'>
-    <div class='col element-card'>
-      <p class='h2'>Grupo:</p>
-        <hr />
-        
-        <p class='h5'>Paulo Henrique</p>
-        <p class='h5'>Sabrina dos Santos</p>
-        <p class='h5'>Wesley Lobão da Silva</p>
-        <p class='h5'>Yasmim Lobão da Silva</p>
-
-    </div>
-    <div class='col element-card'>
-         <p class='h2'>Navegação:</p>
-         <br />
-         <p class='h5'>Paulo Henrique</p>
-        <p class='h5'>Sabrina dos Santos</p>
-        <p class='h5'>Wesley Lobão da Silva</p>
-        <p class='h5'>Yasmim Lobão da Silva</p>
-        <hr />
-        
-      </hr>
-    </div>
-        <div class='col element-card'>
-         <p class='h2'>Navegação:</p>
-         
-        <hr />
-        
-        <p class='h5'>Paulo Henrique</p>
-        <p class='h5'>Sabrina dos Santos</p>
-        <p class='h5'>Wesley Lobão da Silva</p>
-        <p class='h5'>Yasmim Lobão da Silva</p>
-      </hr>
-    </div>
-        <div class='col element-card'>
-         <p class='h2'>Navegação:</p>
-           <br />
-         <p class='h5'>Paulo Henrique</p>
-        <p class='h5'>Sabrina dos Santos</p>
-        <p class='h5'>Wesley Lobão da Silva</p>
-        <p class='h5'>Yasmim Lobão da Silva</p>
-        <hr />
-      </hr>
-    </div>
-  </div>
+       
  
   </div>
 </div></div>
@@ -142,35 +94,133 @@ class MenuNav {
       $aux = "<div class='position-cards'>
               <section class=''>";   
    
-      for($i = 0 ; $i < 4; $i++)
+      for($i = 0 ; $i < 1; $i++)
       {
           
         $aux .= " 
                 <style>
-                    .teste-box::after{
-                        content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation';
+                    .teste-box1::after{
+                    content: ' A cada refeição retribuímos um pouco do amor e da dedicação que nossos amigos caninos estão sempre dispostos a dar.PEDIGREE®';
                     }    
+                    
+                .teste-box2::after{
+                    content: ' Estamos orgulhosos por produzir algumas das mais populares e credenciadas marcas de pet food que se comercializam em Portugal.';
+                    }   
+                    
+                .teste-box3::after{
+                    content: ' A cada refeição retribuímos um pouco do amor e da dedicação que nossos amigos caninos estão sempre dispostos a dar.PEDIGREE®';
+                    }   
+                    
+                .teste-box4::after{
+                    content: ' Whiskas®, além de delicioso, tem um alimento para cada fase da vida do seu gato.';
+                    }   
+                    
+                .teste-box5::after{
+                    content: ' A cada refeição retribuímos um pouco do amor e da dedicação que nossos amigos caninos estão sempre dispostos a dar.PEDIGREE®';
+                    }   
+                    
                 </style>
                 <div class='col-2 super-box'>
                     <div class='container'>
-                        <div class='box-card teste-box'>
+                        <div class='box-card teste-box1'>
 
-                            <div class='icon_bg'> 
+                            <div class=''>   
 
                             </div>
                         </div>
                         <div class='icon-card'>
-                            <img class='simular-img'>
+ <img class='card-img' src='../Contents/img/Patrocinadores_Cards/pedigree.jpg' alt='Card image' style='border-radius:50%; width: 80px; height: 80px;'>
 
                             </img>
                         </div>
                     </div>
-                    <div class='text'>
-                        <p class='title'>
-                            Teste 2
-                        </p>
-                    </div>
+                    <div class= 'text'>
+                    <p class='title'>
+                   
+
+                    </p>
+                     </div>
                 </div>
+                
+
+
+                <div class='col-2 super-box'>
+                    <div class='container'>
+                        <div class='box-card teste-box2'>
+
+                            <div class=''> 
+
+                            </div>
+                        </div>
+                        <div class='icon-card'>
+ <img class='card-img' src='../Contents/img/Patrocinadores_Cards/DogChower.jpg' alt='Card image' style='border-radius:50%; width: 80px; height: 80px;'>
+
+                            </img>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+
+                            <div class='col-2 super-box'>
+                    <div class='container'>
+                        <div class='box-card teste-box3'>
+
+                            <div class=''> 
+
+                            </div>
+                        </div>
+                        <div class='icon-card'>
+ <img class='card-img' src='../Contents/img/Patrocinadores_Cards/Cats.png' alt='Card image' style='border-radius:50%; width: 80px; height: 80px;'>
+
+                            </img>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                
+                 <div class='col-2 super-box'>
+                    <div class='container'>
+                        <div class='box-card teste-box4'>
+
+                            <div class=''> 
+
+                            </div>
+                        </div>
+                        <div class='icon-card'>
+ <img class='card-img' src='../Contents/img/Patrocinadores_Cards/whiskas.jpg' alt='Card image' style='border-radius:50%; width: 80px; height: 80px;'>
+
+                            </img>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+
+
+                <div class='col-2 super-box'>
+                    <div class='container'>
+                        <div class='box-card teste-box5'>
+
+                            <div class=''> 
+
+                            </div>
+                        </div>
+                        <div class='icon-card'>
+<img class='card-img' src='../Contents/img/Patrocinadores_Cards/estima.jpg' alt='Card image' style='border-radius:50%; width: 80px; height: 80px;'>
+
+                            </img>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+
+
+                
+
+
             ";
       }
       $aux .= "</section></div>";

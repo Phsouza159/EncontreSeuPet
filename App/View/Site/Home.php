@@ -50,15 +50,15 @@ include_once './Layout/MenuNav.php';
                                 <h1></h1>
                                 <h3> 
                                     <span>
-                                        Seja bem vindo
+                                        Cadastre seu animal e crie um post para doação ou caso esteja desaparecido
                                         <br>
                                         <br>
                                         ...
                                         <br>
                                     </span>
                                 </h3>
-
-                                <button tupe='button' class="btn-acao-links" onclick="window.location.href = './Visitante.php'">Visitantes</button>
+                                  <button tupe='button' class="btn-acao-links" onclick="window.location.href = './Cadastro.php'">Cadastro</button> 
+                            <!-- -->    <!--   <button tupe='button' class="btn-acao-links" onclick="window.location.href = './Visitante.php'">Visitantes</button> --> 
                             </center>
                         </div>
                     </div>
@@ -71,14 +71,14 @@ include_once './Layout/MenuNav.php';
                                 <h1></h1>
                                 <h3> 
                                     <span>
-                                        Seu animal de estimação está desaparecido?<br>
-                                        Você acaba de encontrar o lugar certo para anunciar seu Pet.<br>
-                                        Cadastre já em perdidos.
+                                        Post de animais desaparecido.<br>
+                                       
+                                        
                                     </span>
                                 </h3>
 
 
-                                <button tupe='button' class="btn-acao-links" onclick="window.location.href = './Cadastro.php'">Perdidos</button> 
+                               <button tupe='button' class="btn-acao-links" onclick="window.location.href = './'">Visualizar</button>  
                             </center>             
                         </div>
 
@@ -90,13 +90,13 @@ include_once './Layout/MenuNav.php';
                             <center> 
                                 <h1></h1>
                                 <h3> 
-                                    <span>
-                                        Deseja doar algum animal?<br>
-                                        Você acaba de encontar o lugar certo para anunciar o Pet.<br>
-                                        Cadastre já em adoção, e ajude a encontrar um novo lar.  
+                                     <span>
+                                        Post de animais para adoção.<br>
+                                        
+                                        
                                     </span>
                                 </h3>
-                                <button tupe='button' class="btn-acao-links" onclick="window.location.href = './CadastroAdocao.php'">Adoção</button>
+                                <button tupe='button' class="btn-acao-links" onclick="window.location.href = './'">Visualizar</button>
                             </center>
                         </div> 
                     </div>

@@ -13,7 +13,7 @@ echo "</pre>";
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Cadastro Perdidos</title>
+        <title>Cadastro</title>
         <meta name="viewport" content="width=device-width">
         <!--Chamar folha css (LESS) -->
         <link rel="stylesheet/less" type="text/css" href="../Contents/css/Cadastro.less?v=1.0.8" />

@@ -3,6 +3,10 @@
     <coverage xmlns="http://www.netbeans.org/ns/code-coverage/1" enabled="false"/>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/E:/EncontreSeuPet/index.php</file>
+            <file>file:/E:/EncontreSeuPet/App/View/View.php</file>
+            <file>file:/E:/EncontreSeuPet/gallery.json</file>
+        </group>
     </open-files>
 </project-private>
