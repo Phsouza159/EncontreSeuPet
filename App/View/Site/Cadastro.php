@@ -31,7 +31,7 @@ echo "</pre>";
 
         <style>
             input[type=text], select {
-                width: 80%;
+                width: 100%;
                 padding: 12px 20px;
                 margin: 8px 0;
                 display: inline-block;
@@ -39,7 +39,16 @@ echo "</pre>";
                 border-radius: 4px;
                 box-sizing: border-box;
             }
-
+            
+           input[type=password], select {
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
             input[type=submit] {
                 width: 100%;
                 background-color: #4CAF50;
@@ -94,14 +103,14 @@ echo "</pre>";
                     case 1:
                         formulario.hidden = !formulario.hidden;
                         opcaoPet.hidden = !opcaoPet.hidden;
-                        texto.innerHTML = "Perdido :(";
+                        texto.innerHTML = "Perdido ";
                         tipoPostValor.value = 1;
                         break;
 
                     case 2:
                         formulario.hidden = !formulario.hidden;
                         opcaoPet.hidden = !opcaoPet.hidden;
-                        texto.innerHTML = "Doação :)";
+                        texto.innerHTML = "Doação";
                         tipoPostValor.value = 2;
                         break;
 
@@ -155,7 +164,7 @@ echo "</pre>";
 
                     <div class="passo1">
 
-                        <p class='h1'>Pessoa</p>
+                        <p class='h1'></p>
                         <div class="row m-2">
                             <section class="col" >  
 
@@ -255,22 +264,22 @@ echo "</pre>";
 
                         <div class="row m-4">
                             <section class="col">
-                                <label>CEP:</label>
                                 <input id=""
                                        name='cadastro-CEP' 
                                        type='text' 
                                        class='dtNasc-calendario-group-principal-cadastro'
-                                       />
+                                       placeholder='CEP...'/>
+                                       
                             </section> 
                             
                             
                             <section class="col">
-                                <label>Complemento:</label>
                                 <input id=""
                                        name='cadastro-Complemento' 
                                        type='text' 
                                        class='dtNasc-calendario-group-principal-cadastro'
-                                       />
+                                       placeholder='Complemento...'/>
+                                       
                             </section> 
                             
                             <section class="col"> 
@@ -321,28 +330,28 @@ echo "</pre>";
                     </div>
 
                     <div class="passo2">
-                        <p class='h1'>Login</p>
+                        <p class='h1'></p>
 
                         <br>
 
                         <label></label>
                         <input name='cadastro-login' 
                                type='text' class='input-principal-cadastro' 
-                               placeholder='...'> 
+                               placeholder='Login'> 
                         <br>
                         <label></label>
                         <input name='cadastro-senha' 
-                               type='text' 
+                               type='password' 
                                class='input-principal-cadastro' 
-                               placeholder='Senha...'> 
+                               placeholder='Senha'> 
 
                         <br>
 
                         <label></label>
                         <input name='cadastro-senha-confirmação' 
-                               type='text' 
+                               type='password' 
                                class='input-principal-cadastro' 
-                               placeholder='Senha confirmação...'> 
+                               placeholder='Confirmar Senha'> 
 
                         <br>
 
@@ -356,16 +365,16 @@ echo "</pre>";
 
                             <a onclick='esconderFormularioPrincipal(1)' class='card opcao-perdido col p-5'>
                                 <section>
-                                    Perdido :(
+                                    Perdido
                                 </section>
                             </a>
                             <center>
-                                <div style='padding-top: 150px'>Escolha uma opcao, so clicar em um dos cards azuis :)<br/>efeito do card azul no CriarPost.Less</div>
+                                <div style='padding-top: 150px'>Qual Post de sua preferência?<br/> Escolha uma opcão, clique em um dos cards.</div>
                                 <hr  />
                             </center>
                             <a onclick='esconderFormularioPrincipal(2)' class='card col opcao-doacao p-5'>
                                 <section>
-                                    Doação :)
+                                    Doação 
                                 </section>
                             </a>
                         </div>
@@ -377,17 +386,17 @@ echo "</pre>";
                                 <h1>  
                                     <label id='texto'></label>
                                 </h1>
-                                <a  class='btn btn-info' onclick="esconderFormularioPrincipal(3)">Escolher outra opcao</a>
+                                <a  class='btn btn-info' onclick="esconderFormularioPrincipal(3)">Escolher outra opcão</a>
                             </section>
 
-                            <label class="col-sm-2 col-form-label">Tipo do Pet:</label>
+                            <label class="col-sm-2 col-form-label">Tipo Pet:</label>
 
                             <section class="col m-2"> 
 
                                 <select class="form-control m-2" style="width: 200px"
                                         name="POST-ANIMAL-TIPO">
                                     <option value="0" checked>Gato</option>>
-                                    <option value="1">Cachoroo</option>
+                                    <option value="1">Cachorro</option>
                                 </select>
                             </section>
 
@@ -405,7 +414,7 @@ echo "</pre>";
                                            required="true">
                                 </section>
 
-                                <label class="col-sm-2 col-form-label">Nome do Pet:</label>
+                                <label class="col-sm-2 col-form-label">Nome Animal:</label>
 
                                 <section class="col m-2">     
                                     <input type="text"
@@ -444,7 +453,7 @@ echo "</pre>";
 
                             <section class="row">     
 
-                                <label class="col-sm-2 col-form-label">Sexo do Animal:</label>
+                                <label class="col-sm-2 col-form-label">Sexo Animal:</label>
 
                                 <select class="form-control m-2" style="width: 200px"
                                         name="POST-SEXO-PET">
@@ -453,7 +462,7 @@ echo "</pre>";
 
                                 </select>
 
-                                <label class="col-sm-2 col-form-label">Idade do Animal:</label>
+                                <label class="col-sm-2 col-form-label">Idade Animal:</label>
 
                                 <section class="col m-2">     
                                     <input type="text"
@@ -468,7 +477,7 @@ echo "</pre>";
                             <section class="row"> 
 
 
-                                <label class="col-sm-2  col-form-label">Foto do Animal:</label>
+                                <label class="col-sm-2  col-form-label">Foto Animal:</label>
 
                                 <section class="col m-2">     
 

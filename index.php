@@ -34,22 +34,22 @@
                 switch(tempo)
                 {
                     case 1:
-                        element.innerHTML = "Carregando Localização";
+                        element.innerHTML = "Carregando...";
                         break;
                     case 25:
-                        element.innerHTML = "Carregando 1";
+                        element.innerHTML = "Carregando...";
                         break;
                         
                     case 50:
-                        element.innerHTML = "Carregando 23";
+                        element.innerHTML = "Carregando...";
                         break;
                         
                     case 75:
-                        element.innerHTML = "Carregando 3";
+                        element.innerHTML = "Carregando...";
                         break;    
                     
                     case 99:
-                        element.innerHTML = "Carregamentp Complento";
+                        element.innerHTML = "Carregamento Completo";
                         break;    
                        
                     default:

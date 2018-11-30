@@ -4,6 +4,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+include_once '../../Controller/FormController.php';
 include_once '../../NucleoClass/AnuncioDTO.php';
 include_once './Layout/MenuNav.php';
 //include_once '../../Controller/SessionController.php';
@@ -49,15 +50,17 @@ include_once './Layout/MenuNav.php';
                             <center> 
                                 <h1></h1>
                                 <h3> 
+                                    
                                     <span>
-                                        Cadastre seu animal e crie um post para doação ou caso esteja desaparecido
+                                        Cadastre-se aqui e crie um post
                                         <br>
-                                        <br>
-                                        ...
+                                        para seu animal desaparecido ou para doação.
                                         <br>
                                     </span>
                                 </h3>
-                                  <button tupe='button' class="btn-acao-links" onclick="window.location.href = './Cadastro.php'">Cadastro</button> 
+                                 <br>
+                                  <br>
+                                  <button tupe='button' class="btn-acao-links" onclick="window.location.href = './Cadastro.php'">Cadastrar</button> 
                             <!-- -->    <!--   <button tupe='button' class="btn-acao-links" onclick="window.location.href = './Visitante.php'">Visitantes</button> --> 
                             </center>
                         </div>
@@ -71,7 +74,8 @@ include_once './Layout/MenuNav.php';
                                 <h1></h1>
                                 <h3> 
                                     <span>
-                                        Post de animais desaparecido.<br>
+                                        Posts de animais desaparecidos.<br>
+                                        Ajude a encontra-los!
                                        
                                         
                                     </span>
@@ -91,7 +95,8 @@ include_once './Layout/MenuNav.php';
                                 <h1></h1>
                                 <h3> 
                                      <span>
-                                        Post de animais para adoção.<br>
+                                        Posts de animais para adoção.<br>
+                                        Adote, porque o amor não tem preço nem raça.
                                         
                                         
                                     </span>
@@ -109,14 +114,12 @@ include_once './Layout/MenuNav.php';
                                 <h1></h1>
                                 <h3> 
                                     <span>
-                                        Encontre Seu Pet é um serviço de utilidade pública <br>
-                                        e não visa lucro com a prestação deste serviço. <br>
-                                        Para que a aplicação se mantenha, contamos com  <br>
-                                        a ajuda de patrocinadores e colaboradores. <br><br>
-                                        Torne patrocinador, e venha fazer parte                                                
+                                         
+                                        Torne-se patrocinador, <br>
+                                        E venha fazer parte da nossa equipe!                                              
                                     </span>
                                 </h3> 
-                                <button class="btn-acao-links" onclick="window.location.href = './CadastroPatrocinador.php'">Patrocinadores</button>
+                                <button class="btn-acao-links" onclick="window.location.href = './CadastroPatrocinador.php'">Cadastrar</button>
                             </center>
                         </div>
                     </div>
