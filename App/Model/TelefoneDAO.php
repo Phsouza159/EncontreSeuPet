@@ -28,4 +28,28 @@ class TelefoneDAO extends CollectionsQuerys {
                                       . $Con->getMessage() . ". Na Query ::" . $Query);
         }
     }
+    /**
+     * 
+     */
+    public static function EditarTelefone(TelefoneDTO $Telefone , $Con)
+    {
+        $Query = "UPDATE telefone "
+                . "SET Ddd  = " . $Telefone->getDdd()
+                . ", Numero = " . $Telefone->getNumero()
+                . " WHERE id = " . $Telefone->getId();
+        
+        try {
+            $Con->exec($Query);
+            return true;
+            
+        } catch (Exception $Con) {
+            
+            echo $Query;
+            echo $Con->getMessage();
+           
+            return false;
+        }
+    }
+    
+    
 }

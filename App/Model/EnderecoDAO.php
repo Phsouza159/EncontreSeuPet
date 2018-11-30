@@ -28,4 +28,25 @@ class EnderecoDAO extends CollectionsQuerys {
                                       . $Con->getMessage() . ". Na Query ::" . $Query);
         }
     }
+    
+    public static function EditarEndereco(EnderecoDTO $Endereco , $Con)
+    {
+        $Query = "UPDATE endereco "
+                . "SET CEP = " . $Endereco->getCEP()
+                . ", Endereco = '" . $Endereco->getEndereco() . "'"
+                . ", Complemento = '" . $Endereco->getComplemento() . "'"
+                . ", UF = '" . $Endereco->getUF() . "'"
+                . "WHERE ID = " . $Endereco->getId();
+        try {
+            $Con->exec($Query);
+            return true;
+            
+        } catch (Exception $Con) {
+            
+            echo $Query;
+            echo $Con->getMessage();
+           
+            return false;
+        }
+    }
 }

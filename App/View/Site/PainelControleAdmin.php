@@ -3,21 +3,20 @@
 include_once '../Site/Layout/MenuNav.php';
 
 include_once '../../Controller/ErroController.php';
-include_once '../../Controller/PaginacaoPots.php';
 include_once '../../Controller/GetConfigApp.php';
-include_once '../../Model/Infra/CollectionsQuerys.php';
-include_once '../../Model/Infra/DbContextoDAO.php';
 include_once '../../Model/Conexao.php';
 include_once '../../Model/AnimalDAO.php';
 include_once '../../Model/PostDAO.php';
-
+include_once '../../Model/PessoaDAO.php';
 include_once '../../NucleoClass/PostDTO.php';
 
 
 $con = new Conexao(); //conexão bando de dados
 
-$qntPost = PostDAO::quantidadePost($con->getCon());
-$qntAnimal = AnimalDAO::quantidadeAnimal($con->getCon());
+$qntPost    = PostDAO::quantidadePost($con->getCon());
+$qntAnimal  = AnimalDAO::quantidadeAnimal($con->getCon());
+$qntPessoa  = PessoaDAO::quantidadePessoa($con->getCon());
+
 ?>
 <html>
     <head>
@@ -61,6 +60,27 @@ $qntAnimal = AnimalDAO::quantidadeAnimal($con->getCon());
                             
                             -->
                             <div class="float-card card card-sombra m-4" style="width: 18rem;">
+                                <div class="exibicao-numero-card p-2" style="background-color: darkcyan; color: black"> 
+                                    <p class="h6">Quantidade de pots registrados</p>
+                                    <p class="h1"> <?php echo $qntPessoa ?></p>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Pots</h5>
+                                    <p class="card-text">...</p>
+                                    <div>
+                                        <button class="d2" id="BT-VISULIZAR-PESSOA">
+                                            <span>visualizar Pots</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </td>
+                        <td>
+                            <!--
+                            
+                            -->
+                            <div class="float-card card card-sombra m-4" style="width: 18rem;">
                                 <div class="exibicao-numero-card p-2">
                                     <p class="h6">Quantidade de pots registrados</p>
                                     <p class="h1"> <?php echo $qntPost ?></p>
@@ -75,7 +95,10 @@ $qntAnimal = AnimalDAO::quantidadeAnimal($con->getCon());
                                     </div>
                                 </div>
                             </div>
-                        </td><td>
+                            
+                        </td>
+                        
+                        <td>
                             <!--
                             
                             -->
@@ -200,14 +223,19 @@ $qntAnimal = AnimalDAO::quantidadeAnimal($con->getCon());
 
         $(function () {
 
+            $("#BT-VISULIZAR-PESSOA").click(function () {
+                Controle_collapse();
+                InserirIframe("Pessoa");
+            });
+
             $("#BT-VISULIZAR-POTS").click(function () {
                 Controle_collapse();
-                InserirIframe("TABELA_POST");
+                InserirIframe("Post");
             });
 
             $("#BT-VISULIZAR-ANIMAIS").click(function () {
                 Controle_collapse();
-                InserirIframe("TABELA_ANIMAL");
+                InserirIframe("Animal");
             });
 
             $("#BT-VISULIZAR-BANCODADOSATUALIZAR").click(function () {
@@ -226,11 +254,11 @@ $qntAnimal = AnimalDAO::quantidadeAnimal($con->getCon());
 
                 if (!custom)
                 {
-                    document.getElementById("POST-TABELA").innerHTML = "<iframe class='iframe-style' src='./Layout/" + FrameIclude + ".php' frameborder='0' allowfullscreen></iframe>";
+                    document.getElementById("POST-TABELA").innerHTML = "<iframe class='iframe-style' src='./Layout/ModeIframeAdmin.php?tipo="+FrameIclude+"' frameborder='0' allowfullscreen></iframe>";
                    // controle_iframe = true;
                 }else if(custom)
                 {
-                    document.getElementById("POST-TABELA").innerHTML = "<iframe class='iframe-style' src='" + FrameIclude + "' frameborder='0' allowfullscreen></iframe>";
+                    document.getElementById("POST-TABELA").innerHTML = "<iframe class='iframe-style' src='"+custom+"' frameborder='0' allowfullscreen></iframe>";
                   //   controle_iframe = true;
                 }
                 

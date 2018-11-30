@@ -43,12 +43,12 @@ class PessoaDAO extends CollectionsQuerys {
     }
 
     //Buscar todos os usurarios 
-    public static function GetUsuarios($con = null) {
+    public static function getPessoaALL($con = null) {
         parent::VerificarParametros('Default', $con , 'Get into Pessoa');
 
         $con->beginTransaction();
 
-        $query = "SELECT * FROM `teste`;";
+        $query = "SELECT * , e.ID as ID_ENDERECO , t.ID as ID_TELEFONE FROM pessoa p inner join endereco e on p.ENDERECO_ID = e.ID  left join telefone t on p.TELEFONE_ID = t.ID where p.Ativo = 1";
 
         try {
             $dbn = $con->prepare($query);
@@ -59,5 +59,56 @@ class PessoaDAO extends CollectionsQuerys {
             echo 'falta erro: ' . $con->errorInfo;
         }
     }
-    
+    /**
+     * Buscar quantidade 
+     */
+    public static function quantidadePessoa($con){
+         
+        try {
+            
+            $query = "SELECT COUNT(ativo) FROM pessoa WHERE ativo = 1;";
+            
+            $dbn = $con->prepare($query);
+            $dbn->execute();
+            $count = self::GetTratarValores('default', $dbn );
+            return $count[0]['COUNT(ativo)'];
+            
+            
+        } catch (Exception $exc) {
+            
+          
+        }
+        }
+    /**
+     * 
+     */
+    public static function  EditarPessoa(PessoaDTO $Pessoa , $Con)
+    {
+        $Query = "UPDATE pessoa "
+                . "  SET Nome           = '".$Pessoa->getNome()."'"
+                . ", Sobrenome          = '".$Pessoa->getSobrenome()."'"
+                . ", DtNascimento       = '".$Pessoa->getDtNascimento()."'"
+                . ", Sexo               = '".$Pessoa->getSexo()."'"
+                . ", Ativo              =  ".$Pessoa->getAtivo()
+                . ", POST_ID            =  ".$Pessoa->getPOST()
+                . ", TIPOPESSOA_ID      =  ".$Pessoa->getTipoPessoa()
+                . ", TELEFONE_ID        =  ".$Pessoa->getTelefone()
+                . ", ENDERECO_ID        =  ".$Pessoa->getEndereco()
+                . ", ACESSO_ID          =  ".$Pessoa->getAcesso()
+                . ", ANUNCIO_ID         =  ".$Pessoa->getANUNCIO()
+                . " WHERE ID = " . $Pessoa->getId();
+        
+        try{
+            $dbn = $Con->prepare($Query);
+            $dbn->execute();
+            
+            return true;
+            
+        } catch (Exception $dbn) {
+            echo $Query;
+            echo $dbn->getMessage();
+            
+            return false;
+        }
+    }
 }

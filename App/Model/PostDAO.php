@@ -101,12 +101,18 @@ class PostDAO extends CollectionsQuerys {
      * Get todos os post 
      */
     
-    public static function getPostALL( $con)
+    public static function getPostALL( $con , $SomentePost = false)
     {
              
         try {
-            
-            $query = "SELECT * FROM post p left join animal a on p.id = a.POST_ID where p.Ativo = 1 ORDER BY p.id DESC" ;
+            if($SomentePost)
+            {
+                $query = "SELECT * FROM post WHERE ativo = 1" ;
+            }
+            else
+            {
+                 $query = "SELECT * FROM post p left join animal a on p.id = a.POST_ID where p.Ativo = 1 ORDER BY p.id DESC" ;
+            }
             
             $dbn = $con->prepare($query);
             $dbn->execute();

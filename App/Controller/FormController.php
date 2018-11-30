@@ -1,5 +1,5 @@
 <?php
-
+$RETORNO = '';
  /*Controla os formularios esse arquivo*/  
  /*DIR: caminho fisico do arquivo*/  
 include_once __DIR__ . "/ErroController.php";
@@ -10,7 +10,7 @@ include_once __DIR__ . "/../Model/TelefoneDAO.php";
 include_once __DIR__ . "/../Model/PessoaDAO.php";
 include_once __DIR__ . "/../Model/EnderecoDAO.php";
 include_once __DIR__ . "/../Model/AcessoDAO.php";
-
+include_once __DIR__ . "/../Model/AdminDAO.php";
 
 include_once __DIR__ . "/../NucleoClass/AnimalDTO.php";
 include_once __DIR__ . "/../NucleoClass/EnderecoDTO.php";
@@ -24,7 +24,7 @@ include_once __DIR__ . "/GerarPaginaWebPost.php";
 
 if(isset( $_REQUEST['ACAO_FORM']))  /*função fora da classe, executa sem chamar classe, código somente para esse arquivo*/  
 {  /*isset: verificação se o valor, a variavel existe*/  
-    FormController::main($_REQUEST['ACAO_FORM']);  /*request: post e get em uma variavel, request.*/  
+   $RETORNO = FormController::main($_REQUEST['ACAO_FORM']);  /*request: post e get em uma variavel, request.*/  
 }
 
 
@@ -65,9 +65,13 @@ class FormController {  /*apenas o  nome da classe*/
                 self::FormEditarPost();
                 break;
             
-            case "ALTERACAO-POST-ADMIN";
-                self::FormEdicaoPostViaAdmin();
+            case "ALTERACAO-ADMIN";
+                self::FormEditarAdmin();
                 break;
+            
+            case "ATUALIZAR_SCRIPT":
+                
+                return self::FomrProcessarScript();
             
             default:  /*valor não encontrado e aciona o controle de erro:*/  
 
@@ -75,7 +79,19 @@ class FormController {  /*apenas o  nome da classe*/
                 break;
         }
     }
-    
+    /**
+     * 
+     */
+    private static function FomrProcessarScript(){
+        
+       return AdminDAO::ProcessarScriptSql(self::getKey('SCRIPT_TEXTO') ,self::$CON->getCon() );
+        
+    }
+    /**
+     * 
+     * @param type $key
+     * @return type
+     */
     public static function  getKey($key = 'default')  /*busca chave, key: array*/  
     {
         if(array_key_exists($key, $_REQUEST))  /*verificando se o valor existe no request*/  
@@ -233,13 +249,7 @@ class FormController {  /*apenas o  nome da classe*/
         
         PostDAO::editarPost($post ,self::$CON->getCon());
     }
-    /**
-     * Editar post via admin
-     */
-    private static function FormEdicaoPostViaAdmin()
-    {
-        self::FormEditarPost();
-    }
+
     ////////////////////////////// END acoes para POST
         
 /**
@@ -269,4 +279,107 @@ class FormController {  /*apenas o  nome da classe*/
         return TelefoneDAO::SalvarNovoTelefone($Telefone, self::$CON->getCon() );
     }
    ////////////////////////////// END acoes para Telefone    
+   /**
+     * Editar via admin
+     */
+    private static function FormEditarAdmin()
+    {
+        $Oper = self::getKey('tipo');
+        
+        //echo $Oper;
+        
+        switch ($Oper)
+        {
+            case "Pessoa":
+                $pessoa   = self::getPessoa();
+                $telefone = self::getTelefone();
+                $Endereco = self::getEndereco();
+                
+                $pessoa->EditarUsuario( self::$CON->getCon() );
+                $telefone->EditarTelefone( self::$CON->getCon() );
+                $Endereco->EditarEndereco( self::$CON->getCon() );
+                
+                break;
+            
+            case "Post":
+                self::FormEditarPost();
+                
+                break;
+            
+            case "Animal":
+                
+                $Animal = self::getAnimnal();
+                $Animal->EditarAnimal( self::$CON->getCon() );
+                
+                break;
+        }
+    }
+    
+    
+    //########################################################
+    
+    private static function getPessoa()
+    {
+        $Usuario = new PessoaDTO(
+                         self::getKey('ID')
+                        ,self::getKey("Nome")
+                        ,self::getKey("Sobrenome")
+                        ,self::getKey("Sexo")
+                        ,self::getKey("DtNascimento")
+                        ,self::getKey("Ativo")
+                        ,self::getKey("POST_ID")
+                        ,self::getKey("TIPOPESSOA_ID")
+                        ,self::getKey("TELEFONE_ID")
+                        ,self::getKey("ENDERECO_ID")
+                        ,self::getKey("ACESSO_ID")
+                        ,self::getKey("ANUNCIO_ID")
+                    );
+        
+        return $Usuario;
+    }
+    
+    private static function getTelefone()
+    {
+        $telefone = new TelefoneDTO(
+                         self::getKey('TELEFONE_ID')
+                        ,self::getKey('Ddd')
+                        ,self::getKey('Numero')
+                    );
+        return $telefone;
+    }
+    
+    public static function  getEndereco()
+    {
+        $Endereco = new EnderecoDTO(
+                         self::getKey('ENDERECO_ID')
+                        ,self::getKey('CEP')
+                        ,self::getKey('Endereco')
+                        ,self::getKey('UF')
+                        ,self::getKey('UF')
+                        );
+        
+        return $Endereco;
+    }
+    /**
+     * 
+     */
+    public static function getAnimnal()
+    {
+        $Animal = new AnimalDTO(
+                         self::getKey('ID')
+                        ,self::getKey('TipoAnimal')
+                        ,self::getKey('NomePet')
+                        ,self::getKey('PortePet')
+                        ,self::getKey('RacaPet')
+                        ,self::getKey('CorPet')
+                        ,self::getKey('SexoPet')
+                        ,self::getKey('IdadePet')
+                        ,self::getKey('FotoPet')
+                        ,self::getKey('Ativo')
+                        ,self::getKey('POST_ID')
+                        ,self::getKey('PESSOA_ID')
+                );
+        
+        return $Animal;
+    }
 }

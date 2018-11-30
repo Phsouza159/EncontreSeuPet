@@ -23,6 +23,16 @@ class EnderecoDTO {
        $this->setUF($UF);
    }
    
+   public function SalvarEndereco($Con)
+   {
+      return EnderecoDAO::SetNovoEndereco($this, $Con);
+   }
+   
+   public function EditarEndereco($Con)
+   {
+       return EnderecoDAO::EditarEndereco($this , $Con);
+   }
+   
    public function getId() {
        return $this->Id;
    }

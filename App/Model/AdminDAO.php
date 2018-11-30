@@ -1,5 +1,7 @@
 <?php
 
+include_once __DIR__ . '/../Controller/ErroController.php';
+
 class AdminDAO extends CollectionsQuerys{
 
     public static function ProcessarScriptSql($script = null , $con = null)
@@ -7,7 +9,6 @@ class AdminDAO extends CollectionsQuerys{
         self::VerificarParametros($script , $con);
         
         try{
-            $con->beginTransaction();
             
             $dbn = $con->prepare($script);
             $dbn->execute();
@@ -15,7 +16,7 @@ class AdminDAO extends CollectionsQuerys{
             return $count;
             
         } catch (Exception $con) {
-            return ErroController::errroSql("Erro ao execultar script :: " . $script . " -> " . $con->getMessage());
+            return ("Erro ao execultar script :: " . $script . " -> " . $con->getMessage());
         }
         
     }

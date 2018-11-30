@@ -69,6 +69,11 @@ class AnimalDTO {
        return $this->getId();
     }
     
+    function EditarAnimal($Con)
+    {
+        return AnimalDAO::EditarAnimal($this, $Con);
+    }
+            
     
     function getId() {
         return $this->Id;

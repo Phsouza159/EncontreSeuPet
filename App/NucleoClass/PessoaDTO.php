@@ -60,13 +60,12 @@ class PessoaDTO {
     
    public function CadastrarUsuario($Con)
    {
-       print_r($this);
       return PessoaDAO::SetNovoUsuario($this , $Con);
    }
    
-   public function EditarUsuario()
+   public function EditarUsuario($Con)
    {
-      // return PessoaDAO::
+       PessoaDAO::EditarPessoa($this , $Con);
    }
    
    public function Login()
@@ -92,7 +91,7 @@ class PessoaDTO {
     }
 
     function getSexo() {
-        return $this->sexo;
+        return $this->Sexo;
     }
 
     function getDtNascimento() {
@@ -104,6 +103,10 @@ class PessoaDTO {
     }
 
     function getPOST() {
+        
+        if($this->ANUNCIO == null)
+           return 'NULL';
+        
         return $this->POST;
     }
 
@@ -124,6 +127,10 @@ class PessoaDTO {
     }
 
     function getANUNCIO() {
+        
+        if($this->ANUNCIO == null)
+            return 'NULL';
+            
         return $this->ANUNCIO;
     }
 
@@ -140,7 +147,7 @@ class PessoaDTO {
     }
 
     function setSexo($sexo) {
-        $this->sexo = $sexo;
+        $this->Sexo = $sexo;
     }
 
     function setDtNascimento($DtNascimento) {
@@ -172,6 +179,9 @@ class PessoaDTO {
     }
 
     function setANUNCIO($ANUNCIO) {
+        if($ANUNCIO == ' - ')
+            return;
+        
         $this->ANUNCIO = $ANUNCIO;
     }
 

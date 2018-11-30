@@ -91,6 +91,35 @@ class AnimalDAO extends CollectionsQuerys {
             return self::alimentarAnimalDados(new AnimalDTO() , $values[0]);
         
     }
+    public static function  EditarAnimal(AnimalDTO $Animal , $Con)
+    {
+        $Query = "UPDATE animal "
+                . "SET TipoAnimal = " . $Animal->getTipoAnimal()
+                . ",NomePet = '" . $Animal->getNomePet()  . "'"
+                . ",PortePet =  " . $Animal->getPortePet()
+                . ",RacaPet = '" . $Animal->getRacaPet()  . "'"
+                . ",CorPet  = '" . $Animal->getCorPet()   . "'"
+                . ",SexoPet = '" . $Animal->getSexo()     . "'"
+                . ",IdadePet=  " . $Animal->getIdadePet()
+                . ",FotoPet = '" . $Animal->getFotoPet()  . "'"
+                . ",Ativo   =  " . $Animal->getAtivo()
+                . ",POST_ID =  " . $Animal->getPOST()       
+                . ",PESSOA_ID =" . $Animal->getPESSOA()
+                . " WHERE ID = " . $Animal->getId();
+        try {
+            $Con->exec($Query);
+            return true;
+            
+        } catch (Exception $Con) {
+            
+            echo $Query;
+            echo $Con->getMessage();
+           
+            return false;
+        }
+     }
+
+
     
     private static function alimentarAnimalDados(AnimalDTO $Animal ,array $values) : AnimalDTO
     {

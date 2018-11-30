@@ -17,6 +17,16 @@ class TelefoneDTO {
     }
 
     
+    public function CadastrarTelefone($Con)
+    {
+        return TelefoneDAO::SalvarNovoTelefone($this, $Con);
+    }
+    
+    public function EditarTelefone($Con)
+    {
+        return TelefoneDAO::EditarTelefone($this, $Con);
+    }
+    
     public function getId() {
         return $this->Id;
     }
