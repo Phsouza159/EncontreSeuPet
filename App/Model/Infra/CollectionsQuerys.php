@@ -9,14 +9,13 @@ class CollectionsQuerys {
 
     public static function ValidarCommit(bool $commit = false, $con = null) {
         if (is_null($commit) || is_null($con)) {
-            //controle erro
+            echo "Erro no commit";
             exit;
         }
 
         if ($commit) { 
             return true;
         } else {
-
             $con->rollBack();// volta informação anterior
         }
     }

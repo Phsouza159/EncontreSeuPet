@@ -11,11 +11,9 @@ include_once 'Infra/CollectionsQuerys.php';
 
 class PessoaDAO extends CollectionsQuerys {
     //salvar um novo usuario
-    public static function SetNovoUsuario(PessoaDTO $Pessoa = null,$con = null) {
+    public static function SetNovoUsuario($Pessoa = null,$con = null) {
 
         $con->beginTransaction();
-        
-  
 
         $query = "INSERT INTO `PESSOA` (`Nome`,`Sobrenome`,`DtNascimento`,`Sexo`,`Ativo`"
                 ." ,`TIPOPESSOA_ID`, `TELEFONE_ID`,`ENDERECO_ID`,`ACESSO_ID`) "
@@ -24,7 +22,7 @@ class PessoaDAO extends CollectionsQuerys {
                 . ", '".$Pessoa->getDtNascimento()."'"
                 . ", '".$Pessoa->getSexo()."'"
                 . ", ".$Pessoa->getAtivo()
-               // . ", '".$Pessoa->getTipoPessoa()."'"
+                //. ", '".$Pessoa->getTipoPessoa()."'"
                 .",1"
                 //  . ", ".$Pessoa->getTelefone().""
                 .",1"

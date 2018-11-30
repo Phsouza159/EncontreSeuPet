@@ -20,7 +20,9 @@ class PostDTO {
     private $Ativo;
     private $CaminhoPost;
     private $LOCALIZACAO;
-
+    private $caminhoSalvar = __DIR__ . "/../View/Posts/"; 
+    private $CaminhoLocation;
+    
     public function __construct(
                                 $id = null, 
                                 $ANIMAL = null,
@@ -45,6 +47,60 @@ class PostDTO {
         $this->setLocalizacao($LOCALIZACAO);
         $this->setANIMAL($ANIMAL);
       
+    }
+    /**
+     * @param type $Con conexao
+     * @return type id da Post no banco
+     */
+    function CadastrarPost($Con)
+    {
+       $Id = PostDAO::salvePost($this , $Con);
+       if($this->getId() == null)
+       {
+           $this->setId($Id);
+       }
+       return $Id;
+    }
+    
+    function GerarPostArquivo()
+    {
+        if($this->getId() == null)
+        {
+            ErroController::erroFatal("Tentativa de criar post file sem ID !! "); 
+        }
+        
+        date_default_timezone_set('America/Sao_Paulo'); // configurar hora
+
+        $Titulo = ucwords($this->getTitulo()); // pegar o titulo do post e colocar tudo em minusculo
+        $nomeArquivo = $Titulo . date("ymd"); // titulo + gerar data
+        $nomeArquivo = str_replace(" ", "", $nomeArquivo) . rand(0, 100) . ".php"; // remover espacos 
+       
+        $POST_PREPARA = "<?php
+   \$id_POST = '".$this->getId()."'; 
+   if(file_exists('../Site/Layout/MODE_POTS.php'))
+   {
+      include_once '../Site/Layout/MODE_POTS.php';
+   }
+   else 
+   {
+     echo 'Mode nao encontrado';
+     exit;
+   }
+?>";
+         if(file_put_contents($this->caminhoSalvar .$nomeArquivo , $POST_PREPARA ))
+         {
+             $this->CaminhoLocation = $nomeArquivo ;
+         }
+         else
+         {
+             ErroController::erroFatal("Erro ao tentar criar Post");
+         } 
+        
+    }
+    
+    function CaminhoLocation()
+    {
+        header("location: ../Posts/" . $this->CaminhoLocation );
     }
     
     function  getLocalizacao(){

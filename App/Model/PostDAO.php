@@ -23,6 +23,13 @@ class PostDAO extends CollectionsQuerys {
             $con->exec($query);
             self::ValidarCommit($con->commit(), $con);//verificação se deu certo o comiti
             
+            $id = (self::Get_NEXT_ID_AUTO_INCREMENT_TABLE("post", $con) - 1 );
+            
+            if($id <= 0 )
+                 return 1;
+            
+            return $id;
+            
         } catch (PDOException $con) {
             ErroController::erroFatal("Nao foi possivel criar o novo post :: " . $con->getMessage() . " :: sql :: " . $query);
         }

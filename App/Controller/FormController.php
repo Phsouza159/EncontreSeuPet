@@ -4,11 +4,21 @@
  /*DIR: caminho fisico do arquivo*/  
 include_once __DIR__ . "/ErroController.php";
 include_once __DIR__ . "/SessionController.php";
-include_once __DIR__ . "../../Model/Conexao.php";
-include_once __DIR__ . "../../Model/PessoaDAO.php";
-include_once __DIR__ . "../../NucleoClass/AnimalDTO.php";
-include_once __DIR__ . "../../NucleoClass/PostDTO.php";
-include_once __DIR__ . "../../NucleoClass/PessoaDTO.php";
+
+include_once __DIR__ . "/../Model/Conexao.php";
+include_once __DIR__ . "/../Model/TelefoneDAO.php";
+include_once __DIR__ . "/../Model/PessoaDAO.php";
+include_once __DIR__ . "/../Model/EnderecoDAO.php";
+include_once __DIR__ . "/../Model/AcessoDAO.php";
+
+
+include_once __DIR__ . "/../NucleoClass/AnimalDTO.php";
+include_once __DIR__ . "/../NucleoClass/EnderecoDTO.php";
+include_once __DIR__ . "/../NucleoClass/PostDTO.php";
+include_once __DIR__ . "/../NucleoClass/PessoaDTO.php";
+include_once __DIR__ . "/../NucleoClass/Usuario.php";
+include_once __DIR__ . "/../NucleoClass/AcessoDTO.php";
+
 
 include_once __DIR__ . "/GerarPaginaWebPost.php";
 
@@ -30,17 +40,21 @@ class FormController {  /*apenas o  nome da classe*/
         
         switch($oper)  /*switch:if*/    /*$oper: operação, valor do parametro*/  
         {
-            
-            
-            case "login":  /**/  
-                echo "login";
-                self::FormLogin();
-                break;  /*parar, sai do switch*/  
-            
+//            case "login":  /**/  
+//                echo "login";
+//                self::FormLogin();
+//               break;  /*parar, sai do switch*/  
             
             case "CADASTRO-POST":
-                $id = self::FormCadastroPessoa();
-                self::FormCadastroPost($id);
+
+                $IdEndereco = self::FormNovoEndereco();
+                $IdAcesso   = self::FormSalvarAcesso();
+                $IdTelefone = self::FormSalvarTelefone();
+                $IdPessoa   = self::FormCadastroPessoa($IdEndereco , $IdTelefone , $IdAcesso );
+                $Post       = self::FormCadastroPost();
+                              self::FormNovoAnimal($IdPessoa , $Post->getId() );
+                $Post->CaminhoLocation();             
+                
                 break;
             
             case "EXCLUIR_POST":
@@ -106,37 +120,60 @@ class FormController {  /*apenas o  nome da classe*/
                                           ,self::getKey('pass_log') 
                                           , null);  /*conexão de banco de dados*/  
     }
-    /**
-     * PARA CADASTRO PESSOA
-     */
-    
-    private static function FormCadastroPessoa()
+/**
+ * CRUD PESSOA
+ */
+    //nova pessoa
+    private static function FormCadastroPessoa($IdEndereco , $IdTelefone , $IdAcesso)
     {
+        $Usuario = new Usuario(
+                                null // ID
+                                ,self::getKey("cadastro-nome")
+                                ,self::getKey("cadastro-sobrenome")
+                                ,self::getKey("cadastro-sexo")
+                                ,self::getKey("cadastro-dataNescimento")
+                                ,TRUE
+                                ,NULL
+                                ,1 );
         
-        $Pessoa = new PessoaDTO(
-                null // ID
-                 ,self::getKey("cadastro-nome")
-                 ,self::getKey("cadastro-sobrenome")
-                 ,self::getKey("cadastro-sexo")
-                 ,self::getKey("cadastro-dataNescimento")
-                 ,TRUE
-                 ,NULL
-                 ,1 );
-        
-       return pessoaDAO::SetNovoUsuario($Pessoa, self::$CON->getCon());
-        
+       // retorna o $id da pessoa no banco
+       $Usuario->setId( $Usuario->CadastrarUsuario(self::$CON->getCon()) );
+       
+       return $Usuario;
     }
 
-    
-
-    /**
-     * PARA LOGIN
+    ////////////////////////////// END acoes para PESSOA
+/**
+  * CRUD Endereco
+  */
+    /*
+     * return $id 
      */
-    private static function FormCadastroPost($id)
+    private static function FormNovoEndereco()
     {
-              
-        $Animal = new AnimalDTO( 
-                                null // ID
+       $Endereco = new EnderecoDTO(
+                                Null // $ID
+                               ,self::getKey("cadastro-CEP")
+                               ,self::getKey("cadastro-cidade")
+                               ,self::getKey("cadastro-Complemento")
+                               ,self::getKey("cadastro-estado")
+                              );
+       
+       return EnderecoDAO::SetNovoEndereco($Endereco, self::$CON->getCon());
+    }
+    
+    
+   ////////////////////////////// END acoes para ENDERECO
+/**
+  * CRUD ANIMAl
+  */
+    /* Novo Post
+     * @id int , id da pessoa 
+     * return Animal Objeto
+     */
+    private static function FormNovoAnimal($idPessoa , $idPost)
+    {
+       $Animal = new AnimalDTO(  null // ID 
                                 ,self::getKey("POST-ANIMAL-TIPO")
                                 ,self::getKey("POST-NOME-PET")
                                 ,self::getKey("POST-ANIMAL-PORT")
@@ -144,37 +181,46 @@ class FormController {  /*apenas o  nome da classe*/
                                 ,self::getKey("POST-COR-ANIMAL")
                                 ,self::getKey("POST-SEXO-PET")
                                 ,self::getKey("POST-IDADE-PET")
-                                ,self::FormUploadFile("CADASTRO-FOTO-ANIMAL")
-                                ,true
-                                ,NULL
-                                ,$id
-                            );
-         
-
-        $Post = new PostDTO( 
-                            null 
-                            , $Animal 
-                            , self::getKey("TIPO-POST")
-                            , self::getKey('POST-TITULO'));
-        
-        GerarPaginaWebPost::main($Post);
-        exit;
+                                ,self::FormUploadFile("CADASTRO-FOTO-ANIMAL") // salvar foto do post no banco e no servidor
+                                ,true // ativo
+                                ,$idPost // Post
+                                ,$idPessoa // id da pessoa
+                              );
+       $Animal->CadastrarPet( self::$CON->getCon() );
+        return $Animal;
     }
     
-
+    
+    ////////////////////////////// END acoes para ANIMAl
+/**
+  * CRUD POST
+  */
+    /**
+     * @return type id do post no banco
+     */
+    private static function FormCadastroPost()
+    {
+        $Post = new PostDTO( 
+                              null // id 
+                            , null // Animal
+                            , self::getKey("TIPO-POST")
+                            , self::getKey('POST-TITULO'));
+        $Post->CadastrarPost( self::$CON->getCon() );
+        $Post->GerarPostArquivo();
+        
+        return $Post;
+    }
     /*
      * Excluir Post
      */
-    public static function FormExcluirPost()
+    private static function FormExcluirPost()
     {
         PostDAO::inativarPost(self::getKey('excluirId') , self::$CON->getCon());
     }
-    
-    
     /*
      * Editar Post
      */
-    public static function FormEditarPost()
+    private static function FormEditarPost()
     {
            $post = new PostDTO( self::getKey('ID')
                                ,NULL
@@ -190,11 +236,37 @@ class FormController {  /*apenas o  nome da classe*/
     /**
      * Editar post via admin
      */
-    public static function FormEdicaoPostViaAdmin()
+    private static function FormEdicaoPostViaAdmin()
     {
         self::FormEditarPost();
     }
-
-
     ////////////////////////////// END acoes para POST
+        
+/**
+  * CRUD Acesso
+  */
+    private static function FormSalvarAcesso()
+    {
+        $Acesso = new AcessoDTO(  null // Id
+                                , self::getKey('cadastro-login')
+                                , self::getKey('cadastro-senha'));
+        
+        
+
+        return AcessoDAO::SalvarNovoAcesso($Acesso, self::$CON->getCon());
+    }
+    ////////////////////////////// END acoes para ACESSO
+    
+/**
+  * CRUD TELEFONE
+  */
+    private static function FormSalvarTelefone()
+    {
+        $Telefone = new TelefoneDTO(  NULL
+                                    , 61 //self::getKey('')
+                                    , self::getKey('cadastro-telefone'));
+
+        return TelefoneDAO::SalvarNovoTelefone($Telefone, self::$CON->getCon() );
+    }
+   ////////////////////////////// END acoes para Telefone    
 }

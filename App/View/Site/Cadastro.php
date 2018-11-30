@@ -192,9 +192,9 @@ echo "</pre>";
 
                             <section class="col"> 
 
-                                <select id="formCadastroCidade" class='section-cidade-group-principal-cadastro'>
+                                <select id="formCadastroCidade" class='section-cidade-group-principal-cadastro' name='cadastro-cidade'>
                                     <option class='section-cidade-group-principal-cadastro' value=''>Cidade...</option>
-                                    <option class='section-cidade-group-principal-cadastro' value='cadastro-cidade'>Ceilândia</option>
+                                    <option class='section-cidade-group-principal-cadastro' value='Ceilândia'>Ceilândia</option>
                                     <option class='section-cidade-group-principal-cadastro' value='cadastro-cidade'>Samambaia</option>
                                     <option class='section-cidade-group-principal-cadastro' value='cadastro-cidade'>Taguatinga</option>   
                                     <option class='section-cidade-group-principal-cadastro' value='cadastro-cidade'>Plano Piloto</option>
@@ -254,7 +254,25 @@ echo "</pre>";
                         </div>
 
                         <div class="row m-4">
-
+                            <section class="col">
+                                <label>CEP:</label>
+                                <input id=""
+                                       name='cadastro-CEP' 
+                                       type='text' 
+                                       class='dtNasc-calendario-group-principal-cadastro'
+                                       />
+                            </section> 
+                            
+                            
+                            <section class="col">
+                                <label>Complemento:</label>
+                                <input id=""
+                                       name='cadastro-Complemento' 
+                                       type='text' 
+                                       class='dtNasc-calendario-group-principal-cadastro'
+                                       />
+                            </section> 
+                            
                             <section class="col"> 
 
                                 <label>Data de Nacimento:</label>
@@ -267,7 +285,7 @@ echo "</pre>";
 
                                 <a class="input-dtNascimento"></a> 
                             </section>
-                            <section class="col"></section> 
+                            
                             <section class="col"> 
 
                                 <label>Sexo:</label>
@@ -289,6 +307,15 @@ echo "</pre>";
                                 <span class='text-descricao-group-principal-cadastro'>outro</span> 
 
                             </section>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
                         </div>
                         <input type="button"  class="button_passo2" value="seguinte" />
                     </div>
@@ -299,15 +326,23 @@ echo "</pre>";
                         <br>
 
                         <label></label>
-                        <input name='cadastro-login' type='text' class='input-principal-cadastro' placeholder='...'> 
+                        <input name='cadastro-login' 
+                               type='text' class='input-principal-cadastro' 
+                               placeholder='...'> 
                         <br>
                         <label></label>
-                        <input name='cadastro-senha' type='text' class='input-principal-cadastro' placeholder='Senha...'> 
+                        <input name='cadastro-senha' 
+                               type='text' 
+                               class='input-principal-cadastro' 
+                               placeholder='Senha...'> 
 
                         <br>
 
                         <label></label>
-                        <input name='cadastro-senha confirmação' type='text' class='input-principal-cadastro' placeholder='Senha confirmação...'> 
+                        <input name='cadastro-senha-confirmação' 
+                               type='text' 
+                               class='input-principal-cadastro' 
+                               placeholder='Senha confirmação...'> 
 
                         <br>
 

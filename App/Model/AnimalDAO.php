@@ -5,12 +5,8 @@ include_once __DIR__ . '/Infra/CollectionsQuerys.php';
 class AnimalDAO extends CollectionsQuerys {
   
     public static function SetNovoAnimal(AnimalDTO $Animal = null, $con = null) {
-        
-        parent::VerificarParametros($Animal, $con , 'Insert into Animal');
-
         $con->beginTransaction();
             
-        
         $query = "INSERT INTO `animal` (`ID`, `TipoAnimal`, `NomePet`, `PortePet`, `RacaPet`, `CorPet`, `SexoPet`, `IdadePet`, `FotoPet`, `Ativo`, `POST_ID`, `PESSOA_ID`) 
                   VALUES ( NULL
                    , ".$Animal->getTipoAnimal()
@@ -23,13 +19,13 @@ class AnimalDAO extends CollectionsQuerys {
                 . ", '".$Animal->getFotoPet()   ."'"
                 . ",  ".$Animal->getAtivo()
                 . ",  ".$Animal->getPOST()
-                . ",  ".$Animal->getPESSOA().");"; 
+                . ",  ".$Animal->getPESSOA()->getId().");"; 
   
         try {
 
             $con->exec($query);
             self::ValidarCommit($con->commit(), $con);
-            //return self::Get_NEXT_ID_AUTO_INCREMENT_TABLE('Animal' , $con) - 1;
+            return (self::Get_NEXT_ID_AUTO_INCREMENT_TABLE('Animal' , $con) - 1);
 
         } catch (PDOException $con) {
             ErroController::erroFatal("Nao foi possivel salvar o animal na base de dados: Querey -> " . $query . " erro :" . $con->getMessage() );

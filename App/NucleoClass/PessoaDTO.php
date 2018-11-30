@@ -1,17 +1,8 @@
 <?php
+
+include_once __DIR__ . "/../Model/PessoaDAO.php";
 /**
-  ID INT NOT NULL AUTO_INCREMENT,
-  Nome VARCHAR(45) NOT NULL,
-  Sobrenome VARCHAR(45) NOT NULL,
-  DtNascimento DATE NOT NULL,
-  Sexo CHAR(2) NOT NULL,
-  Ativo INT NOT NULL,
-  POST_ID INT NOT NULL,
-  TIPOPESSOA_ID INT NOT NULL,
-  TELEFONE_ID INT NOT NULL,
-  ENDERECO_ID INT NOT NULL,
-  ACESSO_ID INT NOT NULL,
-  ANUNCIO_ID INT NULL,
+  
  */
 class PessoaDTO {
     
@@ -19,6 +10,9 @@ class PessoaDTO {
     private $Nome; 
     private $Sobrenome; 
     private $Sexo;
+    /**
+     * 
+     */
     private $DtNascimento;
     private $Ativo;
     private $POST;
@@ -32,6 +26,8 @@ class PessoaDTO {
     private $Endereco;
     private $Acesso;
     private $ANUNCIO;
+   
+    private $PessoaDAO;
     
     public function __construct(
                                 $id = null, 
@@ -61,6 +57,28 @@ class PessoaDTO {
         $this->setANUNCIO($ANUNCIO);
     }
     
+    
+   public function CadastrarUsuario($Con)
+   {
+       print_r($this);
+      return PessoaDAO::SetNovoUsuario($this , $Con);
+   }
+   
+   public function EditarUsuario()
+   {
+      // return PessoaDAO::
+   }
+   
+   public function Login()
+   {
+       
+   }
+   
+   public function Logoff()
+   {
+       
+   }
+           
     function getId() {
         return $this->id;
     }

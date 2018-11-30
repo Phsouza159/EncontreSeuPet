@@ -1,18 +1,8 @@
 <?php
 
+include_once __DIR__ . "/../Model/AnimalDAO.php";
+
 /*
-  ID INT NOT NULL AUTO_INCREMENT,
-  TipoAnimal INT NOT NULL,
-  NomePet VARCHAR(45) NULL,
-  PortePet INT NOT NULL,
-  RacaPet VARCHAR(45) NOT NULL,
-  CorPet VARCHAR(15) NOT NULL,
-  SexoPet CHAR(2) NOT NULL,
-  IdadePet INT NOT NULL,
-  FotoPet VARCHAR(1) NOT NULL,
-  Ativo INT NULL,
-  POST_ID INT NOT NULL,
-  PESSOA_ID INT NOT NULL,
  */
 class AnimalDTO {
     
@@ -63,6 +53,22 @@ class AnimalDTO {
         $this->setPOST($POST);
         $this->setPESSOA($PESSOA);
     }
+    
+    /**
+     * 
+     * @param type $Con conexao 
+     * @return type int id - id do animal do banco
+     */
+    function CadastrarPet($Con)
+    {
+       $id = AnimalDAO::SetNovoAnimal($this , $Con);
+       if($this->getId() == null)
+       {
+           $this->setId($id);
+       }
+       return $this->getId();
+    }
+    
     
     function getId() {
         return $this->Id;
